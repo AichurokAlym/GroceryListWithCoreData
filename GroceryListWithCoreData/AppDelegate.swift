@@ -15,7 +15,59 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        //hier holen wir den Link für das Programm TablePlus (um die Inhalte von CoreData zu sehen)
+        print("#"+NSHomeDirectory())
+        
+        //hier prüfen wir ob die App erste Mal startet
+        if UserDefaults.standard.object(forKey: "wurdeErsteMalGestarted") == nil {
+            
+            // wenn true ist dann wird die Kategorien erstellt
+            let artikelCategorys = ["Obst", "Gemüse", "Milchprodukte", "Getreideprodukte", "Getränke", "Fleisch, Wurst, Fisch und Eier", "Extras"]
+            
+            UserDefaults.standard.set(true, forKey: "wurdeErsteMalGestarted")
+            
+            for name in artikelCategorys {
+                let coreDataCategory = Category(context: context)
+                coreDataCategory.categoryName = name
+                
+                
+                let gemuese = ["Tomaten", "Gurke", "Avocado", "Brokkoli", "Paprika", "Kürbis"]
+                let obst = ["Äpfel", "Birne", "Bananen", "Pflaume", "Trauben", "Kiwi"]
+                let milchProdukte = ["Milch", "Butter", "Käse", "Frischkäse", "Joghurt", "Kaffeesahne"]
+                let getreideProdukte = ["Brot", "Brötchen", "Brezeln", "Nudeln", "Reis", "Haferflocken"]
+                let getränke = ["Saft", "StillWasser", "Mineralwasser", "Limonade", "Apfelschorle", "Cola"]
+                let fleischWurstEier = ["Rindfleisch", "Hünerfleisch", "Eier", "Fisch", "Salami", "Wurst"]
+                let extras = ["Shokolade", "Chips", "Pistazien", "Cashewkerne", "Kürbiskerne", "Apfelkuchen"]
+                
+                //mit diese funktion werden Artikeln in die Categorien hinzugefügt
+                createArtikel(coreDataCategory: coreDataCategory, produkt: gemuese, artikelCategories: "Gemüse")
+                createArtikel(coreDataCategory: coreDataCategory, produkt: obst, artikelCategories: "Obst")
+                createArtikel(coreDataCategory: coreDataCategory, produkt: milchProdukte, artikelCategories: "Milchprodukte")
+                createArtikel(coreDataCategory: coreDataCategory, produkt: getreideProdukte, artikelCategories: "Getreideprodukte")
+                createArtikel(coreDataCategory: coreDataCategory, produkt: getränke, artikelCategories: "Getränke")
+                createArtikel(coreDataCategory: coreDataCategory, produkt: fleischWurstEier, artikelCategories: "Fleisch, Wurst, Fisch und Eier")
+                createArtikel(coreDataCategory: coreDataCategory, produkt: extras, artikelCategories: "Extras")
+            }
+            //speichert die Kategorien und die Artikeln ab
+            self.saveContext()
+        }
         return true
+    }
+    
+    func createArtikel(coreDataCategory: Category, produkt: [String], artikelCategories: String) {
+        
+        if coreDataCategory.categoryName == artikelCategories {
+            for artikelName in produkt {
+                let artikelCD = Artikel(context: context)
+                artikelCD.artikelName = artikelName
+                artikelCD.category = coreDataCategory
+                
+                artikelCD.artikelImage = UIImage(named: artikelName)?.pngData()
+            }
+           
+        }
+        
     }
 
     // MARK: UISceneSession Lifecycle

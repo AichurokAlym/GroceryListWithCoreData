@@ -9,23 +9,31 @@
 /* Begin PBXBuildFile section */
 		CB24998228FEC6AD00A53EFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB24998128FEC6AD00A53EFB /* AppDelegate.swift */; };
 		CB24998428FEC6AD00A53EFB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB24998328FEC6AD00A53EFB /* SceneDelegate.swift */; };
-		CB24998628FEC6AD00A53EFB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB24998528FEC6AD00A53EFB /* ViewController.swift */; };
+		CB24998628FEC6AD00A53EFB /* AddArtikelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB24998528FEC6AD00A53EFB /* AddArtikelVC.swift */; };
 		CB24998928FEC6AD00A53EFB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB24998728FEC6AD00A53EFB /* Main.storyboard */; };
 		CB24998C28FEC6AD00A53EFB /* GroceryListWithCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB24998A28FEC6AD00A53EFB /* GroceryListWithCoreData.xcdatamodeld */; };
 		CB24998E28FEC6AE00A53EFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB24998D28FEC6AE00A53EFB /* Assets.xcassets */; };
 		CB24999128FEC6AE00A53EFB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB24998F28FEC6AE00A53EFB /* LaunchScreen.storyboard */; };
+		CB24999B28FED07000A53EFB /* ArtikelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB24999A28FED07000A53EFB /* ArtikelTableViewCell.swift */; };
+		CB24999D28FED79400A53EFB /* Constanst.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB24999C28FED79400A53EFB /* Constanst.swift */; };
+		CB3D0F1528FF8BCC00AD6EFB /* HomeScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3D0F1428FF8BCC00AD6EFB /* HomeScreenVC.swift */; };
+		CBCE143428FFF832006601E8 /* CheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCE143328FFF831006601E8 /* CheckboxButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CB24997E28FEC6AD00A53EFB /* GroceryListWithCoreData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroceryListWithCoreData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB24998128FEC6AD00A53EFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB24998328FEC6AD00A53EFB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CB24998528FEC6AD00A53EFB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CB24998528FEC6AD00A53EFB /* AddArtikelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddArtikelVC.swift; sourceTree = "<group>"; };
 		CB24998828FEC6AD00A53EFB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CB24998B28FEC6AD00A53EFB /* GroceryListWithCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GroceryListWithCoreData.xcdatamodel; sourceTree = "<group>"; };
 		CB24998D28FEC6AE00A53EFB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB24999028FEC6AE00A53EFB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CB24999228FEC6AE00A53EFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB24999A28FED07000A53EFB /* ArtikelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtikelTableViewCell.swift; sourceTree = "<group>"; };
+		CB24999C28FED79400A53EFB /* Constanst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constanst.swift; sourceTree = "<group>"; };
+		CB3D0F1428FF8BCC00AD6EFB /* HomeScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenVC.swift; sourceTree = "<group>"; };
+		CBCE143328FFF831006601E8 /* CheckboxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +68,11 @@
 			children = (
 				CB24998128FEC6AD00A53EFB /* AppDelegate.swift */,
 				CB24998328FEC6AD00A53EFB /* SceneDelegate.swift */,
-				CB24998528FEC6AD00A53EFB /* ViewController.swift */,
+				CB24999C28FED79400A53EFB /* Constanst.swift */,
+				CB24998528FEC6AD00A53EFB /* AddArtikelVC.swift */,
+				CB3D0F1428FF8BCC00AD6EFB /* HomeScreenVC.swift */,
+				CB24999A28FED07000A53EFB /* ArtikelTableViewCell.swift */,
+				CBCE143328FFF831006601E8 /* CheckboxButton.swift */,
 				CB24998728FEC6AD00A53EFB /* Main.storyboard */,
 				CB24998D28FEC6AE00A53EFB /* Assets.xcassets */,
 				CB24998F28FEC6AE00A53EFB /* LaunchScreen.storyboard */,
@@ -141,8 +153,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB24998628FEC6AD00A53EFB /* ViewController.swift in Sources */,
+				CB24999B28FED07000A53EFB /* ArtikelTableViewCell.swift in Sources */,
+				CB24998628FEC6AD00A53EFB /* AddArtikelVC.swift in Sources */,
 				CB24998228FEC6AD00A53EFB /* AppDelegate.swift in Sources */,
+				CB3D0F1528FF8BCC00AD6EFB /* HomeScreenVC.swift in Sources */,
+				CBCE143428FFF832006601E8 /* CheckboxButton.swift in Sources */,
+				CB24999D28FED79400A53EFB /* Constanst.swift in Sources */,
 				CB24998C28FEC6AD00A53EFB /* GroceryListWithCoreData.xcdatamodeld in Sources */,
 				CB24998428FEC6AD00A53EFB /* SceneDelegate.swift in Sources */,
 			);
