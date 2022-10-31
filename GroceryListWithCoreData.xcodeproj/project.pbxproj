@@ -15,9 +15,13 @@
 		CB24998E28FEC6AE00A53EFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB24998D28FEC6AE00A53EFB /* Assets.xcassets */; };
 		CB24999128FEC6AE00A53EFB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB24998F28FEC6AE00A53EFB /* LaunchScreen.storyboard */; };
 		CB24999B28FED07000A53EFB /* ArtikelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB24999A28FED07000A53EFB /* ArtikelTableViewCell.swift */; };
-		CB24999D28FED79400A53EFB /* Constanst.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB24999C28FED79400A53EFB /* Constanst.swift */; };
+		CB24999D28FED79400A53EFB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB24999C28FED79400A53EFB /* Constants.swift */; };
 		CB3D0F1528FF8BCC00AD6EFB /* HomeScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3D0F1428FF8BCC00AD6EFB /* HomeScreenVC.swift */; };
-		CBCE143428FFF832006601E8 /* CheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCE143328FFF831006601E8 /* CheckboxButton.swift */; };
+		CB59BB2E290EF8AE000780C6 /* MyRecipesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB59BB2D290EF8AE000780C6 /* MyRecipesTVC.swift */; };
+		CB59BB30290EF919000780C6 /* AddRecipeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB59BB2F290EF918000780C6 /* AddRecipeVC.swift */; };
+		CB59BB32290EF958000780C6 /* DetailRecipeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB59BB31290EF958000780C6 /* DetailRecipeVC.swift */; };
+		CB7F7EE32902FBF8005EE6E4 /* MyListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7F7EE22902FBF8005EE6E4 /* MyListTVC.swift */; };
+		CB7F7EE529030392005EE6E4 /* MyListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7F7EE429030392005EE6E4 /* MyListTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,9 +35,13 @@
 		CB24999028FEC6AE00A53EFB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CB24999228FEC6AE00A53EFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB24999A28FED07000A53EFB /* ArtikelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtikelTableViewCell.swift; sourceTree = "<group>"; };
-		CB24999C28FED79400A53EFB /* Constanst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constanst.swift; sourceTree = "<group>"; };
+		CB24999C28FED79400A53EFB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CB3D0F1428FF8BCC00AD6EFB /* HomeScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenVC.swift; sourceTree = "<group>"; };
-		CBCE143328FFF831006601E8 /* CheckboxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxButton.swift; sourceTree = "<group>"; };
+		CB59BB2D290EF8AE000780C6 /* MyRecipesTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecipesTVC.swift; sourceTree = "<group>"; };
+		CB59BB2F290EF918000780C6 /* AddRecipeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeVC.swift; sourceTree = "<group>"; };
+		CB59BB31290EF958000780C6 /* DetailRecipeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRecipeVC.swift; sourceTree = "<group>"; };
+		CB7F7EE22902FBF8005EE6E4 /* MyListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListTVC.swift; sourceTree = "<group>"; };
+		CB7F7EE429030392005EE6E4 /* MyListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,20 +74,48 @@
 		CB24998028FEC6AD00A53EFB /* GroceryListWithCoreData */ = {
 			isa = PBXGroup;
 			children = (
+				CBD122EE290F1756007B1ACD /* Controller */,
+				CBD122ED290F173D007B1ACD /* View */,
+				CBD122EC290F170D007B1ACD /* Model */,
 				CB24998128FEC6AD00A53EFB /* AppDelegate.swift */,
 				CB24998328FEC6AD00A53EFB /* SceneDelegate.swift */,
-				CB24999C28FED79400A53EFB /* Constanst.swift */,
-				CB24998528FEC6AD00A53EFB /* AddArtikelVC.swift */,
-				CB3D0F1428FF8BCC00AD6EFB /* HomeScreenVC.swift */,
+				CB24999C28FED79400A53EFB /* Constants.swift */,
 				CB24999A28FED07000A53EFB /* ArtikelTableViewCell.swift */,
-				CBCE143328FFF831006601E8 /* CheckboxButton.swift */,
-				CB24998728FEC6AD00A53EFB /* Main.storyboard */,
+				CB7F7EE429030392005EE6E4 /* MyListTableViewCell.swift */,
 				CB24998D28FEC6AE00A53EFB /* Assets.xcassets */,
-				CB24998F28FEC6AE00A53EFB /* LaunchScreen.storyboard */,
 				CB24999228FEC6AE00A53EFB /* Info.plist */,
-				CB24998A28FEC6AD00A53EFB /* GroceryListWithCoreData.xcdatamodeld */,
 			);
 			path = GroceryListWithCoreData;
+			sourceTree = "<group>";
+		};
+		CBD122EC290F170D007B1ACD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CB24998A28FEC6AD00A53EFB /* GroceryListWithCoreData.xcdatamodeld */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CBD122ED290F173D007B1ACD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CB24998728FEC6AD00A53EFB /* Main.storyboard */,
+				CB24998F28FEC6AE00A53EFB /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CBD122EE290F1756007B1ACD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CB24998528FEC6AD00A53EFB /* AddArtikelVC.swift */,
+				CB3D0F1428FF8BCC00AD6EFB /* HomeScreenVC.swift */,
+				CB7F7EE22902FBF8005EE6E4 /* MyListTVC.swift */,
+				CB59BB31290EF958000780C6 /* DetailRecipeVC.swift */,
+				CB59BB2F290EF918000780C6 /* AddRecipeVC.swift */,
+				CB59BB2D290EF8AE000780C6 /* MyRecipesTVC.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,12 +190,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB24999B28FED07000A53EFB /* ArtikelTableViewCell.swift in Sources */,
+				CB7F7EE32902FBF8005EE6E4 /* MyListTVC.swift in Sources */,
 				CB24998628FEC6AD00A53EFB /* AddArtikelVC.swift in Sources */,
+				CB7F7EE529030392005EE6E4 /* MyListTableViewCell.swift in Sources */,
 				CB24998228FEC6AD00A53EFB /* AppDelegate.swift in Sources */,
 				CB3D0F1528FF8BCC00AD6EFB /* HomeScreenVC.swift in Sources */,
-				CBCE143428FFF832006601E8 /* CheckboxButton.swift in Sources */,
-				CB24999D28FED79400A53EFB /* Constanst.swift in Sources */,
+				CB59BB30290EF919000780C6 /* AddRecipeVC.swift in Sources */,
+				CB59BB32290EF958000780C6 /* DetailRecipeVC.swift in Sources */,
+				CB24999D28FED79400A53EFB /* Constants.swift in Sources */,
 				CB24998C28FEC6AD00A53EFB /* GroceryListWithCoreData.xcdatamodeld in Sources */,
+				CB59BB2E290EF8AE000780C6 /* MyRecipesTVC.swift in Sources */,
 				CB24998428FEC6AD00A53EFB /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

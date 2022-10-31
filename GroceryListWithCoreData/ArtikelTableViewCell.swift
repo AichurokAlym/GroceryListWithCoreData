@@ -6,11 +6,12 @@
 //
 
 import UIKit
+import CoreData
 
 class ArtikelTableViewCell: UITableViewCell {
     
 
-    @IBOutlet weak var checkbox: CheckboxButton!
+    @IBOutlet weak var checkbox: UIButton!
     @IBOutlet weak var artikelImage: UIImageView!
     @IBOutlet weak var artikelName: UILabel!
    
@@ -23,10 +24,16 @@ class ArtikelTableViewCell: UITableViewCell {
 
 
     @IBAction func checkbox(_ sender: UIButton) {
-        print("AAA")
+        selectedItems()
+        
+    }
+    
+    func selectedItems() {
+        
         checkbox.isSelected = !checkbox.isSelected
         if checkbox.isSelected == true {
             checkbox.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
+            
         } else {
             checkbox.setImage(UIImage(systemName: "checkmark.circle"), for: .normal)
         }

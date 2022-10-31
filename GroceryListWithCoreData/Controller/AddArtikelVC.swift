@@ -71,6 +71,7 @@ class AddArtikelVC: UIViewController, UITextFieldDelegate, UIPickerViewDelegate,
             
             artikel.category = selectedCategory
             artikel.artikelImage = artikelImage.image?.pngData()
+            artikel.isChecked = false
         }
     
         self.navigationController?.popViewController(animated: true)

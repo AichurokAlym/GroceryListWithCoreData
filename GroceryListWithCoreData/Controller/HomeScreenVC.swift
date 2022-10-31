@@ -13,7 +13,8 @@ class HomeScreenVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var category = [Category]()
-    var artikeln = [Artikel]()
+    
+    var checkedArtikel = [String].self
     
     
     override func viewDidLoad() {
@@ -23,13 +24,14 @@ class HomeScreenVC: UIViewController {
         tableView.dataSource = self
         
         tableView.allowsMultipleSelectionDuringEditing = true
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
         fetchCategory()
-        
     }
     
     func fetchCategory() {
@@ -43,15 +45,14 @@ class HomeScreenVC: UIViewController {
         tableView.reloadData()
     }
     
-    func selectedArtikel(sender: CheckboxButton) {
-        
-//        print(sender.artikel)
-//        print(sender.category)
+
+        @IBAction func toMyList(_ sender: UIButton) {
+            
+            //performSegue(withIdentifier: "toMyList", sender: self)
     }
     
 }
-
-
+    
 extension HomeScreenVC: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -71,25 +72,22 @@ extension HomeScreenVC: UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "listCell", for: indexPath) as! ArtikelTableViewCell
         
-        cell.checkbox.imageView?.image = UIImage(systemName: "checkmark.circle")
-        
         let artikel = category[indexPath.section].artikel?.allObjects[indexPath.row] as! Artikel
         
-        print("#" + artikel.artikelName!)
-        
-        cell.artikelName.text = artikel.artikelName
-        if let artikelImage = artikel.artikelImage {
-            print("##" )
-            cell.artikelImage.image = UIImage(data: artikelImage)
-
-        } else {
-            
-            cell.artikelImage.image = UIImage(systemName: "photo.artframe")
-        }
+        if artikel.isChecked == false {
+            cell.artikelName.text = artikel.artikelName
+            if let artikelImage = artikel.artikelImage {
                 
+                cell.artikelImage.image = UIImage(data: artikelImage)
+                
+            } else {
+                cell.artikelImage.image = UIImage(systemName: "photo.artframe")
+            }
+        }
+    
         return cell
     }
-
+    
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
@@ -112,29 +110,35 @@ extension HomeScreenVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     
-  
-    func tableView(_ tableView: UITableView, shouldBeginMultipleSelectionInteractionAt indexPath: IndexPath) -> Bool {
-        true
-    }
+    //
+    //        func tableView(_ tableView: UITableView, shouldBeginMultipleSelectionInteractionAt indexPath: IndexPath) -> Bool {
+    //            true
+    //        }
+    //
+    //        func tableView(_ tableView: UITableView, didBeginMultipleSelectionInteractionAt indexPath: IndexPath) {
+    //            tableView.setEditing(true, animated: true)
+    //        }
+    //
+    //        func tableViewDidEndMultipleSelectionInteraction(_ tableView: UITableView) {
+    //            print("\(#function)")
+    //        }
     
-    func tableView(_ tableView: UITableView, didBeginMultipleSelectionInteractionAt indexPath: IndexPath) {
-        tableView.setEditing(true, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var artikel = category[indexPath.section].artikel?.allObjects[indexPath.row] as! Artikel
+        var checkbox = artikel.isChecked
+        checkbox = !checkbox
+        
+        do {
+              try context.save()
+            } catch {
+                print("Fehler")
+            }
+        
+        tableView.reloadData()
     }
+   
     
-    func tableViewDidEndMultipleSelectionInteraction(_ tableView: UITableView) {
-        print("\(#function)")
-    }
-    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        <#code#>
-//    }
-//
-//    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-//        <#code#>
-//    }
     
 }
-
-
 
 
