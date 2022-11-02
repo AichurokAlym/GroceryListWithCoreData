@@ -10,32 +10,48 @@ import CoreData
 
 class MyRecipesTVC: UITableViewController {
 
-    lazy var fetchedResultsController: NSFetchedResultsController<Recipe> = {
-        let request: NSFetchRequest<Recipe> = Recipe.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(key: "recipeTitle", ascending: true)]
-           
-        let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
-           
-        do {
-            try controller.performFetch()
-        } catch let error as NSError {
-            print(error.localizedDescription)
-        }
-        return controller
-    }()
+    var recipe = [Recipe]()
+    var selectedRecipe: Recipe!
+    
+//    lazy var fetchedResultsController: NSFetchedResultsController<Recipe> = {
+//        let request: NSFetchRequest<Recipe> = Recipe.fetchRequest()
+//        request.sortDescriptors = [NSSortDescriptor(key: "recipeTitle", ascending: true)]
+//
+//        let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+//
+//        do {
+//            try controller.performFetch()
+//        } catch let error as NSError {
+//            print(error.localizedDescription)
+//        }
+//        return controller
+//    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.title = "Meine Rezepte"
-    
-    
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+         self.navigationItem.leftBarButtonItem = self.editButtonItem
+        
+        fetchRecipes()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        fetchRecipes()
+    }
+    
+    func fetchRecipes() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        do {
+            recipe = try appDelegate.persistentContainer.viewContext.fetch(Recipe.fetchRequest())
+        } catch let error as NSError {
+          print(error.localizedDescription)
+        }
+        tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -47,27 +63,32 @@ class MyRecipesTVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return fetchedResultsController.sections![0].numberOfObjects
+        return recipe.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath)
         
         // Cell einrichten
-        let recipe = fetchedResultsController.object(at: indexPath)
         var content = cell.defaultContentConfiguration()
-        content.text = recipe.recipeTitle
+        content.text = recipe[indexPath.row].recipeTitle
         cell.contentConfiguration = content
         
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        
+        selectedRecipe = recipe[indexPath.row]
+        
+        return indexPath
+    }
+    
     //MARK: - prepareForSegue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "detailRecipeSegue" {
-            let indexPath = tableView.indexPath(for: sender as! UITableViewCell)
-            let dest = segue.destination as! DetailRecipeVC
-            //dest.recipe = fetchedResultsController.object(at: indexPath!)
+            let vc = segue.destination as! DetailRecipeVC
+            vc.recipe = selectedRecipe
         }
     }
     
@@ -79,14 +100,12 @@ class MyRecipesTVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let recipe = self.fetchedResultsController.object(at: indexPath)
-            context.delete(recipe)
+            let recipeToDelete = self.recipe[indexPath.row]
+            appDelegate.persistentContainer.viewContext.delete(recipeToDelete)
+            self.recipe.remove(at: indexPath.row)
             
-            do {
-                try context.save()
-            } catch {
-                print("Error")
-            }
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            appDelegate.saveContext()
         }
     }
 }

@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import CoreData
 
-class AddRecipeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIPickerViewDelegate {
+class AddRecipeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIPickerViewDelegate, UITableViewDelegate {
+    
+    //var recipe = [Recipe]()
     
     @IBOutlet weak var recipeTitleTF: UITextField!
     @IBOutlet weak var categoryTF: UITextField!
@@ -22,15 +25,42 @@ class AddRecipeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UI
     // Datengrundlage zur TableView
     var ingredientTableViewData = [Ingredient]()
     
+//    //MARK: - fetchedResultsController
+//    lazy var fetchedResultsController: NSFetchedResultsController<Ingredient> = {
+//        let request: NSFetchRequest<Ingredient> = Ingredient.fetchRequest()
+//        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+//        request.predicate = NSPredicate(format: "recipes = %@", recipe)
+//
+//        let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+//
+//        do {
+//            try controller.performFetch()
+//        } catch let error as NSError {
+//            print(error.localizedDescription)
+//        }
+//        return controller
+//    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         ingredientTableView.dataSource = self
+//        ingredientTableView.delegate = self
+//        recipeTitleTF.delegate = self
+//        categoryTF.delegate = self
+//        cookingTimeTF.delegate = self
+//        instructionsTV.delegate = self
+//        ingredientNameTF.delegate = self
+//        quantityTF.delegate = self
+//        unitTF.delegate = self
+        
+       
     }
     
     //MARK: - IBActions
     @IBAction func saveBtnTapped(_ sender: UIBarButtonItem) {
+        
         if let recipeTitle = recipeTitleTF.text, recipeTitleTF.text != "" {
             
             // Hier wird ein Rezept erstellt
@@ -43,10 +73,10 @@ class AddRecipeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UI
             
             recipe.category = categoryTF.text
             recipe.instructions = instructionsTV.text
-            recipe.cookingTime = Int64(cookingTimeTF.text!) ?? 0
+            recipe.cookingTime = Int16(cookingTimeTF.text!) ?? 0
             
             for ingredient in ingredientTableViewData {
-                //recipe.addToIngredients(ingredient)
+                recipe.addToIngredients(ingredient)
             }
             
             do {
@@ -63,12 +93,15 @@ class AddRecipeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UI
     // Image hinzufügen
     
     @IBAction func addImageBtnTapped(_ sender: UIButton) {
-        recipeImageView.image = UIImage(named: "spaghetti-napoli")
+        //recipeImageView.image = UIImage(named: "spaghetti-napoli")
     }
     
     
     // Ingredients hinzufügen
     @IBAction func addIngredientBtnTapped(_ sender: UIButton) {
+
+        ingredientTableView.isHidden = false
+        
         if let ingredientName = ingredientNameTF.text, let quantity = quantityTF.text, let unit = unitTF.text, ingredientNameTF.text != "" {
             
             let ingredient = Ingredient(context: context)

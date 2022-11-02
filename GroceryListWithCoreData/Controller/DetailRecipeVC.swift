@@ -8,10 +8,11 @@
 import UIKit
 import CoreData
 
-class DetailRecipeVC: UIViewController, NSFetchedResultsControllerDelegate {
+class DetailRecipeVC: UIViewController {
     
     //MARK: Outlets und Variablen und Context
     var recipe: Recipe!
+    
     
     @IBOutlet weak var recipeTitleTF: UITextField!
     @IBOutlet weak var categoryTF: UITextField!
@@ -32,9 +33,9 @@ class DetailRecipeVC: UIViewController, NSFetchedResultsControllerDelegate {
         let request: NSFetchRequest<Ingredient> = Ingredient.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
         request.predicate = NSPredicate(format: "recipes = %@", recipe)
-           
+
         let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
-           
+
         do {
             try controller.performFetch()
         } catch let error as NSError {
@@ -53,10 +54,12 @@ class DetailRecipeVC: UIViewController, NSFetchedResultsControllerDelegate {
         categoryTF.text = recipe.category
         cookingTimeTF.text = recipe.cookingTime.description
         instructionsTV.text = recipe.instructions
-        recipeImage.image = UIImage(data: recipe.image!)
+        //recipeImage.image = UIImage(data: recipe.image!)
         
         fetchedResultsController.delegate = self
         tableView.dataSource = self
+        
+    
     }
     
     //MARK: - IBActions
@@ -116,7 +119,7 @@ class DetailRecipeVC: UIViewController, NSFetchedResultsControllerDelegate {
             recipe.recipeTitle = recipeTitle
             recipe.category = categoryTF.text
             recipe.instructions = instructionsTV.text
-            recipe.cookingTime = Int64(cookingTimeTF.text!) ?? 0
+            //recipe.cookingTime = Int64(cookingTimeTF.text!) ?? 0
             
             sender.isEnabled = false
             recipeTitleTF.isEnabled = false
@@ -136,8 +139,17 @@ class DetailRecipeVC: UIViewController, NSFetchedResultsControllerDelegate {
     
 }
 
+//MARK: - Ext. controllerDelegate
+extension DetailRecipeVC: NSFetchedResultsControllerDelegate {
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.reloadData()
+    }
+}
+
 //MARK: - Ext. TV Data Source
 extension DetailRecipeVC: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fetchedResultsController.sections![0].numberOfObjects
     }
@@ -154,6 +166,7 @@ extension DetailRecipeVC: UITableViewDataSource {
         cell.contentConfiguration = content
         
         return cell
+
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

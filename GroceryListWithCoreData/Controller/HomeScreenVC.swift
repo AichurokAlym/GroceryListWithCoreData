@@ -13,8 +13,9 @@ class HomeScreenVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var category = [Category]()
+   
     
-    var checkedArtikel = [String].self
+    //let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     
     override func viewDidLoad() {
@@ -23,16 +24,17 @@ class HomeScreenVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        //elaubnis das mehreren auswahl Möglichkeit
         tableView.allowsMultipleSelectionDuringEditing = true
-        
-        
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
         
         fetchCategory()
     }
+    
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(true)
+//
+//        fetchCategory()
+//    }
     
     func fetchCategory() {
         
@@ -76,13 +78,19 @@ extension HomeScreenVC: UITableViewDelegate, UITableViewDataSource {
         
         if artikel.isChecked == false {
             cell.artikelName.text = artikel.artikelName
+            cell.checkbox.setImage(UIImage(systemName: "checkmark.circle"), for: .normal)
+            
             if let artikelImage = artikel.artikelImage {
                 
                 cell.artikelImage.image = UIImage(data: artikelImage)
                 
             } else {
                 cell.artikelImage.image = UIImage(systemName: "photo.artframe")
+                
             }
+        } else {
+            cell.checkbox.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
+            
         }
     
         return cell
@@ -124,17 +132,21 @@ extension HomeScreenVC: UITableViewDelegate, UITableViewDataSource {
     //        }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var artikel = category[indexPath.section].artikel?.allObjects[indexPath.row] as! Artikel
-        var checkbox = artikel.isChecked
-        checkbox = !checkbox
+        let cell = tableView.cellForRow(at: indexPath) as! ArtikelTableViewCell
+        cell.selectedItems()
+         
+        let artikel = category[indexPath.section].artikel?.allObjects[indexPath.row] as! Artikel
         
-        do {
-              try context.save()
-            } catch {
-                print("Fehler")
-            }
+//        if artikel.isChecked == true {
+//            artikel.isChecked = false
+//        } else {
+//            artikel.isChecked = true
+//        }
         
-        tableView.reloadData()
+        artikel.isChecked = !artikel.isChecked
+        
+        
+
     }
    
     
