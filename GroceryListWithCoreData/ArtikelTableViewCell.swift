@@ -25,17 +25,18 @@ class ArtikelTableViewCell: UITableViewCell {
 
     @IBAction func checkbox(_ sender: UIButton) {
         selectedItems()
-        
+
     }
-    
+
     func selectedItems() {
-        
+
         checkbox.isSelected = !checkbox.isSelected
         if checkbox.isSelected == true {
-            checkbox.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
-            
+            checkbox.setImage(UIImage(systemName: "checkmark.seal.fill"), for: .normal)
+            //checkbox.image = UIImage(named: "checkMarkFill")
+
         } else {
-            checkbox.setImage(UIImage(systemName: "checkmark.circle"), for: .normal)
+            checkbox.setImage(UIImage(systemName: "checkmark.seal"), for: .normal)
         }
     }
 }

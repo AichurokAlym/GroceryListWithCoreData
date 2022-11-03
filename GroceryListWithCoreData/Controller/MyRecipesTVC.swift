@@ -10,22 +10,22 @@ import CoreData
 
 class MyRecipesTVC: UITableViewController {
 
-    var recipe = [Recipe]()
-    var selectedRecipe: Recipe!
+//    var recipe = [Recipe]()
+//    var selectedRecipe: Recipe!
     
-//    lazy var fetchedResultsController: NSFetchedResultsController<Recipe> = {
-//        let request: NSFetchRequest<Recipe> = Recipe.fetchRequest()
-//        request.sortDescriptors = [NSSortDescriptor(key: "recipeTitle", ascending: true)]
-//
-//        let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
-//
-//        do {
-//            try controller.performFetch()
-//        } catch let error as NSError {
-//            print(error.localizedDescription)
-//        }
-//        return controller
-//    }()
+    lazy var fetchedResultsController: NSFetchedResultsController<Recipe> = {
+        let request: NSFetchRequest<Recipe> = Recipe.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key: "recipeTitle", ascending: true)]
+
+        let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+
+        do {
+            try controller.performFetch()
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+        return controller
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,25 +34,27 @@ class MyRecipesTVC: UITableViewController {
 
          self.navigationItem.leftBarButtonItem = self.editButtonItem
         
-        fetchRecipes()
+        fetchedResultsController.delegate = self
+        
+        //fetchRecipes()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        
-        fetchRecipes()
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(true)
+//
+//        fetchRecipes()
+//    }
     
-    func fetchRecipes() {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        
-        do {
-            recipe = try appDelegate.persistentContainer.viewContext.fetch(Recipe.fetchRequest())
-        } catch let error as NSError {
-          print(error.localizedDescription)
-        }
-        tableView.reloadData()
-    }
+//    func fetchRecipes() {
+//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//
+//        do {
+//            recipe = try appDelegate.persistentContainer.viewContext.fetch(Recipe.fetchRequest())
+//        } catch let error as NSError {
+//          print(error.localizedDescription)
+//        }
+//        tableView.reloadData()
+//    }
 
     // MARK: - Table view data source
 
@@ -63,32 +65,43 @@ class MyRecipesTVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return recipe.count
+        //return recipe.count
+        return fetchedResultsController.sections![0].numberOfObjects
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath)
         
+//        // Cell einrichten
+//        var content = cell.defaultContentConfiguration()
+//        content.text = recipe[indexPath.row].recipeTitle
+//        cell.contentConfiguration = content
+        
         // Cell einrichten
+        let recipe = fetchedResultsController.object(at: indexPath)
         var content = cell.defaultContentConfiguration()
-        content.text = recipe[indexPath.row].recipeTitle
+        content.text = recipe.recipeTitle
         cell.contentConfiguration = content
         
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        
-        selectedRecipe = recipe[indexPath.row]
-        
-        return indexPath
-    }
+//    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+//
+//        selectedRecipe = recipe[indexPath.row]
+//
+//        return indexPath
+//    }
     
     //MARK: - prepareForSegue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "detailRecipeSegue" {
-            let vc = segue.destination as! DetailRecipeVC
-            vc.recipe = selectedRecipe
+//            let vc = segue.destination as! DetailRecipeVC
+//            vc.recipe = selectedRecipe
+            
+            let indexPath = tableView.indexPath(for: sender as! UITableViewCell)
+            let dest = segue.destination as! DetailRecipeVC
+            dest.recipe = fetchedResultsController.object(at: indexPath!)
         }
     }
     
@@ -100,12 +113,20 @@ class MyRecipesTVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let recipeToDelete = self.recipe[indexPath.row]
-            appDelegate.persistentContainer.viewContext.delete(recipeToDelete)
-            self.recipe.remove(at: indexPath.row)
+//            let recipeToDelete = self.recipe[indexPath.row]
+//            appDelegate.persistentContainer.viewContext.delete(recipeToDelete)
+//            self.recipe.remove(at: indexPath.row)
+//
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+//            appDelegate.saveContext()
+            let recipe = self.fetchedResultsController.object(at: indexPath)
+            context.delete(recipe)
             
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            appDelegate.saveContext()
+            do {
+                try context.save()
+            } catch {
+                print("Error")
+            }
         }
     }
 }

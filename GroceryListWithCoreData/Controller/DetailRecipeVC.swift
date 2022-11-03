@@ -32,7 +32,7 @@ class DetailRecipeVC: UIViewController {
     lazy var fetchedResultsController: NSFetchedResultsController<Ingredient> = {
         let request: NSFetchRequest<Ingredient> = Ingredient.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-        request.predicate = NSPredicate(format: "recipes = %@", recipe)
+        request.predicate = NSPredicate(format: "recipes CONTAINS[cd] %@", recipe)
 
         let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
 
@@ -119,7 +119,7 @@ class DetailRecipeVC: UIViewController {
             recipe.recipeTitle = recipeTitle
             recipe.category = categoryTF.text
             recipe.instructions = instructionsTV.text
-            //recipe.cookingTime = Int64(cookingTimeTF.text!) ?? 0
+            recipe.cookingTime = Int16(cookingTimeTF.text!) ?? 0
             
             sender.isEnabled = false
             recipeTitleTF.isEnabled = false

@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import PhotosUI
 
 class AddRecipeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIPickerViewDelegate, UITableViewDelegate {
     
@@ -74,6 +75,7 @@ class AddRecipeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UI
             recipe.category = categoryTF.text
             recipe.instructions = instructionsTV.text
             recipe.cookingTime = Int16(cookingTimeTF.text!) ?? 0
+            recipe.image = recipeImageView.image?.pngData()
             
             for ingredient in ingredientTableViewData {
                 recipe.addToIngredients(ingredient)
@@ -94,6 +96,12 @@ class AddRecipeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UI
     
     @IBAction func addImageBtnTapped(_ sender: UIButton) {
         //recipeImageView.image = UIImage(named: "spaghetti-napoli")
+        var config = PHPickerConfiguration(photoLibrary: .shared())
+        config.selectionLimit = 1
+        config.filter = PHPickerFilter.any(of: [.images, .panoramas])
+         let photoPicker = PHPickerViewController(configuration: config)
+        photoPicker.delegate = self
+        self.present(photoPicker, animated: true)
     }
     
     
@@ -148,4 +156,25 @@ extension AddRecipeVC: UITableViewDataSource {
         }
     }
     
+}
+
+extension AddRecipeVC: PHPickerViewControllerDelegate {
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        picker.dismiss(animated: true)
+        
+        results.forEach { result in
+            result.itemProvider.loadObject(ofClass: UIImage.self) { proveiderReading, error in
+                if let error = error {
+                    print(error)
+                    return
+                }
+                if let proveiderReading = proveiderReading {
+                    let image = proveiderReading as! UIImage
+                    DispatchQueue.main.async {
+                        self.recipeImageView.image = image
+                    }
+                }
+            }
+        }
+    }
 }

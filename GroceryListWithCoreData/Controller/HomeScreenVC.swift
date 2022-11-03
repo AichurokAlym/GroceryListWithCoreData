@@ -13,9 +13,6 @@ class HomeScreenVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var category = [Category]()
-   
-    
-    //let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     
     override func viewDidLoad() {
@@ -30,11 +27,6 @@ class HomeScreenVC: UIViewController {
         fetchCategory()
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(true)
-//
-//        fetchCategory()
-//    }
     
     func fetchCategory() {
         
@@ -48,7 +40,7 @@ class HomeScreenVC: UIViewController {
     }
     
 
-        @IBAction func toMyList(_ sender: UIButton) {
+    @IBAction func toMyList(_ sender: UIButton) {
             
             //performSegue(withIdentifier: "toMyList", sender: self)
     }
@@ -78,7 +70,7 @@ extension HomeScreenVC: UITableViewDelegate, UITableViewDataSource {
         
         if artikel.isChecked == false {
             cell.artikelName.text = artikel.artikelName
-            cell.checkbox.setImage(UIImage(systemName: "checkmark.circle"), for: .normal)
+            cell.checkbox.setImage(UIImage(systemName: "checkmark.seal"), for: .normal)
             
             if let artikelImage = artikel.artikelImage {
                 
@@ -89,7 +81,7 @@ extension HomeScreenVC: UITableViewDelegate, UITableViewDataSource {
                 
             }
         } else {
-            cell.checkbox.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
+            cell.checkbox.setImage(UIImage(systemName: "checkmark.seal.fill"), for: .normal)
             
         }
     
@@ -137,16 +129,14 @@ extension HomeScreenVC: UITableViewDelegate, UITableViewDataSource {
          
         let artikel = category[indexPath.section].artikel?.allObjects[indexPath.row] as! Artikel
         
-//        if artikel.isChecked == true {
-//            artikel.isChecked = false
-//        } else {
-//            artikel.isChecked = true
-//        }
-        
         artikel.isChecked = !artikel.isChecked
         
+    
+    }
+    
+    
+    func changeArtikel () {
         
-
     }
    
     

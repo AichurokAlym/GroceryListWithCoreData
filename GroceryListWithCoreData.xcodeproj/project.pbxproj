@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB0D45372913E68F007B75E6 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0D45362913E68F007B75E6 /* APIKey.swift */; };
+		CB0D45392913E6A3007B75E6 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0D45382913E6A3007B75E6 /* APIClient.swift */; };
 		CB24998228FEC6AD00A53EFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB24998128FEC6AD00A53EFB /* AppDelegate.swift */; };
 		CB24998428FEC6AD00A53EFB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB24998328FEC6AD00A53EFB /* SceneDelegate.swift */; };
 		CB24998628FEC6AD00A53EFB /* AddArtikelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB24998528FEC6AD00A53EFB /* AddArtikelVC.swift */; };
@@ -25,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CB0D45362913E68F007B75E6 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		CB0D45382913E6A3007B75E6 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		CB24997E28FEC6AD00A53EFB /* GroceryListWithCoreData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroceryListWithCoreData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB24998128FEC6AD00A53EFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB24998328FEC6AD00A53EFB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +95,8 @@
 		CBD122EC290F170D007B1ACD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CB0D45362913E68F007B75E6 /* APIKey.swift */,
+				CB0D45382913E6A3007B75E6 /* APIClient.swift */,
 				CB24998A28FEC6AD00A53EFB /* GroceryListWithCoreData.xcdatamodeld */,
 			);
 			path = Model;
@@ -190,6 +196,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB24999B28FED07000A53EFB /* ArtikelTableViewCell.swift in Sources */,
+				CB0D45392913E6A3007B75E6 /* APIClient.swift in Sources */,
 				CB7F7EE32902FBF8005EE6E4 /* MyListTVC.swift in Sources */,
 				CB24998628FEC6AD00A53EFB /* AddArtikelVC.swift in Sources */,
 				CB7F7EE529030392005EE6E4 /* MyListTableViewCell.swift in Sources */,
@@ -200,6 +207,7 @@
 				CB24999D28FED79400A53EFB /* Constants.swift in Sources */,
 				CB24998C28FEC6AD00A53EFB /* GroceryListWithCoreData.xcdatamodeld in Sources */,
 				CB59BB2E290EF8AE000780C6 /* MyRecipesTVC.swift in Sources */,
+				CB0D45372913E68F007B75E6 /* APIKey.swift in Sources */,
 				CB24998428FEC6AD00A53EFB /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
