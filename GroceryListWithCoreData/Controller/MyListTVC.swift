@@ -10,40 +10,31 @@ import CoreData
 
 class MyListTVC: UITableViewController {
     
-   // var myList = HomeScreenVC()
     
-    var list = [Category]()
+    //var list = [Category]()
     var myList = [Artikel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-       // list = myList.category
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
-        fetchCategory()
+        //fetchCategory()
     }
     
-    func fetchCategory() {
-        
-        do {
-           let alleArtikel = try appDelegate.persistentContainer.viewContext.fetch(Artikel.fetchRequest())
-            for artikel in alleArtikel {
-                if artikel.isChecked {
-                    myList.append(artikel)
-                }
-            }
-        } catch {
-            print("Fehler")
-        }
-    
-        tableView.reloadData()
-    }
+//    func fetchCategory() {
+//
+//        do {
+//           let alleArtikel = try appDelegate.persistentContainer.viewContext.fetch(Artikel.fetchRequest())
+//            for artikel in alleArtikel {
+//                if artikel.isChecked {
+//                    myList.append(artikel)
+//                }
+//            }
+//        } catch {
+//            print("Fehler")
+//        }
+//
+//        tableView.reloadData()
+//    }
 
     // MARK: - Table view data source
 
@@ -55,28 +46,28 @@ class MyListTVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return myList.count
+        return myList.isSelectedItems.count
         
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "myListCell", for: indexPath) as! MyListTableViewCell
-        var content = cell.defaultContentConfiguration()
-        let artikel = myList[indexPath.row]
+       // var content = cell.defaultContentConfiguration()
+        let artikel = myList.isSelectedItems[indexPath.row]
         
        if artikel.isChecked == true {
             
-            content.text = artikel.artikelName
+           cell.artikelName.text = artikel.artikelName
             
             if let artikelImage = artikel.artikelImage {
                 
-                content.image = UIImage(data: artikelImage)
+                cell.artikelImage.image = UIImage(data: artikelImage)
                 
             } else {
-                content.image = UIImage(systemName: "photo.artframe")
+                cell.artikelImage.image = UIImage(systemName: "photo.artframe")
             }
-            cell.contentConfiguration = content
+            //cell.contentConfiguration = content
       }
     
         

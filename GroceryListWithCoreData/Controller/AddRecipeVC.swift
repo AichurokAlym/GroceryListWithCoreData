@@ -26,37 +26,14 @@ class AddRecipeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UI
     // Datengrundlage zur TableView
     var ingredientTableViewData = [Ingredient]()
     
-//    //MARK: - fetchedResultsController
-//    lazy var fetchedResultsController: NSFetchedResultsController<Ingredient> = {
-//        let request: NSFetchRequest<Ingredient> = Ingredient.fetchRequest()
-//        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-//        request.predicate = NSPredicate(format: "recipes = %@", recipe)
-//
-//        let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
-//
-//        do {
-//            try controller.performFetch()
-//        } catch let error as NSError {
-//            print(error.localizedDescription)
-//        }
-//        return controller
-//    }()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         ingredientTableView.dataSource = self
-//        ingredientTableView.delegate = self
-//        recipeTitleTF.delegate = self
-//        categoryTF.delegate = self
-//        cookingTimeTF.delegate = self
-//        instructionsTV.delegate = self
-//        ingredientNameTF.delegate = self
-//        quantityTF.delegate = self
-//        unitTF.delegate = self
-        
-       
+
     }
     
     //MARK: - IBActions

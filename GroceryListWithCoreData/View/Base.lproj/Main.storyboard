@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EBD-XB-DlT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EBD-XB-DlT">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -151,45 +151,35 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OgG-pA-WFh">
-                                                    <rect key="frame" x="118.00000000000001" y="26" width="56.666666666666671" height="28.666666666666671"/>
+                                                    <rect key="frame" x="118.00000000000001" y="26" width="56.666666666666671" height="28"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ch-I9-Sx1" customClass="CheckboxButton" customModule="GroceryListWithCoreData" customModuleProvider="target">
-                                                    <rect key="frame" x="320" y="15" width="50" height="50"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.seal" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ihX-zA-SS4">
+                                                    <rect key="frame" x="320" y="14.666666666666742" width="50" height="50"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="50" id="tOh-As-fKZ"/>
-                                                        <constraint firstAttribute="width" constant="50" id="xf1-sb-rVg"/>
+                                                        <constraint firstAttribute="width" constant="50" id="FRb-5z-tqd"/>
                                                     </constraints>
-                                                    <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="plain">
-                                                        <imageReference key="image" image="checkmark.seal" catalog="system" symbolScale="large" renderingMode="template"/>
-                                                        <backgroundConfiguration key="background">
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </backgroundConfiguration>
-                                                        <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="30"/>
-                                                    </buttonConfiguration>
-                                                    <connections>
-                                                        <action selector="checkbox:" destination="66j-SQ-qxH" eventType="touchUpInside" id="LkK-OO-gSa"/>
-                                                    </connections>
-                                                </button>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="4ch-I9-Sx1" firstAttribute="top" secondItem="iLk-9e-UwR" secondAttribute="topMargin" constant="4" id="MmN-KW-dsF"/>
+                                                <constraint firstItem="ihX-zA-SS4" firstAttribute="trailing" secondItem="iLk-9e-UwR" secondAttribute="trailingMargin" id="80k-n9-K6D"/>
                                                 <constraint firstItem="tVr-DA-mNb" firstAttribute="leading" secondItem="iLk-9e-UwR" secondAttribute="leading" constant="20" symbolic="YES" id="Nzz-vZ-Fjx"/>
                                                 <constraint firstAttribute="bottom" secondItem="tVr-DA-mNb" secondAttribute="bottom" id="Yne-8U-1hf"/>
                                                 <constraint firstItem="tVr-DA-mNb" firstAttribute="top" secondItem="iLk-9e-UwR" secondAttribute="top" id="bZl-l5-WsP"/>
                                                 <constraint firstItem="OgG-pA-WFh" firstAttribute="leading" secondItem="tVr-DA-mNb" secondAttribute="trailing" constant="8" id="gD6-i8-Ep7"/>
-                                                <constraint firstItem="4ch-I9-Sx1" firstAttribute="trailing" secondItem="iLk-9e-UwR" secondAttribute="trailingMargin" id="gQB-SM-B7o"/>
                                                 <constraint firstItem="OgG-pA-WFh" firstAttribute="top" secondItem="iLk-9e-UwR" secondAttribute="topMargin" constant="15" id="q7B-JA-JjR"/>
+                                                <constraint firstItem="ihX-zA-SS4" firstAttribute="centerY" secondItem="OgG-pA-WFh" secondAttribute="centerY" id="sRe-bq-kKd"/>
                                                 <constraint firstItem="OgG-pA-WFh" firstAttribute="leading" secondItem="tVr-DA-mNb" secondAttribute="trailing" constant="8" symbolic="YES" id="uqq-dr-O0H"/>
+                                                <constraint firstItem="ihX-zA-SS4" firstAttribute="top" secondItem="iLk-9e-UwR" secondAttribute="topMargin" constant="5.0000000000000782" id="urn-La-fFs"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="artikelImage" destination="tVr-DA-mNb" id="fHM-Ll-qsE"/>
                                             <outlet property="artikelName" destination="OgG-pA-WFh" id="npT-BK-aKk"/>
-                                            <outlet property="checkbox" destination="4ch-I9-Sx1" id="pfN-h8-ZMd"/>
+                                            <outlet property="checkbox" destination="ihX-zA-SS4" id="BRr-FK-w0n"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -225,7 +215,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e5Y-su-6hZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2322" y="-663"/>
+            <point key="canvasLocation" x="2321.5384615384614" y="-663.27014218009481"/>
         </scene>
         <!--GroceryList-->
         <scene sceneID="eWY-Gs-Jlb">
@@ -272,19 +262,56 @@
         <!--My List-->
         <scene sceneID="THp-Fb-SAC">
             <objects>
-                <tableViewController id="5eQ-y9-8jW" customClass="MyListTVC" customModule="GroceryListWithCoreData" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MyListTVC" id="5eQ-y9-8jW" customClass="MyListTVC" customModule="GroceryListWithCoreData" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="9Dh-BZ-ndb">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myListCell" id="9is-7O-wMt" customClass="MyListTableViewCell" customModule="GroceryListWithCoreData" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="50" width="390" height="43.666667938232422"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myListCell" rowHeight="80" id="9is-7O-wMt" customClass="MyListTableViewCell" customModule="GroceryListWithCoreData" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="390" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9is-7O-wMt" id="08K-GY-Nd9">
-                                    <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo.artframe" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="xaq-uK-WLR">
+                                            <rect key="frame" x="20" y="1.6666666666666643" width="90" height="77"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="SdO-p9-FsT"/>
+                                                <constraint firstAttribute="width" constant="90" id="TeP-83-kg3"/>
+                                                <constraint firstAttribute="height" constant="80" id="fJA-6C-PZ5"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sbD-cl-yYS">
+                                            <rect key="frame" x="118.00000000000001" y="26" width="56.666666666666671" height="28"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.seal" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="hrn-Zy-TY3">
+                                            <rect key="frame" x="320" y="14.333333333333332" width="50" height="51.333333333333343"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="50" id="SH7-dd-ftU"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="sbD-cl-yYS" firstAttribute="leading" secondItem="xaq-uK-WLR" secondAttribute="trailing" constant="8" symbolic="YES" id="89j-ai-VQj"/>
+                                        <constraint firstItem="hrn-Zy-TY3" firstAttribute="trailing" secondItem="08K-GY-Nd9" secondAttribute="trailingMargin" id="Jm1-He-EBe"/>
+                                        <constraint firstItem="hrn-Zy-TY3" firstAttribute="centerY" secondItem="sbD-cl-yYS" secondAttribute="centerY" id="OG0-5i-gOT"/>
+                                        <constraint firstItem="xaq-uK-WLR" firstAttribute="top" secondItem="08K-GY-Nd9" secondAttribute="top" id="aut-fe-QIM"/>
+                                        <constraint firstItem="xaq-uK-WLR" firstAttribute="leading" secondItem="08K-GY-Nd9" secondAttribute="leadingMargin" id="kG7-Z6-Bug"/>
+                                        <constraint firstAttribute="bottom" secondItem="xaq-uK-WLR" secondAttribute="bottom" id="ods-ff-deO"/>
+                                        <constraint firstItem="hrn-Zy-TY3" firstAttribute="top" secondItem="08K-GY-Nd9" secondAttribute="topMargin" constant="3.9999999999999822" id="qsH-dv-FQw"/>
+                                        <constraint firstItem="xaq-uK-WLR" firstAttribute="centerY" secondItem="sbD-cl-yYS" secondAttribute="centerY" id="xEi-ZJ-cnf"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="artikelImage" destination="xaq-uK-WLR" id="JDF-T9-8HV"/>
+                                    <outlet property="artikelName" destination="sbD-cl-yYS" id="qop-fN-524"/>
+                                    <outlet property="checkbox" destination="hrn-Zy-TY3" id="dtA-yB-JFS"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -296,7 +323,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bhm-vK-Q1V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2365" y="18"/>
+            <point key="canvasLocation" x="2364.6153846153848" y="17.772511848341232"/>
         </scene>
         <!--My List-->
         <scene sceneID="Rab-7k-5Bw">

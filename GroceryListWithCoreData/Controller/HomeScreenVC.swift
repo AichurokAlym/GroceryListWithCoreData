@@ -14,6 +14,11 @@ class HomeScreenVC: UIViewController {
     
     var category = [Category]()
     
+    //var foddIcons = ["🍎", "🍇", "🥑", "🥝", "🫑", "🥨", "🧀", "🥖", "🍌", "🍓", "🍐"]
+    
+    //gecheckte Artikeln in einem Array speichern
+    var isSelectedItems = [Artikel]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +26,7 @@ class HomeScreenVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        //elaubnis das mehreren auswahl Möglichkeit
+        // mehrere auswahl Möglichkeiten werden erlaubt
         tableView.allowsMultipleSelectionDuringEditing = true
         
         fetchCategory()
@@ -39,10 +44,47 @@ class HomeScreenVC: UIViewController {
         tableView.reloadData()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        for categorien in category {
+            for artikeln in (categorien.artikel?.allObjects as! [Artikel]) {
+                artikeln.isChecked = false
+            }
+        }
+        tableView.reloadData()
+    }
+    
+    func selectedItems () {
+        
+        for items in category {
+            for artikeln in (items.artikel?.allObjects as! [Artikel]) {
+                if artikeln.isChecked {
+                    self.isSelectedItems.append(artikeln)
+                }
+            }
+        }
+    }
 
     @IBAction func toMyList(_ sender: UIButton) {
-            
-            //performSegue(withIdentifier: "toMyList", sender: self)
+        
+        let myListVC = storyboard?.instantiateViewController(withIdentifier: "toMyList") as! MyListTVC
+
+        for items in category {
+            for artikeln in (items.artikel?.allObjects as! [Artikel]) {
+                if artikeln.isChecked {
+                    self.isSelectedItems.append(artikeln)
+                }
+            }
+        }
+        
+        let myList = isSelectedItems
+        myListVC.myList = myList
+        navigationController?.pushViewController(myListVC, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toMyList" {
+            let vc = 
+        }
     }
     
 }
@@ -70,7 +112,7 @@ extension HomeScreenVC: UITableViewDelegate, UITableViewDataSource {
         
         if artikel.isChecked == false {
             cell.artikelName.text = artikel.artikelName
-            cell.checkbox.setImage(UIImage(systemName: "checkmark.seal"), for: .normal)
+            cell.checkbox.image = UIImage(systemName: "checkmark.seal")
             
             if let artikelImage = artikel.artikelImage {
                 
@@ -81,9 +123,11 @@ extension HomeScreenVC: UITableViewDelegate, UITableViewDataSource {
                 
             }
         } else {
-            cell.checkbox.setImage(UIImage(systemName: "checkmark.seal.fill"), for: .normal)
+            cell.checkbox.image = UIImage(systemName: "checkmark.seal.fill")
             
         }
+        
+        
     
         return cell
     }
@@ -109,37 +153,23 @@ extension HomeScreenVC: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    
-    //
-    //        func tableView(_ tableView: UITableView, shouldBeginMultipleSelectionInteractionAt indexPath: IndexPath) -> Bool {
-    //            true
-    //        }
-    //
-    //        func tableView(_ tableView: UITableView, didBeginMultipleSelectionInteractionAt indexPath: IndexPath) {
-    //            tableView.setEditing(true, animated: true)
-    //        }
-    //
-    //        func tableViewDidEndMultipleSelectionInteraction(_ tableView: UITableView) {
-    //            print("\(#function)")
-    //        }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! ArtikelTableViewCell
-        cell.selectedItems()
-         
+        
         let artikel = category[indexPath.section].artikel?.allObjects[indexPath.row] as! Artikel
         
         artikel.isChecked = !artikel.isChecked
         
-    
-    }
-    
-    
-    func changeArtikel () {
+        if artikel.isChecked {
+            cell.checkbox.image = UIImage(systemName: "checkmark.seal.fill")
+        } else {
+            cell.checkbox.image = UIImage(systemName: "checkmark.seal")
+        }
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        
         
     }
-   
-    
     
 }
 

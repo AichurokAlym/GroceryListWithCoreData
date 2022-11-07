@@ -9,6 +9,10 @@ import UIKit
 
 class MyListTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var artikelImage: UIImageView!
+    @IBOutlet weak var artikelName: UILabel!
+    @IBOutlet weak var checkbox: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

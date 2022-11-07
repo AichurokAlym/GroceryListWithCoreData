@@ -38,23 +38,6 @@ class MyRecipesTVC: UITableViewController {
         
         //fetchRecipes()
     }
-    
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(true)
-//
-//        fetchRecipes()
-//    }
-    
-//    func fetchRecipes() {
-//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//
-//        do {
-//            recipe = try appDelegate.persistentContainer.viewContext.fetch(Recipe.fetchRequest())
-//        } catch let error as NSError {
-//          print(error.localizedDescription)
-//        }
-//        tableView.reloadData()
-//    }
 
     // MARK: - Table view data source
 
@@ -72,10 +55,6 @@ class MyRecipesTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath)
         
-//        // Cell einrichten
-//        var content = cell.defaultContentConfiguration()
-//        content.text = recipe[indexPath.row].recipeTitle
-//        cell.contentConfiguration = content
         
         // Cell einrichten
         let recipe = fetchedResultsController.object(at: indexPath)
@@ -86,12 +65,7 @@ class MyRecipesTVC: UITableViewController {
         return cell
     }
     
-//    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-//
-//        selectedRecipe = recipe[indexPath.row]
-//
-//        return indexPath
-//    }
+
     
     //MARK: - prepareForSegue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -113,12 +87,6 @@ class MyRecipesTVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-//            let recipeToDelete = self.recipe[indexPath.row]
-//            appDelegate.persistentContainer.viewContext.delete(recipeToDelete)
-//            self.recipe.remove(at: indexPath.row)
-//
-//            tableView.deleteRows(at: [indexPath], with: .fade)
-//            appDelegate.saveContext()
             let recipe = self.fetchedResultsController.object(at: indexPath)
             context.delete(recipe)
             
