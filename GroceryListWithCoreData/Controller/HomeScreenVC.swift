@@ -14,8 +14,6 @@ class HomeScreenVC: UIViewController {
     
     var category = [Category]()
     
-    //var foddIcons = ["🍎", "🍇", "🥑", "🥝", "🫑", "🥨", "🧀", "🥖", "🍌", "🍓", "🍐"]
-    
     //gecheckte Artikeln in einem Array speichern
     var isSelectedItems = [Artikel]()
     
@@ -41,32 +39,20 @@ class HomeScreenVC: UIViewController {
             print("Fehler")
         }
         print(category)
+        
         tableView.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        for categorien in category {
-            for artikeln in (categorien.artikel?.allObjects as! [Artikel]) {
-                artikeln.isChecked = false
-            }
-        }
+        
         tableView.reloadData()
+        
     }
     
-    func selectedItems () {
-        
-        for items in category {
-            for artikeln in (items.artikel?.allObjects as! [Artikel]) {
-                if artikeln.isChecked {
-                    self.isSelectedItems.append(artikeln)
-                }
-            }
-        }
-    }
-
-    @IBAction func toMyList(_ sender: UIButton) {
-        
-        let myListVC = storyboard?.instantiateViewController(withIdentifier: "toMyList") as! MyListTVC
+    
+    func selectedItems() {
+        let myListNavC = tabBarController?.viewControllers![1] as! UINavigationController
+        let myListVC = myListNavC.topViewController as! MyListTVC
 
         for items in category {
             for artikeln in (items.artikel?.allObjects as! [Artikel]) {
@@ -75,17 +61,34 @@ class HomeScreenVC: UIViewController {
                 }
             }
         }
-        
+
         let myList = isSelectedItems
         myListVC.myList = myList
-        navigationController?.pushViewController(myListVC, animated: true)
+        myListVC.tableView.reloadData()
+        tabBarController?.selectedViewController = tabBarController?.viewControllers![1]
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toMyList" {
-            let vc = 
-        }
-    }
+
+//    @IBAction func toMyList(_ sender: UIButton) {
+//
+//        let myListNavC = tabBarController?.viewControllers![1] as! UINavigationController
+//        let myListVC = myListNavC.topViewController as! MyListTVC
+//
+//        for items in category {
+//            for artikeln in (items.artikel?.allObjects as! [Artikel]) {
+//                if artikeln.isChecked {
+//                    if !isSelectedItems.contains(artikeln) {
+//                        self.isSelectedItems.append(artikeln)
+//                    }
+//                }
+//            }
+//        }
+//
+//        let myList = isSelectedItems
+//        myListVC.myList = myList
+//        myListVC.tableView.reloadData()
+//        tabBarController?.selectedViewController = tabBarController?.viewControllers![1]
+//    }
+
     
 }
     
@@ -110,9 +113,8 @@ extension HomeScreenVC: UITableViewDelegate, UITableViewDataSource {
         
         let artikel = category[indexPath.section].artikel?.allObjects[indexPath.row] as! Artikel
         
-        if artikel.isChecked == false {
             cell.artikelName.text = artikel.artikelName
-            cell.checkbox.image = UIImage(systemName: "checkmark.seal")
+          
             
             if let artikelImage = artikel.artikelImage {
                 
@@ -122,12 +124,12 @@ extension HomeScreenVC: UITableViewDelegate, UITableViewDataSource {
                 cell.artikelImage.image = UIImage(systemName: "photo.artframe")
                 
             }
+        
+        if artikel.isChecked == false {
+            cell.checkbox.image = UIImage(systemName: "checkmark.seal")
         } else {
             cell.checkbox.image = UIImage(systemName: "checkmark.seal.fill")
-            
         }
-        
-        
     
         return cell
     }

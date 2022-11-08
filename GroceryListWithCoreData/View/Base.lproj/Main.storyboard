@@ -123,17 +123,8 @@
                                     <outlet property="delegate" destination="Lwe-Ko-SFI" id="TQT-Yj-VOK"/>
                                 </connections>
                             </searchBar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bg8-dJ-Qr0">
-                                <rect key="frame" x="0.0" y="726" width="390" height="35"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Add to my List"/>
-                                <connections>
-                                    <action selector="toMyList:" destination="Lwe-Ko-SFI" eventType="touchUpInside" id="hEA-ad-1Ol"/>
-                                    <segue destination="5eQ-y9-8jW" kind="show" identifier="toMyList" id="kNK-KU-AeW"/>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="LEe-sA-AeG">
-                                <rect key="frame" x="0.0" y="136" width="390" height="590"/>
+                                <rect key="frame" x="0.0" y="136" width="390" height="625"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="listCell" rowHeight="80" id="66j-SQ-qxH" customClass="ArtikelTableViewCell" customModule="GroceryListWithCoreData" customModuleProvider="target">
@@ -157,7 +148,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.seal" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ihX-zA-SS4">
-                                                    <rect key="frame" x="320" y="14.666666666666742" width="50" height="50"/>
+                                                    <rect key="frame" x="320" y="14.666666666666661" width="50" height="50.333333333333343"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="FRb-5z-tqd"/>
                                                     </constraints>
@@ -189,16 +180,13 @@
                         <viewLayoutGuide key="safeArea" id="y5G-3F-bg6"/>
                         <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="LEe-sA-AeG" firstAttribute="trailing" secondItem="y5G-3F-bg6" secondAttribute="trailing" id="3Q2-t4-JMY"/>
-                            <constraint firstItem="LEe-sA-AeG" firstAttribute="top" secondItem="y5G-3F-bg6" secondAttribute="top" constant="45" id="7ar-GT-rdE"/>
-                            <constraint firstItem="bg8-dJ-Qr0" firstAttribute="top" secondItem="LEe-sA-AeG" secondAttribute="bottom" id="CKp-Ab-Pif"/>
-                            <constraint firstItem="y5G-3F-bg6" firstAttribute="trailing" secondItem="bg8-dJ-Qr0" secondAttribute="trailing" id="Fpd-Qq-TFo"/>
+                            <constraint firstItem="LEe-sA-AeG" firstAttribute="top" secondItem="bKu-SD-Ybx" secondAttribute="bottom" id="FOj-AU-4AQ"/>
                             <constraint firstItem="bKu-SD-Ybx" firstAttribute="leading" secondItem="y5G-3F-bg6" secondAttribute="leading" id="Gcq-ls-Huk"/>
                             <constraint firstItem="bKu-SD-Ybx" firstAttribute="trailing" secondItem="y5G-3F-bg6" secondAttribute="trailing" id="J5A-uc-2F8"/>
-                            <constraint firstItem="bg8-dJ-Qr0" firstAttribute="bottom" secondItem="y5G-3F-bg6" secondAttribute="bottom" id="J7g-an-AcN"/>
-                            <constraint firstItem="bg8-dJ-Qr0" firstAttribute="leading" secondItem="y5G-3F-bg6" secondAttribute="leading" id="Lfq-n4-sBz"/>
                             <constraint firstItem="bKu-SD-Ybx" firstAttribute="top" secondItem="y5G-3F-bg6" secondAttribute="top" id="U5g-Z9-egF"/>
-                            <constraint firstItem="LEe-sA-AeG" firstAttribute="leading" secondItem="y5G-3F-bg6" secondAttribute="leading" id="ccc-6T-baK"/>
+                            <constraint firstItem="LEe-sA-AeG" firstAttribute="trailing" secondItem="y5G-3F-bg6" secondAttribute="trailing" id="nb0-VH-mi9"/>
+                            <constraint firstItem="LEe-sA-AeG" firstAttribute="leading" secondItem="y5G-3F-bg6" secondAttribute="leading" id="yoC-nN-k6z"/>
+                            <constraint firstItem="LEe-sA-AeG" firstAttribute="bottom" secondItem="y5G-3F-bg6" secondAttribute="bottom" id="yzl-xO-UC3"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="q7K-ds-JcZ">
@@ -289,28 +277,18 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.seal" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="hrn-Zy-TY3">
-                                            <rect key="frame" x="320" y="14.333333333333332" width="50" height="51.333333333333343"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="50" id="SH7-dd-ftU"/>
-                                            </constraints>
-                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="sbD-cl-yYS" firstAttribute="leading" secondItem="xaq-uK-WLR" secondAttribute="trailing" constant="8" symbolic="YES" id="89j-ai-VQj"/>
-                                        <constraint firstItem="hrn-Zy-TY3" firstAttribute="trailing" secondItem="08K-GY-Nd9" secondAttribute="trailingMargin" id="Jm1-He-EBe"/>
-                                        <constraint firstItem="hrn-Zy-TY3" firstAttribute="centerY" secondItem="sbD-cl-yYS" secondAttribute="centerY" id="OG0-5i-gOT"/>
                                         <constraint firstItem="xaq-uK-WLR" firstAttribute="top" secondItem="08K-GY-Nd9" secondAttribute="top" id="aut-fe-QIM"/>
                                         <constraint firstItem="xaq-uK-WLR" firstAttribute="leading" secondItem="08K-GY-Nd9" secondAttribute="leadingMargin" id="kG7-Z6-Bug"/>
                                         <constraint firstAttribute="bottom" secondItem="xaq-uK-WLR" secondAttribute="bottom" id="ods-ff-deO"/>
-                                        <constraint firstItem="hrn-Zy-TY3" firstAttribute="top" secondItem="08K-GY-Nd9" secondAttribute="topMargin" constant="3.9999999999999822" id="qsH-dv-FQw"/>
                                         <constraint firstItem="xaq-uK-WLR" firstAttribute="centerY" secondItem="sbD-cl-yYS" secondAttribute="centerY" id="xEi-ZJ-cnf"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="artikelImage" destination="xaq-uK-WLR" id="JDF-T9-8HV"/>
                                     <outlet property="artikelName" destination="sbD-cl-yYS" id="qop-fN-524"/>
-                                    <outlet property="checkbox" destination="hrn-Zy-TY3" id="dtA-yB-JFS"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -756,9 +734,6 @@
             <point key="canvasLocation" x="4232.3076923076924" y="537.44075829383883"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="kNK-KU-AeW"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="book.circle.fill" catalog="system" width="128" height="123"/>
         <image name="camera" catalog="system" width="128" height="93"/>
