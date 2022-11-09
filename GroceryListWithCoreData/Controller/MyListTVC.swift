@@ -14,11 +14,12 @@ class MyListTVC: UITableViewController {
     var list = [Category]()
     var myList = [Artikel]()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-  
-    
+        self.navigationItem.leftBarButtonItem = self.editButtonItem
+        
     }
     
     
@@ -44,8 +45,6 @@ class MyListTVC: UITableViewController {
                         myList.remove(at: myList.firstIndex(of: artikel)!)
                     }
                 }
-            
-    
             }
         } catch {
             print("Fehler")
@@ -53,6 +52,13 @@ class MyListTVC: UITableViewController {
 
         tableView.reloadData()
     }
+    
+    @IBAction func saveBtnTapped(_ sender: UIBarButtonItem) {
+        
+        
+    }
+    
+    
 
     // MARK: - Table view data source
 
@@ -74,24 +80,51 @@ class MyListTVC: UITableViewController {
        
         let artikel = myList[indexPath.row]
                
-               cell.artikelName.text = artikel.artikelName
-               
-               if let artikelImage = artikel.artikelImage {
-                   
-                   cell.artikelImage.image = UIImage(data: artikelImage)
-                   
-               } else {
-                   cell.artikelImage.image = UIImage(systemName: "photo.artframe")
-               }
+        cell.artikelName.text = artikel.artikelName
+        cell.artikelQuantityTF.text = artikel.quantity.description
+        cell.artikelQuantityLabel.text = artikel.quantity.description
+        cell.unitLabel.text = artikel.unit
+        
+        if let artikelImage = artikel.artikelImage {
+            cell.artikelImage.image = UIImage(data: artikelImage)
+        } else {
+            cell.artikelImage.image = UIImage(systemName: "photo.artframe")
+        }
+        
       
         return cell
+        
+//        let cellPicker = tableView.dequeueReusableCellWithIdentifier("picker", forIndexPath: indexPath) as! PickerTableViewCell
+//            cell.title.text = fieldModel.editFieldArray[indexPath.row].title
+//            cell.pickerData = (fieldModel.editFieldArray[indexPath.row] as! PickerEditField).pickerData
+//            cell.picker.reloadAllComponents();
+//            return cell
     }
 
     
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
+        let cell = tableView.dequeueReusableCell(withIdentifier: "myListCell", for: indexPath) as! MyListTableViewCell
+        
+        cell.artikelQuantityTF.isHidden = false
+        cell.artikelQuantityLabel.isHidden = true
+        
         return true
+    }
+    
+    // Override to support editing the table view.
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let artikelToDelete = self.myList[indexPath.row]
+            myList.remove(at: indexPath.row)
+            artikelToDelete.isChecked = false
+        
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            
+        } else if editingStyle == .insert {
+            
+        }
     }
     
 

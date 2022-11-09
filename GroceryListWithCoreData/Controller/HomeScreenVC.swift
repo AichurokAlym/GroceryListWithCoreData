@@ -30,6 +30,10 @@ class HomeScreenVC: UIViewController {
         fetchCategory()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        appDelegate.saveContext()
+    }
     
     func fetchCategory() {
         
@@ -48,48 +52,6 @@ class HomeScreenVC: UIViewController {
         tableView.reloadData()
         
     }
-    
-    
-    func selectedItems() {
-        let myListNavC = tabBarController?.viewControllers![1] as! UINavigationController
-        let myListVC = myListNavC.topViewController as! MyListTVC
-
-        for items in category {
-            for artikeln in (items.artikel?.allObjects as! [Artikel]) {
-                if artikeln.isChecked {
-                    self.isSelectedItems.append(artikeln)
-                }
-            }
-        }
-
-        let myList = isSelectedItems
-        myListVC.myList = myList
-        myListVC.tableView.reloadData()
-        tabBarController?.selectedViewController = tabBarController?.viewControllers![1]
-    }
-
-//    @IBAction func toMyList(_ sender: UIButton) {
-//
-//        let myListNavC = tabBarController?.viewControllers![1] as! UINavigationController
-//        let myListVC = myListNavC.topViewController as! MyListTVC
-//
-//        for items in category {
-//            for artikeln in (items.artikel?.allObjects as! [Artikel]) {
-//                if artikeln.isChecked {
-//                    if !isSelectedItems.contains(artikeln) {
-//                        self.isSelectedItems.append(artikeln)
-//                    }
-//                }
-//            }
-//        }
-//
-//        let myList = isSelectedItems
-//        myListVC.myList = myList
-//        myListVC.tableView.reloadData()
-//        tabBarController?.selectedViewController = tabBarController?.viewControllers![1]
-//    }
-
-    
 }
     
 extension HomeScreenVC: UITableViewDelegate, UITableViewDataSource {
@@ -144,12 +106,8 @@ extension HomeScreenVC: UITableViewDelegate, UITableViewDataSource {
         if editingStyle == .delete {
             let artikelToDelete = self.category[indexPath.section].artikel?.allObjects[indexPath.row] as! Artikel
             appDelegate.persistentContainer.viewContext.delete(artikelToDelete)
-            
             appDelegate.saveContext()
-            
             tableView.deleteRows(at: [indexPath], with: .fade)
-            
-            
         } else if editingStyle == .insert {
             
         }
