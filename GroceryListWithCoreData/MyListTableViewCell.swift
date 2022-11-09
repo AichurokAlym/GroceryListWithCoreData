@@ -14,15 +14,15 @@ class MyListTableViewCell: UITableViewCell {
     @IBOutlet weak var artikelQuantityTF: UITextField!
     @IBOutlet weak var artikelQuantityLabel: UILabel!
     @IBOutlet weak var unit: UIPickerView!
-    @IBOutlet weak var unitLabel: UILabel!
+  
     
-    var pickerData = ["Kg", "Gr","Stück", "Liter", "Packung"]
+    let pickerData = ["Kg", "Gr","Stück", "Liter", "Packung"]
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.pickerData = Array<String>()
         self.unit.delegate = self
         self.unit.dataSource = self
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -43,6 +43,8 @@ extension MyListTableViewCell: UIPickerViewDelegate, UIPickerViewDataSource {
         return pickerData.count
     }
     
-  
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerData[row]
+    }
     
 }

@@ -83,8 +83,7 @@ class MyListTVC: UITableViewController {
         cell.artikelName.text = artikel.artikelName
         cell.artikelQuantityTF.text = artikel.quantity.description
         cell.artikelQuantityLabel.text = artikel.quantity.description
-        cell.unitLabel.text = artikel.unit
-        
+        cell.unit.reloadAllComponents()
         if let artikelImage = artikel.artikelImage {
             cell.artikelImage.image = UIImage(data: artikelImage)
         } else {
@@ -93,12 +92,7 @@ class MyListTVC: UITableViewController {
         
       
         return cell
-        
-//        let cellPicker = tableView.dequeueReusableCellWithIdentifier("picker", forIndexPath: indexPath) as! PickerTableViewCell
-//            cell.title.text = fieldModel.editFieldArray[indexPath.row].title
-//            cell.pickerData = (fieldModel.editFieldArray[indexPath.row] as! PickerEditField).pickerData
-//            cell.picker.reloadAllComponents();
-//            return cell
+    
     }
 
     

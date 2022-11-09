@@ -12,6 +12,8 @@ class HomeScreenVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var searchField: UISearchBar!
+    
     var category = [Category]()
     
     //gecheckte Artikeln in einem Array speichern
@@ -52,8 +54,14 @@ class HomeScreenVC: UIViewController {
         tableView.reloadData()
         
     }
-}
+
+    @IBAction func searchTapped(_ sender: Any) {
+        
+        self.searchField.isHidden = !self.searchField.isHidden
+    }
     
+}
+
 extension HomeScreenVC: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
