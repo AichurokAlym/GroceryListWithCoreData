@@ -89,21 +89,34 @@
             </objects>
             <point key="canvasLocation" x="3131" y="-662"/>
         </scene>
-        <!--Inspiration-->
-        <scene sceneID="Jrb-pN-Yjr">
+        <!--Food JokeTVC-->
+        <scene sceneID="1ih-uy-bVN">
             <objects>
-                <viewController id="yB2-Kh-eS0" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="En1-Zm-o83">
+                <tableViewController id="7bL-kw-oba" customClass="FoodJokeTVC" customModule="GroceryListWithCoreData" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="k17-wK-AjM">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="dxZ-xz-s1P"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Inspiration" id="5jP-yq-Hey"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fIZ-ZP-e2y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="jokeCell" id="iHN-UF-x8U">
+                                <rect key="frame" x="0.0" y="50" width="390" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iHN-UF-x8U" id="sk2-Q9-uLn">
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="7bL-kw-oba" id="QFQ-Qj-NC4"/>
+                            <outlet property="delegate" destination="7bL-kw-oba" id="rEo-2d-JbX"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="xrZ-an-pyN"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6hp-Ok-ypB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1709" y="733"/>
+            <point key="canvasLocation" x="1711" y="733"/>
         </scene>
         <!--Home ScreenVC-->
         <scene sceneID="PYW-fu-1aq">
@@ -381,7 +394,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="yB2-Kh-eS0" kind="relationship" relationship="rootViewController" id="dlX-8Q-5sj"/>
+                        <segue destination="7bL-kw-oba" kind="relationship" relationship="rootViewController" id="wyK-EO-RD2"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vri-MI-lx5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

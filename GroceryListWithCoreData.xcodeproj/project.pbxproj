@@ -24,6 +24,7 @@
 		CB59BB32290EF958000780C6 /* DetailRecipeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB59BB31290EF958000780C6 /* DetailRecipeVC.swift */; };
 		CB7F7EE32902FBF8005EE6E4 /* MyListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7F7EE22902FBF8005EE6E4 /* MyListTVC.swift */; };
 		CB7F7EE529030392005EE6E4 /* MyListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7F7EE429030392005EE6E4 /* MyListTableViewCell.swift */; };
+		CB9E6D7D291CFEB500600032 /* FoodJokeTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9E6D7C291CFEB500600032 /* FoodJokeTVC.swift */; };
 		CBFA23A2291BEFD900C42489 /* FoodJoke.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFA23A1291BEFD900C42489 /* FoodJoke.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		CB59BB31290EF958000780C6 /* DetailRecipeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRecipeVC.swift; sourceTree = "<group>"; };
 		CB7F7EE22902FBF8005EE6E4 /* MyListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListTVC.swift; sourceTree = "<group>"; };
 		CB7F7EE429030392005EE6E4 /* MyListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListTableViewCell.swift; sourceTree = "<group>"; };
+		CB9E6D7C291CFEB500600032 /* FoodJokeTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodJokeTVC.swift; sourceTree = "<group>"; };
 		CBFA23A1291BEFD900C42489 /* FoodJoke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodJoke.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,9 +100,9 @@
 			isa = PBXGroup;
 			children = (
 				CB0D45362913E68F007B75E6 /* APIKey.swift */,
+				CBFA23A1291BEFD900C42489 /* FoodJoke.swift */,
 				CB0D45382913E6A3007B75E6 /* APIClient.swift */,
 				CB24998A28FEC6AD00A53EFB /* GroceryListWithCoreData.xcdatamodeld */,
-				CBFA23A1291BEFD900C42489 /* FoodJoke.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -123,6 +125,7 @@
 				CB59BB31290EF958000780C6 /* DetailRecipeVC.swift */,
 				CB59BB2F290EF918000780C6 /* AddRecipeVC.swift */,
 				CB59BB2D290EF8AE000780C6 /* MyRecipesTVC.swift */,
+				CB9E6D7C291CFEB500600032 /* FoodJokeTVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 				CB59BB30290EF919000780C6 /* AddRecipeVC.swift in Sources */,
 				CBFA23A2291BEFD900C42489 /* FoodJoke.swift in Sources */,
 				CB59BB32290EF958000780C6 /* DetailRecipeVC.swift in Sources */,
+				CB9E6D7D291CFEB500600032 /* FoodJokeTVC.swift in Sources */,
 				CB24999D28FED79400A53EFB /* Constants.swift in Sources */,
 				CB24998C28FEC6AD00A53EFB /* GroceryListWithCoreData.xcdatamodeld in Sources */,
 				CB59BB2E290EF8AE000780C6 /* MyRecipesTVC.swift in Sources */,

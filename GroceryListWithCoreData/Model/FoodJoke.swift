@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct Jocke: Codable {
-    
+struct Joke: Codable {
+    var text: String
 }
