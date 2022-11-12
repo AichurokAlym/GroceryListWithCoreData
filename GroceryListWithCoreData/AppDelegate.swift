@@ -30,13 +30,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 coreDataCategory.categoryName = name
                 
                 
-                let gemuese = ["Tomaten", "Gurke", "Avocado", "Brokkoli", "Paprika", "Kürbis"]
+                let gemuese = ["Tomaten", "Gurken", "Avocado", "Brokkoli", "Paprika", "Kürbis"]
                 let obst = ["Äpfel", "Birne", "Bananen", "Pflaume", "Trauben", "Kiwi"]
                 let milchProdukte = ["Milch", "Butter", "Käse", "Frischkäse", "Joghurt", "Kaffeesahne"]
-                let getreideProdukte = ["Brot", "Brötchen", "Brezeln", "Nudeln", "Reis", "Haferflocken"]
-                let getränke = ["Saft", "StillWasser", "Mineralwasser", "Limonade", "Apfelschorle", "Cola"]
-                let fleischWurstEier = ["Rindfleisch", "Hünerfleisch", "Eier", "Fisch", "Salami", "Wurst"]
-                let extras = ["Shokolade", "Chips", "Pistazien", "Cashewkerne", "Kürbiskerne", "Apfelkuchen"]
+                let getreideProdukte = ["Brot", "Brötchen", "Brezel", "Nudeln", "Reis", "Haferflocken"]
+                let getränke = ["Saft", "Mineralwasser", "Limonade", "Apfelschorle", "Coca Cola"]
+                let fleischWurstEier = ["Rindfleisch", "Geflügelfleisch", "Eier", "Fisch", "Salami", "Wurst"]
+                let extras = ["Schokolade", "Chips", "Pistazien", "Cashewkerne" ]
                 
                 //mit diese funktion werden Artikeln in die Categorien hinzugefügt
                 createArtikel(coreDataCategory: coreDataCategory, produkt: gemuese, artikelCategories: "Gemüse")

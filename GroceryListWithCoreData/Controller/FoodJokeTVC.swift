@@ -11,12 +11,14 @@ class FoodJokeTVC: UITableViewController {
 
     var joke = [Joke]()
     
+    //var jokeArray = [String]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
@@ -51,7 +53,10 @@ class FoodJokeTVC: UITableViewController {
                     DispatchQueue.main.async {
                         self.joke.append((jokes)!)
                         self.tableView.reloadData()
-                        print(self.joke[0].text)
+                        
+//                        for jokeArray in self.joke {
+//                            //self.jokeArray.append(jokeArray)
+//                        }
                     }
                 } catch {
                     print("Error parsing JSON")

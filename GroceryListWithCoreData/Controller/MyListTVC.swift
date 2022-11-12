@@ -81,9 +81,8 @@ class MyListTVC: UITableViewController {
         let artikel = myList[indexPath.row]
                
         cell.artikelName.text = artikel.artikelName
-        cell.artikelQuantityTF.text = artikel.quantity.description
-        cell.artikelQuantityLabel.text = artikel.quantity.description
-        cell.unit.reloadAllComponents()
+        cell.artikelQuantityTF.text = artikel.quantity
+        cell.artikel = artikel
         if let artikelImage = artikel.artikelImage {
             cell.artikelImage.image = UIImage(data: artikelImage)
         } else {
@@ -99,10 +98,6 @@ class MyListTVC: UITableViewController {
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
-        let cell = tableView.dequeueReusableCell(withIdentifier: "myListCell", for: indexPath) as! MyListTableViewCell
-        
-        cell.artikelQuantityTF.isHidden = false
-        cell.artikelQuantityLabel.isHidden = true
         
         return true
     }

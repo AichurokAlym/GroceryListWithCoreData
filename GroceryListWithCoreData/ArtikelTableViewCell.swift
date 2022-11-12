@@ -20,6 +20,11 @@ class ArtikelTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        self.artikelImage.layer.cornerRadius = 15
+        self.artikelImage.clipsToBounds = true
+        self.artikelImage.layer.borderColor = UIColor.black.cgColor
+        self.artikelImage.layer.borderWidth = 4
     }
 
 

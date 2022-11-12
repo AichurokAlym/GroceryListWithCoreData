@@ -7,22 +7,31 @@
 
 import UIKit
 
-class MyListTableViewCell: UITableViewCell {
+class MyListTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     @IBOutlet weak var artikelImage: UIImageView!
     @IBOutlet weak var artikelName: UILabel!
     @IBOutlet weak var artikelQuantityTF: UITextField!
-    @IBOutlet weak var artikelQuantityLabel: UILabel!
-    @IBOutlet weak var unit: UIPickerView!
-  
     
-    let pickerData = ["Kg", "Gr","Stück", "Liter", "Packung"]
+    
+    var artikel: Artikel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.unit.delegate = self
-        self.unit.dataSource = self
+        self.artikelQuantityTF.delegate = self
         
+        self.artikelImage.layer.cornerRadius = 15
+        self.artikelImage.clipsToBounds = true
+        self.artikelImage.layer.borderColor = UIColor.black.cgColor
+        self.artikelImage.layer.borderWidth = 4
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        
+        artikel?.quantity = self.artikelQuantityTF.text
+        
+        return false
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -32,19 +41,4 @@ class MyListTableViewCell: UITableViewCell {
     }
 
 
-}
-
-extension MyListTableViewCell: UIPickerViewDelegate, UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerData.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerData[row]
-    }
-    
 }
