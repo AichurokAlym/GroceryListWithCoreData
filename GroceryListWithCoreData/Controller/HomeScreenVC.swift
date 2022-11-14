@@ -26,6 +26,13 @@ class HomeScreenVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationController?.navigationItem.largeTitleDisplayMode = .always
+        
+        let search = UISearchController(searchResultsController: nil)
+        search.searchResultsUpdater = self
+        self.navigationItem.searchController = search
+        
         // mehrere auswahl Möglichkeiten werden erlaubt
         tableView.allowsMultipleSelectionDuringEditing = true
         
@@ -139,6 +146,12 @@ extension HomeScreenVC: UITableViewDelegate, UITableViewDataSource {
         
     }
     
+}
+
+extension HomeScreenVC: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        print(searchController.searchBar.text)
+    }
 }
 
 
