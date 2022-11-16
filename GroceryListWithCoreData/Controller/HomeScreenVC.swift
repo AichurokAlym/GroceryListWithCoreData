@@ -16,6 +16,8 @@ class HomeScreenVC: UIViewController {
     
     var category = [Category]()
     
+    var searchArtikel: String? = nil
+    
     //gecheckte Artikeln in einem Array speichern
     var isSelectedItems = [Artikel]()
     
@@ -44,10 +46,12 @@ class HomeScreenVC: UIViewController {
         appDelegate.saveContext()
     }
     
-    func fetchCategory() {
+    func fetchCategory(predicate: NSPredicate? = nil) {
         
         do {
-            category = try appDelegate.persistentContainer.viewContext.fetch(Category.fetchRequest())
+            let fetchRequest = Category.fetchRequest()
+            fetchRequest.predicate = predicate
+            category = try appDelegate.persistentContainer.viewContext.fetch(fetchRequest)
         } catch {
             print("Fehler")
         }
@@ -55,6 +59,8 @@ class HomeScreenVC: UIViewController {
         
         tableView.reloadData()
     }
+    
+    
     
     override func viewDidAppear(_ animated: Bool) {
         
@@ -92,6 +98,9 @@ extension HomeScreenVC: UITableViewDelegate, UITableViewDataSource {
         
             cell.artikelName.text = artikel.artikelName
           
+        if artikel.artikelName == searchArtikel {
+            cell.backgroundColor = UIColor.gray
+        }
             
             if let artikelImage = artikel.artikelImage {
                 
@@ -150,8 +159,15 @@ extension HomeScreenVC: UITableViewDelegate, UITableViewDataSource {
 
 extension HomeScreenVC: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        print(searchController.searchBar.text)
+        if let searchArtikel = searchController.searchBar.text, searchArtikel.count > 0 {
+            self.searchArtikel = searchArtikel
+            fetchCategory(predicate: NSPredicate(format: "artikel.artikelName Contains[c] %@", searchArtikel))
+            
+        } else {
+            self.searchArtikel = nil
+            fetchCategory()
+        }
+        
     }
 }
-
 
