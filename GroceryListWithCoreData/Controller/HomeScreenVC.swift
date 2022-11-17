@@ -14,9 +14,22 @@ class HomeScreenVC: UIViewController {
     
     @IBOutlet weak var searchField: UISearchBar!
     
-    var category = [Category]()
-    
     var searchArtikel: String? = nil
+    
+    lazy var fetchResultsController: NSFetchedResultsController<Artikel> = {
+        let request: NSFetchRequest<Artikel> = Artikel.fetchRequest()
+        
+        request.sortDescriptors = [NSSortDescriptor(key: "category.categoryName", ascending: true), NSSortDescriptor(key: "artikelName", ascending: true)]
+        let resultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: "category.categoryName", cacheName: nil)
+        do {
+            try resultsController.performFetch()
+        } catch {
+            print(error)
+        }
+        
+        return resultsController
+    
+    }()
     
     //gecheckte Artikeln in einem Array speichern
     var isSelectedItems = [Artikel]()
@@ -38,27 +51,29 @@ class HomeScreenVC: UIViewController {
         // mehrere auswahl Möglichkeiten werden erlaubt
         tableView.allowsMultipleSelectionDuringEditing = true
         
-        fetchCategory()
+        //fetchCategory()
     }
+    
+    
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         appDelegate.saveContext()
     }
     
-    func fetchCategory(predicate: NSPredicate? = nil) {
-        
-        do {
-            let fetchRequest = Category.fetchRequest()
-            fetchRequest.predicate = predicate
-            category = try appDelegate.persistentContainer.viewContext.fetch(fetchRequest)
-        } catch {
-            print("Fehler")
-        }
-        print(category)
-        
-        tableView.reloadData()
-    }
+//    func fetchCategory(predicate: NSPredicate? = nil) {
+//
+//        do {
+//            let fetchRequest = Category.fetchRequest()
+//            fetchRequest.predicate = predicate
+//            category = try appDelegate.persistentContainer.viewContext.fetch(fetchRequest)
+//        } catch {
+//            print("Fehler")
+//        }
+//        print(category)
+//
+//        tableView.reloadData()
+//    }
     
     
     
@@ -78,15 +93,18 @@ class HomeScreenVC: UIViewController {
 extension HomeScreenVC: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return category.count
+        //return category.count
+        return fetchResultsController.sections!.count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return category[section].categoryName
+        //return category[section].categoryName
+        return fetchResultsController.sections![section].name
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return category[section].artikel?.count ?? 0
+        //return category[section].artikel?.count ?? 0
+        return fetchResultsController.sections![section].numberOfObjects
     }
     
     
@@ -94,7 +112,8 @@ extension HomeScreenVC: UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "listCell", for: indexPath) as! ArtikelTableViewCell
         
-        let artikel = category[indexPath.section].artikel?.allObjects[indexPath.row] as! Artikel
+        //let artikel = category[indexPath.section].artikel?.allObjects[indexPath.row] as! Artikel
+        let artikel = fetchResultsController.object(at: indexPath)
         
             cell.artikelName.text = artikel.artikelName
           
@@ -128,7 +147,7 @@ extension HomeScreenVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete {
-            let artikelToDelete = self.category[indexPath.section].artikel?.allObjects[indexPath.row] as! Artikel
+            let artikelToDelete = fetchResultsController.object(at: indexPath)
             appDelegate.persistentContainer.viewContext.delete(artikelToDelete)
             appDelegate.saveContext()
             tableView.deleteRows(at: [indexPath], with: .fade)
@@ -140,7 +159,8 @@ extension HomeScreenVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! ArtikelTableViewCell
         
-        let artikel = category[indexPath.section].artikel?.allObjects[indexPath.row] as! Artikel
+       //let artikel = category[indexPath.section].artikel?.allObjects[indexPath.row] as! Artikel
+        let artikel = fetchResultsController.object(at: indexPath)
         
         artikel.isChecked = !artikel.isChecked
         
@@ -161,13 +181,20 @@ extension HomeScreenVC: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         if let searchArtikel = searchController.searchBar.text, searchArtikel.count > 0 {
             self.searchArtikel = searchArtikel
-            fetchCategory(predicate: NSPredicate(format: "artikel.artikelName Contains[c] %@", searchArtikel))
+            
+            fetchResultsController.fetchRequest.predicate = NSPredicate(format: "artikelName Contains[c] %@", searchArtikel)
             
         } else {
             self.searchArtikel = nil
-            fetchCategory()
+            fetchResultsController.fetchRequest.predicate = nil
         }
         
+        do {
+            try fetchResultsController.performFetch()
+        } catch {
+            print(error)
+        }
+        tableView.reloadData()
     }
 }
 

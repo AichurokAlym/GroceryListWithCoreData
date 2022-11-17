@@ -67,7 +67,7 @@ class AddArtikelVC: UIViewController, UITextFieldDelegate, UIPickerViewDelegate,
         if let artikelName = artikelTF.text, artikelTF.text != "" {
             let artikel = Artikel(context: context)
             artikel.artikelName = artikelName
-            let rowSelected = categoryPickerView.selectedRow(inComponent: 0)
+            //let rowSelected = categoryPickerView.selectedRow(inComponent: 0)
             
             artikel.category = selectedCategory
             artikel.artikelImage = artikelImage.image?.pngData()
@@ -119,4 +119,3 @@ extension AddArtikelVC: PHPickerViewControllerDelegate {
     }
 }
 
-//◦●★☆○⭕️🔴

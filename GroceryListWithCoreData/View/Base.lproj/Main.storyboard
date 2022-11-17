@@ -311,16 +311,28 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
+                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AjR-G6-Cph">
+                                            <rect key="frame" x="269" y="30" width="104" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="104" id="xda-TJ-MhR"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="AjR-G6-Cph" secondAttribute="bottom" constant="18" id="3JO-AT-nw4"/>
                                         <constraint firstItem="uq2-Px-xWx" firstAttribute="trailing" secondItem="08K-GY-Nd9" secondAttribute="trailingMargin" id="JsW-lc-QHQ"/>
                                         <constraint firstAttribute="bottom" secondItem="xaq-uK-WLR" secondAttribute="bottom" constant="2" id="Oua-q9-dfv"/>
+                                        <constraint firstItem="AjR-G6-Cph" firstAttribute="trailing" secondItem="08K-GY-Nd9" secondAttribute="trailingMargin" id="SbG-YX-SAI"/>
                                         <constraint firstItem="sbD-cl-yYS" firstAttribute="top" secondItem="08K-GY-Nd9" secondAttribute="topMargin" constant="15" id="Z3p-w8-7Va"/>
                                         <constraint firstItem="xaq-uK-WLR" firstAttribute="top" secondItem="08K-GY-Nd9" secondAttribute="top" constant="2" id="ek8-CY-SVP"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="uq2-Px-xWx" secondAttribute="bottom" constant="12" id="jpq-cL-ZBh"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="sbD-cl-yYS" secondAttribute="bottom" constant="15" id="kc1-VX-rSO"/>
                                         <constraint firstItem="xaq-uK-WLR" firstAttribute="leading" secondItem="08K-GY-Nd9" secondAttribute="leading" constant="20" symbolic="YES" id="tqv-kM-lEg"/>
                                         <constraint firstItem="uq2-Px-xWx" firstAttribute="top" secondItem="08K-GY-Nd9" secondAttribute="topMargin" constant="12" id="ude-nb-zFl"/>
+                                        <constraint firstItem="AjR-G6-Cph" firstAttribute="top" secondItem="08K-GY-Nd9" secondAttribute="topMargin" constant="19" id="uy7-MF-HUR"/>
                                         <constraint firstItem="sbD-cl-yYS" firstAttribute="leading" secondItem="xaq-uK-WLR" secondAttribute="trailing" constant="8" symbolic="YES" id="vvm-aP-ffI"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -328,6 +340,7 @@
                                     <outlet property="artikelImage" destination="xaq-uK-WLR" id="JDF-T9-8HV"/>
                                     <outlet property="artikelName" destination="sbD-cl-yYS" id="qop-fN-524"/>
                                     <outlet property="artikelQuantityTF" destination="uq2-Px-xWx" id="oLj-5i-n6A"/>
+                                    <outlet property="quantityLabel" destination="AjR-G6-Cph" id="kCq-Ja-hYa"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -346,7 +359,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bhm-vK-Q1V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2364.6153846153848" y="17.772511848341232"/>
+            <point key="canvasLocation" x="2364.1221374045799" y="17.605633802816904"/>
         </scene>
         <!--My List-->
         <scene sceneID="Rab-7k-5Bw">

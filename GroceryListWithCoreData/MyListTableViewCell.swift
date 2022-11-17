@@ -12,6 +12,7 @@ class MyListTableViewCell: UITableViewCell, UITextFieldDelegate {
     @IBOutlet weak var artikelImage: UIImageView!
     @IBOutlet weak var artikelName: UILabel!
     @IBOutlet weak var artikelQuantityTF: UITextField!
+    @IBOutlet weak var quantityLabel: UILabel!
     
     
     var artikel: Artikel?
@@ -31,6 +32,12 @@ class MyListTableViewCell: UITableViewCell, UITextFieldDelegate {
         
         artikel?.quantity = self.artikelQuantityTF.text
         
+        if (artikelQuantityTF.text != nil) {
+            quantityLabel.isHidden = false
+            quantityLabel.text = artikelQuantityTF.text
+            artikelQuantityTF.isHidden = true
+            appDelegate.saveContext()
+        }
         return false
     }
 
