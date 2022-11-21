@@ -46,6 +46,10 @@ class MyListTableViewCell: UITableViewCell, UITextFieldDelegate {
 
         // Configure the view for the selected state
     }
+    
+//    override func prepareForReuse() {
+//        self.quantityLabel.text = ""
+//    }
 
 
 }

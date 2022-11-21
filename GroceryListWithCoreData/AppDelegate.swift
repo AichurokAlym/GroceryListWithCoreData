@@ -39,13 +39,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let extras = ["Schokolade", "Chips", "Pistazien", "Cashewkerne" ]
                 
                 //mit diese funktion werden Artikeln in die Categorien hinzugefügt
-                createArtikel(coreDataCategory: coreDataCategory, produkt: gemuese, artikelCategories: "Gemüse")
-                createArtikel(coreDataCategory: coreDataCategory, produkt: obst, artikelCategories: "Obst")
+                createArtikel(coreDataCategory: coreDataCategory, produkt: extras, artikelCategories: "Extras")
                 createArtikel(coreDataCategory: coreDataCategory, produkt: milchProdukte, artikelCategories: "Milchprodukte")
                 createArtikel(coreDataCategory: coreDataCategory, produkt: getreideProdukte, artikelCategories: "Getreideprodukte")
                 createArtikel(coreDataCategory: coreDataCategory, produkt: getränke, artikelCategories: "Getränke")
                 createArtikel(coreDataCategory: coreDataCategory, produkt: fleischWurstEier, artikelCategories: "Fleisch, Wurst, Fisch und Eier")
-                createArtikel(coreDataCategory: coreDataCategory, produkt: extras, artikelCategories: "Extras")
+                createArtikel(coreDataCategory: coreDataCategory, produkt: gemuese, artikelCategories: "Gemüse")
+                createArtikel(coreDataCategory: coreDataCategory, produkt: obst, artikelCategories: "Obst")
+                
             }
             //speichert die Kategorien und die Artikeln ab
             self.saveContext()

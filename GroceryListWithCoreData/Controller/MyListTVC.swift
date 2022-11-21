@@ -11,7 +11,7 @@ import CoreData
 class MyListTVC: UITableViewController {
     
     
-    var list = [Category]()
+    //var list = [Category]()
     var myList = [Artikel]()
     
     

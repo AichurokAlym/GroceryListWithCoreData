@@ -12,8 +12,6 @@ class HomeScreenVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet weak var searchField: UISearchBar!
-    
     var searchArtikel: String? = nil
     
     lazy var fetchResultsController: NSFetchedResultsController<Artikel> = {
@@ -51,7 +49,6 @@ class HomeScreenVC: UIViewController {
         // mehrere auswahl Möglichkeiten werden erlaubt
         tableView.allowsMultipleSelectionDuringEditing = true
         
-        //fetchCategory()
     }
     
     
@@ -60,33 +57,16 @@ class HomeScreenVC: UIViewController {
         super.viewDidDisappear(animated)
         appDelegate.saveContext()
     }
-    
-//    func fetchCategory(predicate: NSPredicate? = nil) {
-//
-//        do {
-//            let fetchRequest = Category.fetchRequest()
-//            fetchRequest.predicate = predicate
-//            category = try appDelegate.persistentContainer.viewContext.fetch(fetchRequest)
-//        } catch {
-//            print("Fehler")
-//        }
-//        print(category)
-//
-//        tableView.reloadData()
-//    }
-    
-    
-    
+
     override func viewDidAppear(_ animated: Bool) {
-        
         tableView.reloadData()
         
     }
 
-    @IBAction func searchTapped(_ sender: Any) {
+    @IBAction func doneBtnTapped(_ sender: UIBarButtonItem) {
         
-        self.searchField.isHidden = !self.searchField.isHidden
     }
+    
     
 }
 
@@ -112,14 +92,13 @@ extension HomeScreenVC: UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "listCell", for: indexPath) as! ArtikelTableViewCell
         
-        //let artikel = category[indexPath.section].artikel?.allObjects[indexPath.row] as! Artikel
         let artikel = fetchResultsController.object(at: indexPath)
         
             cell.artikelName.text = artikel.artikelName
           
-        if artikel.artikelName == searchArtikel {
-            cell.backgroundColor = UIColor.gray
-        }
+//        if artikel.artikelName == searchArtikel {
+//            cell.backgroundColor = UIColor.gray
+//        }
             
             if let artikelImage = artikel.artikelImage {
                 
@@ -154,12 +133,12 @@ extension HomeScreenVC: UITableViewDelegate, UITableViewDataSource {
         } else if editingStyle == .insert {
             
         }
+        tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! ArtikelTableViewCell
         
-       //let artikel = category[indexPath.section].artikel?.allObjects[indexPath.row] as! Artikel
         let artikel = fetchResultsController.object(at: indexPath)
         
         artikel.isChecked = !artikel.isChecked
