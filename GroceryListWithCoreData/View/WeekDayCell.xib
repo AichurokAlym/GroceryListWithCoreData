@@ -17,15 +17,14 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Rn-8D-IzT">
-                        <rect key="frame" x="10" y="19" width="198" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="10" y="19" width="198" height="26.333333333333329"/>
+                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="22"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <color key="backgroundColor" red="0.91372549530000002" green="0.61960786580000005" blue="0.2235293984" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
                 <constraint firstItem="4Rn-8D-IzT" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="8eb-kU-IRl"/>
                 <constraint firstItem="4Rn-8D-IzT" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="19" id="9jS-kr-EYi"/>

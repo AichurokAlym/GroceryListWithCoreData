@@ -14,6 +14,7 @@ class MenuViewController: UIViewController {
     
     var menu: Menu = Menu()
     var selectedDayIndex = 0
+    var selectedDay: MealPlan?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,29 +29,44 @@ class MenuViewController: UIViewController {
     }
 }
 
-extension MenuViewController:UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{
+extension MenuViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        if collectionView == weekDaysCollectionView{
+        if collectionView == weekDaysCollectionView {
             return menu.weekDays.count
-        }else{
+        } else {
             let meal = menu.weekDays[selectedDayIndex]
             return meal.food.count
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if collectionView == weekDaysCollectionView{
+        if collectionView == weekDaysCollectionView {
            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WeekDayCell", for: indexPath) as! WeekDayCell
             let days = menu.weekDays[indexPath.item]
-           cell.setupCell(days: days)
+            if let selectedDay = selectedDay {
+                let isSelected = days.days == selectedDay.days
+                cell.setupCell(days: days, isSelected: isSelected)
+            } else {
+                cell.setupCell(days: days, isSelected: false)
+            }
            return cell
-        }else{
+        } else {
            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuCell", for: indexPath) as! MenuCell
             let days = menu.weekDays[selectedDayIndex]
             let meal = days.food[indexPath.item]
               cell.setupCell(meal: meal)
               return cell
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == weekDaysCollectionView {
+            self.selectedDayIndex = indexPath.item
+            self.selectedDay = menu.weekDays[selectedDayIndex]
+            self.collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: false)
+            //self.collectionView.reloadItems(at: [indexPath])
+            collectionView.reloadData()
         }
     }
     
@@ -62,7 +78,7 @@ extension MenuViewController:UICollectionViewDataSource,UICollectionViewDelegate
             let width = weekDays.widthOfString(usingFont: UIFont.systemFont(ofSize: 17))
             return CGSize(width: width + 20, height: collectionView.frame.height)
             
-        }else{
+        } else {
              return CGSize(width: UIScreen.main.bounds.width - 10, height: UIScreen.main.bounds.width)
         }
     }
@@ -79,13 +95,6 @@ extension MenuViewController:UICollectionViewDataSource,UICollectionViewDelegate
         return UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if collectionView == weekDaysCollectionView {
-            
-            self.selectedDayIndex = indexPath.item
-            self.collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: false)
-            self.collectionView.reloadData()
-        }
-    }
+   
     
 }

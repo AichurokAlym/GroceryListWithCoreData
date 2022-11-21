@@ -142,7 +142,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="GUx-ps-Dsc">
                                 <rect key="frame" x="0.0" y="163" width="393" height="606"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="ach-cn-fSw">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="ach-cn-fSw">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -150,10 +150,10 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="10B-v9-CEw">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="FLm-my-n3c">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </collectionViewCellContentView>
                                     </collectionViewCell>
@@ -195,7 +195,9 @@
                             <constraint firstItem="Z9u-QO-s87" firstAttribute="top" secondItem="IJA-ai-Ibg" secondAttribute="top" id="nYZ-ag-7pC"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Wochenmenüplan" id="Bf3-zN-xb3"/>
+                    <navigationItem key="navigationItem" title="Wochenmenüplan" id="Bf3-zN-xb3">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="b0o-Ai-gSV"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="GUx-ps-Dsc" id="QQm-fO-xHx"/>
                         <outlet property="weekDaysCollectionView" destination="Z9u-QO-s87" id="qPb-NP-u7T"/>
@@ -302,7 +304,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="amo-aD-JCJ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="GroceryList" image="list.bullet.rectangle.fill" catalog="system" id="gua-nI-48O">
-                        <imageReference key="selectedImage" image="list.bullet.rectangle.fill" catalog="system" variableValue="1"/>
+                        <imageReference key="selectedImage" image="homekit" catalog="system" variableValue="1"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qN7-ZU-RUJ">
@@ -372,6 +374,7 @@
                                         </label>
                                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Menge..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uq2-Px-xWx">
                                             <rect key="frame" x="269" y="23" width="104" height="34"/>
+                                            <color key="backgroundColor" red="0.91372549530000002" green="0.61960786580000005" blue="0.2235293984" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="104" id="cgc-ij-ZWS"/>
                                             </constraints>
@@ -432,8 +435,8 @@
         <scene sceneID="Rab-7k-5Bw">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Vej-oY-3zn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My List" image="list.bullet.rectangle.fill" catalog="system" id="8Wj-6l-usl">
-                        <imageReference key="selectedImage" image="list.bullet.rectangle.fill" catalog="system" variableValue="1"/>
+                    <tabBarItem key="tabBarItem" title="My List" id="8Wj-6l-usl">
+                        <imageReference key="selectedImage" image="star.fill" catalog="system" variableValue="1"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dYI-fG-NLz">
@@ -862,7 +865,7 @@
         <scene sceneID="mpT-nA-E7u">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6wb-Yr-Gsn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Pc9-JL-Go9"/>
+                    <tabBarItem key="tabBarItem" title="Item" selectedImage="plan" id="Pc9-JL-Go9"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1Cz-pb-FUC">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -886,10 +889,13 @@
         <image name="camera" catalog="system" width="128" height="93"/>
         <image name="camera.fill" catalog="system" width="128" height="93"/>
         <image name="checkmark.seal" catalog="system" width="128" height="124"/>
+        <image name="homekit" catalog="system" width="128" height="104"/>
         <image name="list.bullet.rectangle.fill" catalog="system" width="128" height="93"/>
         <image name="photo" catalog="system" width="128" height="93"/>
         <image name="photo.artframe" catalog="system" width="128" height="93"/>
         <image name="photo.fill" catalog="system" width="128" height="93"/>
+        <image name="plan" width="128" height="128"/>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

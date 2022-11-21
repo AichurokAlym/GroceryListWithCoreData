@@ -10,8 +10,6 @@ import CoreData
 
 class MyListTVC: UITableViewController {
     
-    
-    //var list = [Category]()
     var myList = [Artikel]()
     
     
@@ -39,6 +37,7 @@ class MyListTVC: UITableViewController {
                 if artikel.isChecked {
                     if !myList.contains(artikel) {
                         myList.append(artikel)
+                        print("#" + (artikel.quantity ?? "0"))
                     }
                 } else {
                     if myList.contains(artikel) {
@@ -82,6 +81,18 @@ class MyListTVC: UITableViewController {
                
         cell.artikelName.text = artikel.artikelName
         cell.artikelQuantityTF.text = artikel.quantity
+        
+        if let text = cell.artikelQuantityTF.text, !text.isEmpty {
+            cell.quantityLabel.isHidden = false
+            cell.quantityLabel.text = cell.artikelQuantityTF.text
+            cell.artikelQuantityTF.isHidden = true
+        } else {
+            cell.quantityLabel.text = ""
+            cell.quantityLabel.isHidden = true
+            cell.artikelQuantityTF.isHidden = false
+            
+        }
+        
         cell.artikel = artikel
         if let artikelImage = artikel.artikelImage {
             cell.artikelImage.image = UIImage(data: artikelImage)
@@ -108,8 +119,9 @@ class MyListTVC: UITableViewController {
             let artikelToDelete = self.myList[indexPath.row]
             myList.remove(at: indexPath.row)
             artikelToDelete.isChecked = false
-        
+            artikelToDelete.quantity = ""
             tableView.deleteRows(at: [indexPath], with: .fade)
+            appDelegate.saveContext()
             
         } else if editingStyle == .insert {
             

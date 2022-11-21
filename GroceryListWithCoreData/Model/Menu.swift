@@ -15,6 +15,11 @@ struct MealPlan {
 
 struct Meal {
     var name: String
+    var menu1: String = ""
+    var menu2: String = ""
+    var menu3: String = ""
+    var menu4: String = ""
+    var commentaryTextView: String = ""
 }
 
 class Menu {
@@ -33,16 +38,16 @@ class Menu {
         let p6 = Meal(name: "Menu6")
        
         let menu1 = [p1, p2, p3]
-        let menu2 = [p4, p5, p6]
+        //let menu2 = [p4, p5, p6]
         
         
         
         let monday = MealPlan(days: "Montag", food: menu1)
-        let tuesday = MealPlan(days: "Dienstag", food: menu2)
+        let tuesday = MealPlan(days: "Dienstag", food: menu1)
         let wednesday = MealPlan(days: "Mittwoch", food: menu1)
-        let thursday = MealPlan(days: "Donnerstag", food: menu2)
+        let thursday = MealPlan(days: "Donnerstag", food: menu1)
         let friday = MealPlan(days: "Freitag", food: menu1)
-        let saturday = MealPlan(days: "Samstag", food: menu2)
+        let saturday = MealPlan(days: "Samstag", food: menu1)
         let sunday = MealPlan(days: "Sonntag", food: menu1)
         
         self.weekDays = [monday, tuesday, wednesday, thursday, friday, saturday, sunday]

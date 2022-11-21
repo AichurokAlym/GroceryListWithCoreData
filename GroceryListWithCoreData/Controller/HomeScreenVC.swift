@@ -38,6 +38,7 @@ class HomeScreenVC: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        fetchResultsController.delegate = self
         
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationController?.navigationItem.largeTitleDisplayMode = .always
@@ -49,6 +50,7 @@ class HomeScreenVC: UIViewController {
         // mehrere auswahl Möglichkeiten werden erlaubt
         tableView.allowsMultipleSelectionDuringEditing = true
         
+        
     }
     
     
@@ -59,6 +61,12 @@ class HomeScreenVC: UIViewController {
     }
 
     override func viewDidAppear(_ animated: Bool) {
+        do {
+            try fetchResultsController.performFetch()
+        } catch {
+            print("###error")
+        }
+        
         tableView.reloadData()
         
     }
@@ -95,10 +103,6 @@ extension HomeScreenVC: UITableViewDelegate, UITableViewDataSource {
         let artikel = fetchResultsController.object(at: indexPath)
         
             cell.artikelName.text = artikel.artikelName
-          
-//        if artikel.artikelName == searchArtikel {
-//            cell.backgroundColor = UIColor.gray
-//        }
             
             if let artikelImage = artikel.artikelImage {
                 
@@ -129,11 +133,10 @@ extension HomeScreenVC: UITableViewDelegate, UITableViewDataSource {
             let artikelToDelete = fetchResultsController.object(at: indexPath)
             appDelegate.persistentContainer.viewContext.delete(artikelToDelete)
             appDelegate.saveContext()
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            //tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             
         }
-        tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -154,6 +157,19 @@ extension HomeScreenVC: UITableViewDelegate, UITableViewDataSource {
         
     }
     
+}
+
+//MARK: - Ext. controllerDelegate
+extension HomeScreenVC: NSFetchedResultsControllerDelegate {
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+        //tableView.reloadData()
+    }
 }
 
 extension HomeScreenVC: UISearchResultsUpdating {

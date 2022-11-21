@@ -16,7 +16,13 @@ class WeekDayCell: UICollectionViewCell {
         // Initialization code
     }
 
-    func setupCell(days: MealPlan){
+    func setupCell(days: MealPlan, isSelected: Bool){
         self.weekDays.text = days.days
+        
+        if isSelected {
+            self.contentView.backgroundColor = .orange
+        } else {
+            self.contentView.backgroundColor = .white
+        }
     }
 }

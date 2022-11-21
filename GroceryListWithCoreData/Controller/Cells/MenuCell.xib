@@ -4,38 +4,98 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="MenuCell" customModule="GroceryListWithCoreData" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="161" height="66"/>
+            <rect key="frame" x="0.0" y="0.0" width="382" height="353"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="161" height="66"/>
+                <rect key="frame" x="0.0" y="0.0" width="382" height="353"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hnC-SJ-tL9">
-                        <rect key="frame" x="10" y="22" width="141" height="22"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="15" y="18" width="352" height="24"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Menüwahl 1" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IDf-7D-rkI">
+                        <rect key="frame" x="15" y="60" width="352" height="34"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Menüwahl 2" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jDG-es-Zt6">
+                        <rect key="frame" x="15" y="104" width="352" height="34"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Menüwahl 3" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hkj-9f-ZGI">
+                        <rect key="frame" x="15" y="148" width="352" height="34"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Menüwahl 4" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1W4-4N-SJk">
+                        <rect key="frame" x="15" y="192" width="352" height="34"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Anmerkungen: " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="t8p-LM-j2B">
+                        <rect key="frame" x="15" y="236" width="352" height="107"/>
+                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                        <color key="textColor" systemColor="labelColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" systemColor="systemGreenColor"/>
             <constraints>
-                <constraint firstItem="hnC-SJ-tL9" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="LZv-UD-X82"/>
-                <constraint firstAttribute="bottom" secondItem="hnC-SJ-tL9" secondAttribute="bottom" constant="22" id="NJK-cR-Ca3"/>
-                <constraint firstItem="hnC-SJ-tL9" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="22" id="iif-Td-Yyn"/>
-                <constraint firstAttribute="trailing" secondItem="hnC-SJ-tL9" secondAttribute="trailing" constant="10" id="sjX-Qy-zSI"/>
+                <constraint firstItem="jDG-es-Zt6" firstAttribute="leading" secondItem="Hkj-9f-ZGI" secondAttribute="leading" id="2hJ-Xl-UWK"/>
+                <constraint firstAttribute="trailing" secondItem="t8p-LM-j2B" secondAttribute="trailing" constant="15" id="3On-JZ-2mV"/>
+                <constraint firstItem="jDG-es-Zt6" firstAttribute="top" secondItem="IDf-7D-rkI" secondAttribute="bottom" constant="10" id="3js-UL-hnO"/>
+                <constraint firstItem="Hkj-9f-ZGI" firstAttribute="top" secondItem="jDG-es-Zt6" secondAttribute="bottom" constant="10" id="8Mj-RF-LnV"/>
+                <constraint firstItem="hnC-SJ-tL9" firstAttribute="trailing" secondItem="IDf-7D-rkI" secondAttribute="trailing" id="8YM-iP-5MS"/>
+                <constraint firstItem="IDf-7D-rkI" firstAttribute="trailing" secondItem="jDG-es-Zt6" secondAttribute="trailing" id="Ctk-r5-Spg"/>
+                <constraint firstItem="1W4-4N-SJk" firstAttribute="top" secondItem="Hkj-9f-ZGI" secondAttribute="bottom" constant="10" id="KX7-bJ-wLx"/>
+                <constraint firstItem="hnC-SJ-tL9" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="L5z-AM-u8U"/>
+                <constraint firstAttribute="bottom" secondItem="t8p-LM-j2B" secondAttribute="bottom" constant="10" id="LlY-tu-VJs"/>
+                <constraint firstItem="hnC-SJ-tL9" firstAttribute="leading" secondItem="IDf-7D-rkI" secondAttribute="leading" id="ZgN-o5-n5k"/>
+                <constraint firstItem="hnC-SJ-tL9" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="bcB-1Y-k6h"/>
+                <constraint firstItem="IDf-7D-rkI" firstAttribute="leading" secondItem="jDG-es-Zt6" secondAttribute="leading" id="cIx-Es-Jxs"/>
+                <constraint firstItem="hnC-SJ-tL9" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="18" id="fvp-zw-RMB"/>
+                <constraint firstItem="t8p-LM-j2B" firstAttribute="top" secondItem="1W4-4N-SJk" secondAttribute="bottom" constant="10" id="jRN-BT-ib9"/>
+                <constraint firstItem="IDf-7D-rkI" firstAttribute="top" secondItem="hnC-SJ-tL9" secondAttribute="bottom" constant="18" id="nZH-yB-vsl"/>
+                <constraint firstItem="Hkj-9f-ZGI" firstAttribute="leading" secondItem="1W4-4N-SJk" secondAttribute="leading" id="pcC-n3-192"/>
+                <constraint firstItem="t8p-LM-j2B" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="qjy-Do-QwU"/>
+                <constraint firstItem="Hkj-9f-ZGI" firstAttribute="trailing" secondItem="1W4-4N-SJk" secondAttribute="trailing" id="rMp-iL-HlJ"/>
+                <constraint firstItem="jDG-es-Zt6" firstAttribute="trailing" secondItem="Hkj-9f-ZGI" secondAttribute="trailing" id="y4l-Ih-U80"/>
             </constraints>
-            <size key="customSize" width="161" height="66"/>
+            <size key="customSize" width="382" height="353"/>
             <connections>
+                <outlet property="commentaryTextView" destination="t8p-LM-j2B" id="L3F-bx-nSh"/>
+                <outlet property="menu1TF" destination="IDf-7D-rkI" id="Lh8-ic-0JB"/>
+                <outlet property="menu2TF" destination="jDG-es-Zt6" id="vMJ-AB-Q3S"/>
+                <outlet property="menu3TF" destination="Hkj-9f-ZGI" id="3kX-Nk-1bY"/>
+                <outlet property="menu4TF" destination="1W4-4N-SJk" id="kR1-Za-vqB"/>
                 <outlet property="productName" destination="hnC-SJ-tL9" id="afs-zM-858"/>
             </connections>
-            <point key="canvasLocation" x="118.32061068702289" y="25.35211267605634"/>
+            <point key="canvasLocation" x="287.02290076335879" y="126.40845070422536"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

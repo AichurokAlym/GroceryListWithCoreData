@@ -25,6 +25,8 @@ class MyListTableViewCell: UITableViewCell, UITextFieldDelegate {
         self.artikelImage.clipsToBounds = true
         self.artikelImage.layer.borderColor = UIColor.black.cgColor
         self.artikelImage.layer.borderWidth = 4
+        
+       
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -32,7 +34,7 @@ class MyListTableViewCell: UITableViewCell, UITextFieldDelegate {
         
         artikel?.quantity = self.artikelQuantityTF.text
         
-        if (artikelQuantityTF.text != nil) {
+        if let text = artikelQuantityTF.text, !text.isEmpty {
             quantityLabel.isHidden = false
             quantityLabel.text = artikelQuantityTF.text
             artikelQuantityTF.isHidden = true
@@ -46,10 +48,4 @@ class MyListTableViewCell: UITableViewCell, UITextFieldDelegate {
 
         // Configure the view for the selected state
     }
-    
-//    override func prepareForReuse() {
-//        self.quantityLabel.text = ""
-//    }
-
-
 }
