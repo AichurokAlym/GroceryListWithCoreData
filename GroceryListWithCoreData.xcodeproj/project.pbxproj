@@ -23,13 +23,13 @@
 		CB59BB30290EF919000780C6 /* AddRecipeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB59BB2F290EF918000780C6 /* AddRecipeVC.swift */; };
 		CB59BB32290EF958000780C6 /* DetailRecipeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB59BB31290EF958000780C6 /* DetailRecipeVC.swift */; };
 		CB6D68E029278B0C00BBE5D3 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D68DF29278B0C00BBE5D3 /* MenuViewController.swift */; };
-		CB6D68E629278C8300BBE5D3 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D68E529278C8300BBE5D3 /* Menu.swift */; };
 		CB7F7EE32902FBF8005EE6E4 /* MyListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7F7EE22902FBF8005EE6E4 /* MyListTVC.swift */; };
 		CB7F7EE529030392005EE6E4 /* MyListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7F7EE429030392005EE6E4 /* MyListTableViewCell.swift */; };
 		CB8C33402927B22500CC63B6 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8C333E2927B22500CC63B6 /* MenuCell.swift */; };
 		CB8C33412927B22500CC63B6 /* MenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB8C333F2927B22500CC63B6 /* MenuCell.xib */; };
 		CB8C33442927B90900CC63B6 /* WeekDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8C33422927B90900CC63B6 /* WeekDayCell.swift */; };
 		CB8C33452927B90900CC63B6 /* WeekDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB8C33432927B90900CC63B6 /* WeekDayCell.xib */; };
+		CB8C3347292CC35200CC63B6 /* AddMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8C3346292CC35200CC63B6 /* AddMenuViewController.swift */; };
 		CB9E6D7D291CFEB500600032 /* FoodJokeTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9E6D7C291CFEB500600032 /* FoodJokeTVC.swift */; };
 		CBFA23A2291BEFD900C42489 /* FoodJoke.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFA23A1291BEFD900C42489 /* FoodJoke.swift */; };
 /* End PBXBuildFile section */
@@ -53,13 +53,13 @@
 		CB59BB2F290EF918000780C6 /* AddRecipeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeVC.swift; sourceTree = "<group>"; };
 		CB59BB31290EF958000780C6 /* DetailRecipeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRecipeVC.swift; sourceTree = "<group>"; };
 		CB6D68DF29278B0C00BBE5D3 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = GroceryListWithCoreData/Controller/MenuViewController.swift; sourceTree = SOURCE_ROOT; };
-		CB6D68E529278C8300BBE5D3 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		CB7F7EE22902FBF8005EE6E4 /* MyListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListTVC.swift; sourceTree = "<group>"; };
 		CB7F7EE429030392005EE6E4 /* MyListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListTableViewCell.swift; sourceTree = "<group>"; };
 		CB8C333E2927B22500CC63B6 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		CB8C333F2927B22500CC63B6 /* MenuCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuCell.xib; sourceTree = "<group>"; };
 		CB8C33422927B90900CC63B6 /* WeekDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WeekDayCell.swift; path = GroceryListWithCoreData/View/WeekDayCell.swift; sourceTree = SOURCE_ROOT; };
 		CB8C33432927B90900CC63B6 /* WeekDayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = WeekDayCell.xib; path = GroceryListWithCoreData/View/WeekDayCell.xib; sourceTree = SOURCE_ROOT; };
+		CB8C3346292CC35200CC63B6 /* AddMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMenuViewController.swift; sourceTree = "<group>"; };
 		CB9E6D7C291CFEB500600032 /* FoodJokeTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodJokeTVC.swift; sourceTree = "<group>"; };
 		CBFA23A1291BEFD900C42489 /* FoodJoke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodJoke.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,7 +125,6 @@
 				CB0D45362913E68F007B75E6 /* APIKey.swift */,
 				CBFA23A1291BEFD900C42489 /* FoodJoke.swift */,
 				CB0D45382913E6A3007B75E6 /* APIClient.swift */,
-				CB6D68E529278C8300BBE5D3 /* Menu.swift */,
 				CB24998A28FEC6AD00A53EFB /* GroceryListWithCoreData.xcdatamodeld */,
 			);
 			path = Model;
@@ -143,7 +142,7 @@
 		CBD122EE290F1756007B1ACD /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				CB6D68E72927A44D00BBE5D3 /* Cells */,
+				CB8C3346292CC35200CC63B6 /* AddMenuViewController.swift */,
 				CB6D68DF29278B0C00BBE5D3 /* MenuViewController.swift */,
 				CB24998528FEC6AD00A53EFB /* AddArtikelVC.swift */,
 				CB3D0F1428FF8BCC00AD6EFB /* HomeScreenVC.swift */,
@@ -152,6 +151,7 @@
 				CB59BB2F290EF918000780C6 /* AddRecipeVC.swift */,
 				CB59BB2D290EF8AE000780C6 /* MyRecipesTVC.swift */,
 				CB9E6D7C291CFEB500600032 /* FoodJokeTVC.swift */,
+				CB6D68E72927A44D00BBE5D3 /* Cells */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -231,6 +231,7 @@
 			files = (
 				CB24999B28FED07000A53EFB /* ArtikelTableViewCell.swift in Sources */,
 				CB0D45392913E6A3007B75E6 /* APIClient.swift in Sources */,
+				CB8C3347292CC35200CC63B6 /* AddMenuViewController.swift in Sources */,
 				CB7F7EE32902FBF8005EE6E4 /* MyListTVC.swift in Sources */,
 				CB24998628FEC6AD00A53EFB /* AddArtikelVC.swift in Sources */,
 				CB7F7EE529030392005EE6E4 /* MyListTableViewCell.swift in Sources */,
@@ -240,7 +241,6 @@
 				CB59BB30290EF919000780C6 /* AddRecipeVC.swift in Sources */,
 				CBFA23A2291BEFD900C42489 /* FoodJoke.swift in Sources */,
 				CB59BB32290EF958000780C6 /* DetailRecipeVC.swift in Sources */,
-				CB6D68E629278C8300BBE5D3 /* Menu.swift in Sources */,
 				CB9E6D7D291CFEB500600032 /* FoodJokeTVC.swift in Sources */,
 				CB6D68E029278B0C00BBE5D3 /* MenuViewController.swift in Sources */,
 				CB24999D28FED79400A53EFB /* Constants.swift in Sources */,

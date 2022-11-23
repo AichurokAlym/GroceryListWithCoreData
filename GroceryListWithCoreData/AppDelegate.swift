@@ -23,7 +23,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // wenn true ist dann wird die Kategorien erstellt
             let artikelCategorys = ["Obst", "Gemüse", "Milchprodukte", "Getreideprodukte", "Getränke", "Fleisch, Wurst, Fisch und Eier", "Extras"]
             
+            let weekDays = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"]
+            
             UserDefaults.standard.set(true, forKey: "wurdeErsteMalGestarted")
+            // for mit Zahlen
+            for weekName in weekDays {
+                let coreDataWeekDays = WeeklyPlanner(context: context)
+                coreDataWeekDays.weekday = weekName
+                //index setzen
+            }
             
             for name in artikelCategorys {
                 let coreDataCategory = Category(context: context)
@@ -31,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 
                 let gemuese = ["Tomaten", "Gurken", "Avocado", "Brokkoli", "Paprika", "Kürbis"]
-                let obst = ["Äpfel", "Birne", "Bananen", "Pflaume", "Trauben", "Kiwi"]
+                let obst = ["Apfel", "Birne", "Bananen", "Pflaume", "Trauben", "Kiwi"]
                 let milchProdukte = ["Milch", "Butter", "Käse", "Frischkäse", "Joghurt", "Kaffeesahne"]
                 let getreideProdukte = ["Brot", "Brötchen", "Brezel", "Nudeln", "Reis", "Haferflocken"]
                 let getränke = ["Saft", "Mineralwasser", "Limonade", "Apfelschorle", "Coca Cola"]

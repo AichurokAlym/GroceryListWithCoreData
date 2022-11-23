@@ -21,12 +21,4 @@ class MenuCell: UICollectionViewCell {
         // Initialization code
     }
 
-    func setupCell(meal: Meal){
-        self.productName.text = meal.name
-        self.menu1TF.text = meal.menu1
-        self.menu2TF.text = meal.menu2
-        self.menu3TF.text = meal.menu3
-        self.menu4TF.text = meal.menu4
-        self.commentaryTextView.text = meal.commentaryTextView
-    }
 }

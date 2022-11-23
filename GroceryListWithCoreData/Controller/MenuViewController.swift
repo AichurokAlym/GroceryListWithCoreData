@@ -6,15 +6,17 @@
 //
 
 import UIKit
+import CoreData
 
 class MenuViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var weekDaysCollectionView: UICollectionView!
     
-    var menu: Menu = Menu()
-    var selectedDayIndex = 0
-    var selectedDay: MealPlan?
+    var dailyMenu = [WeeklyMenu]()
+    var weekDays = [WeeklyPlanner]()
+    
+    var selectedDay: WeeklyPlanner?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,56 +28,92 @@ class MenuViewController: UIViewController {
         self.weekDaysCollectionView.register(UINib(nibName: "WeekDayCell", bundle: nil), forCellWithReuseIdentifier: "WeekDayCell")
         self.weekDaysCollectionView.dataSource = self
         self.weekDaysCollectionView.delegate = self
+        
+        fetchWeeklyMenu()
+    
+        collectionView.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        collectionView.reloadData()
+    }
+    
+    func fetchWeeklyMenu() {
+
+        do {
+            weekDays = try appDelegate.persistentContainer.viewContext.fetch(WeeklyPlanner.fetchRequest())
+            
+            dailyMenu = try appDelegate.persistentContainer.viewContext.fetch(WeeklyMenu.fetchRequest())
+            
+        } catch {
+            print(error)
+        }
+        collectionView.reloadData()
+        weekDaysCollectionView.reloadData()
     }
 }
 
 extension MenuViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if collectionView == weekDaysCollectionView {
-            return menu.weekDays.count
+            return weekDays.count
         } else {
-            let meal = menu.weekDays[selectedDayIndex]
-            return meal.food.count
+            return selectedDay?.weeklyMenu?.count ?? 0
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         if collectionView == weekDaysCollectionView {
            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WeekDayCell", for: indexPath) as! WeekDayCell
-            let days = menu.weekDays[indexPath.item]
-            if let selectedDay = selectedDay {
-                let isSelected = days.days == selectedDay.days
-                cell.setupCell(days: days, isSelected: isSelected)
+            
+            let days = weekDays[indexPath.item]
+            
+            cell.weekDays.text = days.weekday
+            
+           // cell.weekDays.backgroundColor = UIColor.white
+            
+            if selectedDay == weekDays[indexPath.item] {
+                cell.weekDays.backgroundColor = UIColor.orange
             } else {
-                cell.setupCell(days: days, isSelected: false)
+                cell.weekDays.backgroundColor = UIColor.white
             }
+
            return cell
         } else {
-           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuCell", for: indexPath) as! MenuCell
-            let days = menu.weekDays[selectedDayIndex]
-            let meal = days.food[indexPath.item]
-              cell.setupCell(meal: meal)
-              return cell
+          let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuCell", for: indexPath) as! MenuCell
+            
+            let menu: WeeklyMenu = selectedDay?.weeklyMenu?.allObjects[indexPath.item] as! WeeklyMenu
+        
+            cell.productName.text = menu.mealTime
+            cell.menu1TF.text = menu.menu1
+            cell.menu2TF.text = menu.menu2
+            cell.menu3TF.text = menu.menu3
+            
+            return cell
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if collectionView == weekDaysCollectionView {
-            self.selectedDayIndex = indexPath.item
-            self.selectedDay = menu.weekDays[selectedDayIndex]
-            self.collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: false)
-            //self.collectionView.reloadItems(at: [indexPath])
-            collectionView.reloadData()
-        }
+        
+        let days = weekDays[indexPath.item]
+        selectedDay = days
+        self.weekDaysCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+       
+        days.selectedDay = !days.selectedDay
+        weekDaysCollectionView.deselectItem(at: indexPath, animated: true)
+        fetchWeeklyMenu()
+        collectionView.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         if collectionView == weekDaysCollectionView{
             
-            let weekDays = menu.weekDays[indexPath.item].days
-            let width = weekDays.widthOfString(usingFont: UIFont.systemFont(ofSize: 17))
+            let weekDays = weekDays[indexPath.item].weekday
+            let width = weekDays!.widthOfString(usingFont: UIFont.systemFont(ofSize: 17))
             return CGSize(width: width + 20, height: collectionView.frame.height)
             
         } else {

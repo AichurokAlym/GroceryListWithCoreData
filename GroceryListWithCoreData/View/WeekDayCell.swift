@@ -16,13 +16,12 @@ class WeekDayCell: UICollectionViewCell {
         // Initialization code
     }
 
-    func setupCell(days: MealPlan, isSelected: Bool){
-        self.weekDays.text = days.days
-        
-        if isSelected {
-            self.contentView.backgroundColor = .orange
-        } else {
-            self.contentView.backgroundColor = .white
-        }
+}
+
+extension String {
+    func widthOfString(usingFont font: UIFont) -> CGFloat {
+             let fontAttributes = [NSAttributedString.Key.font: font]
+             let size = (self as NSString).size(withAttributes: fontAttributes)
+             return ceil(size.width)
     }
 }

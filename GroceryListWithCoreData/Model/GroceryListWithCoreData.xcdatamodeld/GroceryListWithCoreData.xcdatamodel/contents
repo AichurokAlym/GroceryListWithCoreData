@@ -18,14 +18,6 @@
         <attribute name="unit" optional="YES" attributeType="String"/>
         <relationship name="recipes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Recipe" inverseName="ingredients" inverseEntity="Recipe"/>
     </entity>
-    <entity name="Menu" representedClassName="Menu" syncable="YES" codeGenerationType="class">
-        <attribute name="menu1" optional="YES" attributeType="String"/>
-        <attribute name="menu2" optional="YES" attributeType="String"/>
-        <attribute name="menu3" optional="YES" attributeType="String"/>
-        <attribute name="menu4" optional="YES" attributeType="String"/>
-        <attribute name="menuDescription" optional="YES" attributeType="String"/>
-        <relationship name="weeklyPlanner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WeeklyPlanner" inverseName="menu" inverseEntity="WeeklyPlanner"/>
-    </entity>
     <entity name="Recipe" representedClassName="Recipe" syncable="YES" codeGenerationType="class">
         <attribute name="category" optional="YES" attributeType="String"/>
         <attribute name="cookingTime" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
@@ -34,8 +26,18 @@
         <attribute name="recipeTitle" optional="YES" attributeType="String"/>
         <relationship name="ingredients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ingredient" inverseName="recipes" inverseEntity="Ingredient"/>
     </entity>
+    <entity name="WeeklyMenu" representedClassName="WeeklyMenu" syncable="YES" codeGenerationType="class">
+        <attribute name="mealTime" optional="YES" attributeType="String"/>
+        <attribute name="menu1" optional="YES" attributeType="String"/>
+        <attribute name="menu2" optional="YES" attributeType="String"/>
+        <attribute name="menu3" optional="YES" attributeType="String"/>
+        <attribute name="menuDescription" optional="YES" attributeType="String"/>
+        <relationship name="weeklyPlanner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WeeklyPlanner" inverseName="weeklyMenu" inverseEntity="WeeklyPlanner"/>
+    </entity>
     <entity name="WeeklyPlanner" representedClassName="WeeklyPlanner" syncable="YES" codeGenerationType="class">
+        <attribute name="indexOfDays" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="selectedDay" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="weekday" optional="YES" attributeType="String"/>
-        <relationship name="menu" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Menu" inverseName="weeklyPlanner" inverseEntity="Menu"/>
+        <relationship name="weeklyMenu" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="WeeklyMenu" inverseName="weeklyPlanner" inverseEntity="WeeklyMenu"/>
     </entity>
 </model>
