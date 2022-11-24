@@ -32,7 +32,7 @@
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Anmerkungen: " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="t8p-LM-j2B">
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text=" Anmerkungen: " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="t8p-LM-j2B">
                         <rect key="frame" x="15" y="214" width="357" height="90"/>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <color key="textColor" systemColor="labelColor"/>

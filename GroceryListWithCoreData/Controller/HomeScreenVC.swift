@@ -114,9 +114,9 @@ extension HomeScreenVC: UITableViewDelegate, UITableViewDataSource {
             }
         
         if artikel.isChecked == false {
-            cell.checkbox.image = UIImage(systemName: "checkmark.seal")
+            cell.checkbox.image = UIImage(systemName: "star")
         } else {
-            cell.checkbox.image = UIImage(systemName: "checkmark.seal.fill")
+            cell.checkbox.image = UIImage(systemName: "star.fill")
         }
     
         return cell

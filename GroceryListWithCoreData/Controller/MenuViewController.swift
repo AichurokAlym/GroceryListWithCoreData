@@ -15,8 +15,7 @@ class MenuViewController: UIViewController {
     
     var dailyMenu = [WeeklyMenu]()
     var weekDays = [WeeklyPlanner]()
-    
-    var selectedDay: WeeklyPlanner?
+    var selectedDay: WeeklyPlanner!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,8 +39,11 @@ class MenuViewController: UIViewController {
     
     func fetchWeeklyMenu() {
 
+        let fetchRequest = WeeklyPlanner.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "indexOfDays", ascending: true)]
+        
         do {
-            weekDays = try appDelegate.persistentContainer.viewContext.fetch(WeeklyPlanner.fetchRequest())
+            weekDays = try appDelegate.persistentContainer.viewContext.fetch(fetchRequest)
             
             dailyMenu = try appDelegate.persistentContainer.viewContext.fetch(WeeklyMenu.fetchRequest())
             
@@ -72,8 +74,6 @@ extension MenuViewController: UICollectionViewDataSource, UICollectionViewDelega
             let days = weekDays[indexPath.item]
             
             cell.weekDays.text = days.weekday
-            
-           // cell.weekDays.backgroundColor = UIColor.white
             
             if selectedDay == weekDays[indexPath.item] {
                 cell.weekDays.backgroundColor = UIColor.orange
@@ -113,7 +113,7 @@ extension MenuViewController: UICollectionViewDataSource, UICollectionViewDelega
         if collectionView == weekDaysCollectionView{
             
             let weekDays = weekDays[indexPath.item].weekday
-            let width = weekDays!.widthOfString(usingFont: UIFont.systemFont(ofSize: 17))
+            let width = weekDays!.widthOfString(usingFont: UIFont.systemFont(ofSize: 20))
             return CGSize(width: width + 20, height: collectionView.frame.height)
             
         } else {

@@ -26,11 +26,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let weekDays = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"]
             
             UserDefaults.standard.set(true, forKey: "wurdeErsteMalGestarted")
-            // for mit Zahlen
-            for weekName in weekDays {
+            
+            for day in 0...6 {
                 let coreDataWeekDays = WeeklyPlanner(context: context)
-                coreDataWeekDays.weekday = weekName
-                //index setzen
+                coreDataWeekDays.indexOfDays = Int16(day)
+                coreDataWeekDays.weekday = weekDays[day]
             }
             
             for name in artikelCategorys {
