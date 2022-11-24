@@ -45,6 +45,13 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="3Bk-7E-1BD">
+                        <rect key="frame" x="329" y="13" width="45" height="43.666666666666671"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="45" id="Dp0-0D-i7T"/>
+                            <constraint firstAttribute="height" constant="45" id="irX-Rf-jzP"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
@@ -53,6 +60,7 @@
                 <constraint firstItem="t8p-LM-j2B" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="2Jj-KQ-SZE"/>
                 <constraint firstItem="hnC-SJ-tL9" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="26" id="3Cl-RZ-raQ"/>
                 <constraint firstItem="hnC-SJ-tL9" firstAttribute="trailing" secondItem="IDf-7D-rkI" secondAttribute="trailing" id="EIm-lM-ivd"/>
+                <constraint firstItem="3Bk-7E-1BD" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="F73-xN-ZJj"/>
                 <constraint firstItem="IDf-7D-rkI" firstAttribute="leading" secondItem="jDG-es-Zt6" secondAttribute="leading" id="Kan-c9-iTr"/>
                 <constraint firstItem="t8p-LM-j2B" firstAttribute="top" secondItem="Hkj-9f-ZGI" secondAttribute="bottom" constant="15" id="MOs-rv-Si7"/>
                 <constraint firstItem="IDf-7D-rkI" firstAttribute="trailing" secondItem="jDG-es-Zt6" secondAttribute="trailing" id="P3d-0s-MTo"/>
@@ -61,6 +69,7 @@
                 <constraint firstItem="t8p-LM-j2B" firstAttribute="trailing" secondItem="Hkj-9f-ZGI" secondAttribute="trailing" id="T8S-DG-kTP"/>
                 <constraint firstItem="t8p-LM-j2B" firstAttribute="leading" secondItem="Hkj-9f-ZGI" secondAttribute="leading" id="kmG-3z-ck2"/>
                 <constraint firstItem="jDG-es-Zt6" firstAttribute="top" secondItem="IDf-7D-rkI" secondAttribute="bottom" constant="10" id="ld3-QZ-GdR"/>
+                <constraint firstAttribute="trailing" secondItem="3Bk-7E-1BD" secondAttribute="trailing" constant="13" id="ohZ-AL-s8j"/>
                 <constraint firstItem="jDG-es-Zt6" firstAttribute="trailing" secondItem="Hkj-9f-ZGI" secondAttribute="trailing" id="ugB-2W-Djp"/>
                 <constraint firstItem="hnC-SJ-tL9" firstAttribute="leading" secondItem="IDf-7D-rkI" secondAttribute="leading" id="w7k-sX-A6W"/>
                 <constraint firstItem="t8p-LM-j2B" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="xGx-4K-0Wo"/>
@@ -69,6 +78,7 @@
             </constraints>
             <size key="customSize" width="387" height="324"/>
             <connections>
+                <outlet property="checkMark" destination="3Bk-7E-1BD" id="m5g-a7-VOn"/>
                 <outlet property="commentaryTextView" destination="t8p-LM-j2B" id="L3F-bx-nSh"/>
                 <outlet property="menu1TF" destination="IDf-7D-rkI" id="Lh8-ic-0JB"/>
                 <outlet property="menu2TF" destination="jDG-es-Zt6" id="vMJ-AB-Q3S"/>
@@ -79,6 +89,7 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="checkmark.circle.fill" catalog="system" width="128" height="123"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

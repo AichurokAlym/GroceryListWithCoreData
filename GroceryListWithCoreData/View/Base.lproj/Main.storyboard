@@ -196,15 +196,21 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Wochenmenü" id="Bf3-zN-xb3">
-                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="rLe-v7-8HL">
+                        <barButtonItem key="leftBarButtonItem" enabled="NO" systemItem="trash" id="bG5-Gv-Mog">
+                            <color key="tintColor" systemColor="systemRedColor"/>
+                            <connections>
+                                <action selector="trashBtnTapped:" destination="yLo-Rw-YYL" id="7CW-NN-N70"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="rLe-v7-8HL">
                             <connections>
                                 <segue destination="ldD-ID-aAP" kind="show" id="ZDr-xj-3uc"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="b0o-Ai-gSV"/>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="GUx-ps-Dsc" id="QQm-fO-xHx"/>
+                        <outlet property="trashButton" destination="bG5-Gv-Mog" id="2wV-iH-Kn6"/>
                         <outlet property="weekDaysCollectionView" destination="Z9u-QO-s87" id="qPb-NP-u7T"/>
                     </connections>
                 </viewController>
@@ -995,6 +1001,9 @@
         </systemColor>
         <systemColor name="systemMintColor">
             <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiarySystemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

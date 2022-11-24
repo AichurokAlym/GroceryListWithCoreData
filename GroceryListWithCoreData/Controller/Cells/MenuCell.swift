@@ -14,6 +14,7 @@ class MenuCell: UICollectionViewCell {
     @IBOutlet weak var menu2TF: UITextField!
     @IBOutlet weak var menu3TF: UITextField!
     @IBOutlet weak var commentaryTextView: UITextView!
+    @IBOutlet weak var checkMark: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,6 +23,19 @@ class MenuCell: UICollectionViewCell {
         self.commentaryTextView.clipsToBounds = true
         self.commentaryTextView.layer.borderColor = UIColor.purple.cgColor
         self.commentaryTextView.layer.borderWidth = 3
+    }
+    
+    // kümmert sich um die Anzeige einer Auswahl
+    override var isSelected: Bool{
+        didSet {
+            if(isSelected) {
+                
+                checkMark.isHidden = false
+                print("AAAA")
+            } else {
+                checkMark.isHidden = true
+            }
+        }
     }
 
 }
