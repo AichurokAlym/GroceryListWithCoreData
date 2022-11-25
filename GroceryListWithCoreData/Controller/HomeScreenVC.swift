@@ -168,7 +168,7 @@ extension HomeScreenVC: NSFetchedResultsControllerDelegate {
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
-        //tableView.reloadData()
+       
     }
 }
 

@@ -20,6 +20,7 @@ class MenuViewController: UIViewController {
     
     var menuToDelete: [IndexPath] = []
     let arrColors = ["c9f4ef", "d9fae4", "eff8db", "fbe8d4", "f4d2d9"]
+    let colorsArray = ["302c6f", "a8abd6", "767ab9", "d8daef", "9da5cb"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,12 +97,12 @@ class MenuViewController: UIViewController {
     
     @IBAction func trashBtnTapped(_ sender: UIBarButtonItem) {
         for i in menuToDelete.sorted(by: {$0.item > $1.item}) {
-            print("#" + i.description)
+            context.delete(dailyMenu[i.item])
             dailyMenu.remove(at: i.item)
         }
         collectionView.deleteItems(at: menuToDelete)
         menuToDelete.removeAll()
-        
+        appDelegate.saveContext()
         trashButton.isEnabled = false
     }
     
@@ -122,7 +123,7 @@ extension MenuViewController: UICollectionViewDataSource, UICollectionViewDelega
         
         if collectionView == weekDaysCollectionView {
            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WeekDayCell", for: indexPath) as! WeekDayCell
-            cell.backgroundColor = UIColor.clear
+            //cell.backgroundColor = UIColor.clear
             let days = weekDays[indexPath.item]
             
             cell.weekDays.text = days.weekday
@@ -136,7 +137,7 @@ extension MenuViewController: UICollectionViewDataSource, UICollectionViewDelega
            return cell
         } else {
           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuCell", for: indexPath) as! MenuCell
-            cell.backgroundColor = UIColor.clear
+            //cell.backgroundColor = UIColor.clear
             let menu: WeeklyMenu = dailyMenu[indexPath.item]
         
             cell.productName.text = menu.mealTime
@@ -148,8 +149,6 @@ extension MenuViewController: UICollectionViewDataSource, UICollectionViewDelega
             cell.clipsToBounds = true
             cell.layer.borderColor = UIColor.purple.cgColor
             cell.layer.borderWidth = 3
-            
-            
             return cell
         }
     }
@@ -158,30 +157,17 @@ extension MenuViewController: UICollectionViewDataSource, UICollectionViewDelega
         print("BBB")
         let days = weekDays[indexPath.item]
         selectedDay = days
-        self.weekDaysCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        if collectionView == self.weekDaysCollectionView {
+            self.weekDaysCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        }
        
         days.selectedDay = !days.selectedDay
-        
-        do {
-            var tag = "Montag"
-            if selectedDay != nil {
-                tag = selectedDay!.weekday!
-            }
-            print(tag)
-            let fetchRequestMenu = WeeklyMenu.fetchRequest()
-            fetchRequestMenu.predicate = NSPredicate(format: "weeklyPlanner.weekday == %@", tag)
-            dailyMenu = try appDelegate.persistentContainer.viewContext.fetch(fetchRequestMenu)
-            
-        } catch {
-            print(error)
-        }
-        
         weekDaysCollectionView.deselectItem(at: indexPath, animated: true)
         
-        let randomIndex = Int(arc4random_uniform(UInt32(arrColors.count)))
-        view.backgroundColor = self.hexStringToUIColor(hex: arrColors[randomIndex])
+        if collectionView == self.collectionView {
+            self.menuToDelete.append(indexPath)
+        }
         
-        self.menuToDelete.append(indexPath)
         trashButton.isEnabled = true
         
         if collectionView == weekDaysCollectionView {
@@ -198,7 +184,6 @@ extension MenuViewController: UICollectionViewDataSource, UICollectionViewDelega
             trashButton.isEnabled = false
         }
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
@@ -224,7 +209,5 @@ extension MenuViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
     }
-    
-   
-    
 }
+

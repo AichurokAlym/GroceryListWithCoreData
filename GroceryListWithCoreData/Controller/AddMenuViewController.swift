@@ -19,7 +19,6 @@ class AddMenuViewController: UIViewController, UITextFieldDelegate, UIPickerView
     var selectedDay: WeeklyPlanner!
     var weekDays = [WeeklyPlanner]()
     var dailyMenu = [WeeklyMenu]()
-//    var weekDays = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
