@@ -44,32 +44,12 @@ class MenuViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        let randomIndex = Int(arc4random_uniform(UInt32(arrColors.count)))
-        view.backgroundColor = self.hexStringToUIColor(hex: arrColors[randomIndex])
         
+        let randomIndex = Int(arc4random_uniform(UInt32(arrColors.count)))
+        view.backgroundColor = hexStringToUIColor(hex: arrColors[randomIndex])
+        
+        fetchWeeklyMenu()
         collectionView.reloadData()
-    }
-    
-    func hexStringToUIColor (hex:String) -> UIColor {
-        var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
-
-        if (cString.hasPrefix("#")) {
-            cString.remove(at: cString.startIndex)
-        }
-
-        if ((cString.count) != 6) {
-            return UIColor.gray
-        }
-
-        var rgbValue:UInt32 = 0
-        Scanner(string: cString).scanHexInt32(&rgbValue)
-
-        return UIColor(
-            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
-            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
-            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
-            alpha: CGFloat(1.0)
-        )
     }
     
     func fetchWeeklyMenu() {
@@ -83,7 +63,6 @@ class MenuViewController: UIViewController {
             if selectedDay != nil {
                 tag = selectedDay!.weekday!
             }
-            print(tag)
             let fetchRequestMenu = WeeklyMenu.fetchRequest()
             fetchRequestMenu.predicate = NSPredicate(format: "weeklyPlanner.weekday == %@", tag)
             dailyMenu = try appDelegate.persistentContainer.viewContext.fetch(fetchRequestMenu)
@@ -123,15 +102,23 @@ extension MenuViewController: UICollectionViewDataSource, UICollectionViewDelega
         
         if collectionView == weekDaysCollectionView {
            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WeekDayCell", for: indexPath) as! WeekDayCell
-            //cell.backgroundColor = UIColor.clear
+            
             let days = weekDays[indexPath.item]
             
             cell.weekDays.text = days.weekday
             
             if selectedDay == weekDays[indexPath.item] {
-                cell.weekDays.backgroundColor = UIColor.orange
+                cell.backgroundColor = UIColor.white
+                cell.layer.cornerRadius = 10
+                cell.layer.shadowColor = UIColor.black.cgColor
+                cell.layer.shadowRadius = 3.0
+                cell.layer.shadowOpacity = 1.0
+                cell.layer.shadowOffset = CGSize(width: 4, height: 4)
+                cell.layer.masksToBounds = false
             } else {
-                cell.weekDays.backgroundColor = UIColor.white
+                cell.weekDays.backgroundColor = UIColor.clear
+                cell.backgroundColor = UIColor.clear
+                cell.layer.shadowColor = UIColor.clear.cgColor
             }
 
            return cell
@@ -148,13 +135,16 @@ extension MenuViewController: UICollectionViewDataSource, UICollectionViewDelega
             cell.layer.cornerRadius = 10
             cell.clipsToBounds = true
             cell.layer.borderColor = UIColor.purple.cgColor
-            cell.layer.borderWidth = 3
+            cell.layer.borderWidth = 6
+            
+            let randomIndex = Int(arc4random_uniform(UInt32(arrColors.count)))
+            cell.backgroundColor = hexStringToUIColor(hex: arrColors[randomIndex])
+            
             return cell
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("BBB")
         let days = weekDays[indexPath.item]
         selectedDay = days
         if collectionView == self.weekDaysCollectionView {

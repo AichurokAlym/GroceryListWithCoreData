@@ -140,7 +140,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="GUx-ps-Dsc">
-                                <rect key="frame" x="0.0" y="163" width="393" height="606"/>
+                                <rect key="frame" x="0.0" y="177" width="393" height="592"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="ach-cn-fSw">
                                     <size key="itemSize" width="128" height="128"/>
@@ -161,7 +161,7 @@
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Z9u-QO-s87">
                                 <rect key="frame" x="0.0" y="103" width="393" height="60"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" red="0.58337179699999997" green="0.72705651019999995" blue="0.96611279250000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="VCM-A1-MJc"/>
                                 </constraints>
@@ -171,6 +171,11 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
+                                <view key="backgroundView" contentMode="scaleToFill" id="b4T-FS-owy">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="60"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="0.58431375029999999" green="0.72941178080000002" blue="0.96862745289999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </view>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WeekDayCell" id="PSy-Zx-dBl">
                                         <rect key="frame" x="0.0" y="-34" width="128" height="128"/>
@@ -190,9 +195,9 @@
                             <constraint firstItem="GUx-ps-Dsc" firstAttribute="trailing" secondItem="IJA-ai-Ibg" secondAttribute="trailing" id="9X9-MV-bpC"/>
                             <constraint firstItem="GUx-ps-Dsc" firstAttribute="leading" secondItem="IJA-ai-Ibg" secondAttribute="leading" id="F5U-Fx-YqG"/>
                             <constraint firstAttribute="trailing" secondItem="Z9u-QO-s87" secondAttribute="trailing" id="Kmn-P5-1zM"/>
-                            <constraint firstItem="GUx-ps-Dsc" firstAttribute="top" secondItem="Z9u-QO-s87" secondAttribute="bottom" id="b8n-iX-IHb"/>
                             <constraint firstItem="GUx-ps-Dsc" firstAttribute="bottom" secondItem="IJA-ai-Ibg" secondAttribute="bottom" id="bhK-Cm-VSB"/>
                             <constraint firstItem="Z9u-QO-s87" firstAttribute="top" secondItem="IJA-ai-Ibg" secondAttribute="top" id="nYZ-ag-7pC"/>
+                            <constraint firstItem="GUx-ps-Dsc" firstAttribute="top" secondItem="Z9u-QO-s87" secondAttribute="bottom" constant="14" id="sXe-NE-QMZ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Wochenmenü" id="Bf3-zN-xb3">
@@ -216,7 +221,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y72-Mx-bCi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1902" y="668"/>
+            <point key="canvasLocation" x="1901.5267175572519" y="667.6056338028169"/>
         </scene>
         <!--Grocery List-->
         <scene sceneID="PYW-fu-1aq">
@@ -385,7 +390,7 @@
                                         </label>
                                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Menge..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uq2-Px-xWx">
                                             <rect key="frame" x="269" y="23" width="104" height="34"/>
-                                            <color key="backgroundColor" red="0.91372549530000002" green="0.61960786580000005" blue="0.2235293984" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <color key="backgroundColor" systemColor="systemGray5Color"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="104" id="cgc-ij-ZWS"/>
                                             </constraints>

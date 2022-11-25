@@ -15,7 +15,6 @@ class WeekDayCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
 }
 
 extension String {

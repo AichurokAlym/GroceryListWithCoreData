@@ -49,11 +49,7 @@ class HomeScreenVC: UIViewController {
         
         // mehrere auswahl Möglichkeiten werden erlaubt
         tableView.allowsMultipleSelectionDuringEditing = true
-        
-        
     }
-    
-    
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
@@ -64,15 +60,12 @@ class HomeScreenVC: UIViewController {
         do {
             try fetchResultsController.performFetch()
         } catch {
-            print("###error")
+            print(error)
         }
-        
         tableView.reloadData()
-        
     }
 
     @IBAction func doneBtnTapped(_ sender: UIBarButtonItem) {
-        
     }
     
     
@@ -81,17 +74,14 @@ class HomeScreenVC: UIViewController {
 extension HomeScreenVC: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        //return category.count
         return fetchResultsController.sections!.count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        //return category[section].categoryName
         return fetchResultsController.sections![section].name
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return category[section].artikel?.count ?? 0
         return fetchResultsController.sections![section].numberOfObjects
     }
     
@@ -147,9 +137,9 @@ extension HomeScreenVC: UITableViewDelegate, UITableViewDataSource {
         artikel.isChecked = !artikel.isChecked
         
         if artikel.isChecked {
-            cell.checkbox.image = UIImage(systemName: "checkmark.seal.fill")
+            cell.checkbox.image = UIImage(systemName: "star.fill")
         } else {
-            cell.checkbox.image = UIImage(systemName: "checkmark.seal")
+            cell.checkbox.image = UIImage(systemName: "star")
         }
         
         tableView.deselectRow(at: indexPath, animated: true)

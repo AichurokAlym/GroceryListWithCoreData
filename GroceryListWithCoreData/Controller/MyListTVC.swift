@@ -15,29 +15,21 @@ class MyListTVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.navigationItem.leftBarButtonItem = self.editButtonItem
-        
     }
-    
     
     override func viewDidAppear(_ animated: Bool) {
-        
         fetchCategory()
         tableView.reloadData()
-        print(myList)
     }
 
-    
     func fetchCategory() {
-
         do {
            let alleArtikel = try appDelegate.persistentContainer.viewContext.fetch(Artikel.fetchRequest())
             for artikel in alleArtikel {
                 if artikel.isChecked {
                     if !myList.contains(artikel) {
                         myList.append(artikel)
-                        print("#" + (artikel.quantity ?? "0"))
                     }
                 } else {
                     if myList.contains(artikel) {
@@ -48,13 +40,10 @@ class MyListTVC: UITableViewController {
         } catch {
             print("Fehler")
         }
-
         tableView.reloadData()
     }
     
     @IBAction func saveBtnTapped(_ sender: UIBarButtonItem) {
-        
-        
     }
     
     
@@ -63,7 +52,15 @@ class MyListTVC: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 2
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "Einkaufsliste"
+        } else {
+            return "Gefundene - Gekaufte Liste"
+        }
     }
     
 
@@ -76,33 +73,34 @@ class MyListTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "myListCell", for: indexPath) as! MyListTableViewCell
-       
-        let artikel = myList[indexPath.row]
-               
-        cell.artikelName.text = artikel.artikelName
-        cell.artikelQuantityTF.text = artikel.quantity
-        
-        if let text = cell.artikelQuantityTF.text, !text.isEmpty {
-            cell.quantityLabel.isHidden = false
-            cell.quantityLabel.text = cell.artikelQuantityTF.text
-            cell.artikelQuantityTF.isHidden = true
-        } else {
-            cell.quantityLabel.text = ""
-            cell.quantityLabel.isHidden = true
-            cell.artikelQuantityTF.isHidden = false
+        //if tableView.section == 0 {
+            let artikel = myList[indexPath.row]
             
-        }
-        
-        cell.artikel = artikel
-        if let artikelImage = artikel.artikelImage {
-            cell.artikelImage.image = UIImage(data: artikelImage)
-        } else {
-            cell.artikelImage.image = UIImage(systemName: "photo.artframe")
-        }
-        
-      
+            cell.artikelName.text = artikel.artikelName
+            cell.artikelQuantityTF.text = artikel.quantity
+            
+            if let text = cell.artikelQuantityTF.text, !text.isEmpty {
+                cell.quantityLabel.isHidden = false
+                cell.quantityLabel.text = cell.artikelQuantityTF.text
+                cell.artikelQuantityTF.isHidden = true
+            } else {
+                cell.quantityLabel.text = ""
+                cell.quantityLabel.isHidden = true
+                cell.artikelQuantityTF.isHidden = false
+                
+            }
+            
+            cell.artikel = artikel
+            if let artikelImage = artikel.artikelImage {
+                cell.artikelImage.image = UIImage(data: artikelImage)
+            } else {
+                cell.artikelImage.image = UIImage(systemName: "photo.artframe")
+            }
+        //} else {
+            
+            
+       // }
         return cell
-    
     }
 
     
@@ -127,31 +125,5 @@ class MyListTVC: UITableViewController {
             
         }
     }
-    
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

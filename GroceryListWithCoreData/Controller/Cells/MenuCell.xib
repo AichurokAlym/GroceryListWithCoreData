@@ -17,7 +17,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="387" height="324"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Menüwahl 1" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IDf-7D-rkI">
+                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Menüwahl 1" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IDf-7D-rkI">
                         <rect key="frame" x="15" y="77" width="357" height="34"/>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <textInputTraits key="textInputTraits"/>
@@ -32,7 +32,7 @@
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text=" Anmerkungen: " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="t8p-LM-j2B">
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text=" Anmerkungen: " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="t8p-LM-j2B">
                         <rect key="frame" x="15" y="214" width="357" height="90"/>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <color key="textColor" systemColor="labelColor"/>

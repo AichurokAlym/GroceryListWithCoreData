@@ -25,8 +25,6 @@ class MyListTableViewCell: UITableViewCell, UITextFieldDelegate {
         self.artikelImage.clipsToBounds = true
         self.artikelImage.layer.borderColor = UIColor.black.cgColor
         self.artikelImage.layer.borderWidth = 4
-        
-       
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -43,9 +41,4 @@ class MyListTableViewCell: UITableViewCell, UITextFieldDelegate {
         return false
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
 }

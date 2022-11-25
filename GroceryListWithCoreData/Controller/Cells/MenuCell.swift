@@ -22,7 +22,7 @@ class MenuCell: UICollectionViewCell {
         self.commentaryTextView.layer.cornerRadius = 15
         self.commentaryTextView.clipsToBounds = true
         self.commentaryTextView.layer.borderColor = UIColor.purple.cgColor
-        self.commentaryTextView.layer.borderWidth = 3
+        self.commentaryTextView.layer.borderWidth = 2
     }
     
     // kümmert sich um die Anzeige einer Auswahl

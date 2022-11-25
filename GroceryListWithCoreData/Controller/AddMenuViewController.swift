@@ -38,8 +38,12 @@ class AddMenuViewController: UIViewController, UITextFieldDelegate, UIPickerView
     }
     
     func fetchWeeklyPlanner() {
+        
+        let fetchRequest = WeeklyPlanner.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "indexOfDays", ascending: true)]
+        
         do {
-            weekDays = try appDelegate.persistentContainer.viewContext.fetch(WeeklyPlanner.fetchRequest())
+            weekDays = try appDelegate.persistentContainer.viewContext.fetch(fetchRequest)
         } catch {
             print(error)
         }
