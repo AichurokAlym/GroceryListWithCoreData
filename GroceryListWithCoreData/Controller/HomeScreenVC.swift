@@ -17,7 +17,7 @@ class HomeScreenVC: UIViewController {
     lazy var fetchResultsController: NSFetchedResultsController<Artikel> = {
         let request: NSFetchRequest<Artikel> = Artikel.fetchRequest()
         
-        request.sortDescriptors = [NSSortDescriptor(key: "category.categoryName", ascending: true), NSSortDescriptor(key: "artikelName", ascending: true)]
+        request.sortDescriptors = [NSSortDescriptor(key: "category.categoryName", ascending: false), NSSortDescriptor(key: "artikelName", ascending: true)]
         let resultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: "category.categoryName", cacheName: nil)
         do {
             try resultsController.performFetch()
@@ -79,6 +79,19 @@ extension HomeScreenVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return fetchResultsController.sections![section].name
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        guard let header = view as? UITableViewHeaderFooterView else { return }
+        header.textLabel?.textColor = UIColor.systemMint
+        header.textLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        header.textLabel?.frame = header.bounds
+        header.textLabel?.textAlignment = .left
+
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

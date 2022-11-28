@@ -19,8 +19,8 @@ class MenuViewController: UIViewController {
     var selectedDay: WeeklyPlanner?
     
     var menuToDelete: [IndexPath] = []
-    let arrColors = ["c9f4ef", "d9fae4", "eff8db", "fbe8d4", "f4d2d9"]
-    let colorsArray = ["302c6f", "a8abd6", "767ab9", "d8daef", "9da5cb"]
+    let arrColors = ["d9d2e9", "dfe3f0", "d2d4dc", "fff0db", "eafff2"]
+    //let colorsArray = ["302c6f", "a8abd6", "767ab9", "d8daef", "9da5cb"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,8 +45,8 @@ class MenuViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         
-        let randomIndex = Int(arc4random_uniform(UInt32(arrColors.count)))
-        view.backgroundColor = hexStringToUIColor(hex: arrColors[randomIndex])
+//        let randomIndex = Int(arc4random_uniform(UInt32(arrColors.count)))
+//        view.backgroundColor = hexStringToUIColor(hex: arrColors[randomIndex])
         
         fetchWeeklyMenu()
         collectionView.reloadData()
@@ -134,7 +134,7 @@ extension MenuViewController: UICollectionViewDataSource, UICollectionViewDelega
             
             cell.layer.cornerRadius = 10
             cell.clipsToBounds = true
-            cell.layer.borderColor = UIColor.purple.cgColor
+            cell.layer.borderColor = UIColor.systemMint.cgColor
             cell.layer.borderWidth = 6
             
             let randomIndex = Int(arc4random_uniform(UInt32(arrColors.count)))

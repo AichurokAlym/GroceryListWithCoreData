@@ -3,7 +3,6 @@
     <entity name="Artikel" representedClassName="Artikel" syncable="YES" codeGenerationType="class">
         <attribute name="artikelImage" optional="YES" attributeType="Binary"/>
         <attribute name="artikelName" optional="YES" attributeType="String"/>
-        <attribute name="boughtArtikel" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="isChecked" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="quantity" optional="YES" attributeType="String"/>
         <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="artikel" inverseEntity="Category"/>

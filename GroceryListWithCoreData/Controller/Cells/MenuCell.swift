@@ -21,7 +21,7 @@ class MenuCell: UICollectionViewCell {
         // Initialization code
         self.commentaryTextView.layer.cornerRadius = 15
         self.commentaryTextView.clipsToBounds = true
-        self.commentaryTextView.layer.borderColor = UIColor.purple.cgColor
+        self.commentaryTextView.layer.borderColor = UIColor.systemMint.cgColor
         self.commentaryTextView.layer.borderWidth = 2
     }
     
