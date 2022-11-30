@@ -21,6 +21,7 @@ class MyListTableViewCell: UITableViewCell, UITextFieldDelegate {
         super.awakeFromNib()
         self.artikelQuantityTF.delegate = self
         
+        // Zugriff auf Design via Layer:
         self.artikelImage.layer.cornerRadius = 15
         self.artikelImage.clipsToBounds = true
         self.artikelImage.layer.borderColor = UIColor.black.cgColor

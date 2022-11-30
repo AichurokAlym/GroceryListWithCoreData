@@ -136,7 +136,6 @@ extension HomeScreenVC: UITableViewDelegate, UITableViewDataSource {
             let artikelToDelete = fetchResultsController.object(at: indexPath)
             appDelegate.persistentContainer.viewContext.delete(artikelToDelete)
             appDelegate.saveContext()
-            //tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             
         }

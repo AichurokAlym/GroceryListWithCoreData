@@ -30,6 +30,7 @@ class AddMenuViewController: UIViewController, UITextFieldDelegate, UIPickerView
         descriptionTextView.delegate = self
         weekDayPickerView.delegate = self
         weekDayPickerView.dataSource = self
+        //weekDayPickerView.selectRow(Int(selectedDay.indexOfDays), inComponent: 0, animated: true)
         
     }
     
@@ -85,8 +86,8 @@ class AddMenuViewController: UIViewController, UITextFieldDelegate, UIPickerView
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        pickerView.selectRow(3, inComponent: component, animated: true)
         selectedDay = weekDays[row]
      
     }
-    
 }

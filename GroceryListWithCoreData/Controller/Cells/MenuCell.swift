@@ -18,7 +18,7 @@ class MenuCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        // Zugriff auf Design via Layer:
         self.commentaryTextView.layer.cornerRadius = 15
         self.commentaryTextView.clipsToBounds = true
         self.commentaryTextView.layer.borderColor = UIColor.systemMint.cgColor
@@ -29,9 +29,7 @@ class MenuCell: UICollectionViewCell {
     override var isSelected: Bool{
         didSet {
             if(isSelected) {
-                
                 checkMark.isHidden = false
-                print("AAAA")
             } else {
                 checkMark.isHidden = true
             }

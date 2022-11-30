@@ -26,6 +26,7 @@
 		CB7F7EE32902FBF8005EE6E4 /* MyListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7F7EE22902FBF8005EE6E4 /* MyListTVC.swift */; };
 		CB7F7EE529030392005EE6E4 /* MyListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7F7EE429030392005EE6E4 /* MyListTableViewCell.swift */; };
 		CB894D4B2930F25500D90738 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB894D4A2930F25500D90738 /* Helpers.swift */; };
+		CB894D6D293536EF00D90738 /* JokeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB894D6C293536EF00D90738 /* JokeCell.swift */; };
 		CB8C33402927B22500CC63B6 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8C333E2927B22500CC63B6 /* MenuCell.swift */; };
 		CB8C33412927B22500CC63B6 /* MenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB8C333F2927B22500CC63B6 /* MenuCell.xib */; };
 		CB8C33442927B90900CC63B6 /* WeekDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8C33422927B90900CC63B6 /* WeekDayCell.swift */; };
@@ -57,6 +58,7 @@
 		CB7F7EE22902FBF8005EE6E4 /* MyListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListTVC.swift; sourceTree = "<group>"; };
 		CB7F7EE429030392005EE6E4 /* MyListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListTableViewCell.swift; sourceTree = "<group>"; };
 		CB894D4A2930F25500D90738 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		CB894D6C293536EF00D90738 /* JokeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeCell.swift; sourceTree = "<group>"; };
 		CB8C333E2927B22500CC63B6 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		CB8C333F2927B22500CC63B6 /* MenuCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuCell.xib; sourceTree = "<group>"; };
 		CB8C33422927B90900CC63B6 /* WeekDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WeekDayCell.swift; path = GroceryListWithCoreData/View/WeekDayCell.swift; sourceTree = SOURCE_ROOT; };
@@ -116,6 +118,7 @@
 				CB8C333F2927B22500CC63B6 /* MenuCell.xib */,
 				CB24999A28FED07000A53EFB /* ArtikelTableViewCell.swift */,
 				CB7F7EE429030392005EE6E4 /* MyListTableViewCell.swift */,
+				CB894D6C293536EF00D90738 /* JokeCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 				CB3D0F1528FF8BCC00AD6EFB /* HomeScreenVC.swift in Sources */,
 				CB59BB30290EF919000780C6 /* AddRecipeVC.swift in Sources */,
 				CBFA23A2291BEFD900C42489 /* FoodJoke.swift in Sources */,
+				CB894D6D293536EF00D90738 /* JokeCell.swift in Sources */,
 				CB59BB32290EF958000780C6 /* DetailRecipeVC.swift in Sources */,
 				CB9E6D7D291CFEB500600032 /* FoodJokeTVC.swift in Sources */,
 				CB6D68E029278B0C00BBE5D3 /* MenuViewController.swift in Sources */,

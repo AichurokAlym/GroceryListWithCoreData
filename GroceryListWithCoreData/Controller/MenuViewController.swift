@@ -19,8 +19,8 @@ class MenuViewController: UIViewController {
     var selectedDay: WeeklyPlanner?
     
     var menuToDelete: [IndexPath] = []
+    
     let arrColors = ["d9d2e9", "dfe3f0", "d2d4dc", "fff0db", "eafff2"]
-    //let colorsArray = ["302c6f", "a8abd6", "767ab9", "d8daef", "9da5cb"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -109,6 +109,7 @@ extension MenuViewController: UICollectionViewDataSource, UICollectionViewDelega
             
             if selectedDay == weekDays[indexPath.item] {
                 cell.backgroundColor = UIColor.white
+                // Zugriff auf Design via Layer:
                 cell.layer.cornerRadius = 10
                 cell.layer.shadowColor = UIColor.black.cgColor
                 cell.layer.shadowRadius = 3.0
@@ -132,6 +133,7 @@ extension MenuViewController: UICollectionViewDataSource, UICollectionViewDelega
             cell.menu2TF.text = menu.menu2
             cell.menu3TF.text = menu.menu3
             
+            // Zugriff auf Design via Layer:
             cell.layer.cornerRadius = 10
             cell.clipsToBounds = true
             cell.layer.borderColor = UIColor.systemMint.cgColor
