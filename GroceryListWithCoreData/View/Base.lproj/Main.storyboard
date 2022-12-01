@@ -36,7 +36,7 @@
                             </pickerView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo.artframe" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="eE6-ab-uvd">
                                 <rect key="frame" x="76" y="440" width="243" height="161"/>
-                                <color key="tintColor" systemColor="systemMintColor"/>
+                                <color key="tintColor" systemColor="systemGray3Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="164.00000000000006" id="dD7-nh-BRW"/>
                                 </constraints>
@@ -199,7 +199,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="rLe-v7-8HL">
                             <connections>
-                                <segue destination="ldD-ID-aAP" kind="show" id="ZDr-xj-3uc"/>
+                                <segue destination="ldD-ID-aAP" kind="show" identifier="toAddMenu" id="ZDr-xj-3uc"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -318,6 +318,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qN7-ZU-RUJ">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" systemColor="systemMintColor"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -455,6 +456,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dYI-fG-NLz">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" systemColor="systemMintColor"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -474,6 +476,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="LaF-be-E6W">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" systemColor="systemMintColor"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -493,6 +496,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="S4A-mt-RRh">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" systemColor="systemTealColor"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -951,6 +955,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1Cz-pb-FUC">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" systemColor="systemMintColor"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -993,6 +998,9 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
+        <systemColor name="systemGray3Color">
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
@@ -1007,6 +1015,9 @@
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiarySystemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

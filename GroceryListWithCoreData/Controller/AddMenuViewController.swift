@@ -16,7 +16,7 @@ class AddMenuViewController: UIViewController, UITextFieldDelegate, UIPickerView
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var weekDayPickerView: UIPickerView!
     
-    var selectedDay: WeeklyPlanner!
+    var selectedDay: WeeklyPlanner?
     var weekDays = [WeeklyPlanner]()
     var dailyMenu = [WeeklyMenu]()
     
@@ -30,12 +30,14 @@ class AddMenuViewController: UIViewController, UITextFieldDelegate, UIPickerView
         descriptionTextView.delegate = self
         weekDayPickerView.delegate = self
         weekDayPickerView.dataSource = self
-        //weekDayPickerView.selectRow(Int(selectedDay.indexOfDays), inComponent: 0, animated: true)
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
         fetchWeeklyPlanner()
+        if selectedDay != nil {
+            weekDayPickerView.selectRow(Int(selectedDay!.indexOfDays), inComponent: 0, animated: true)
+        }
     }
     
     func fetchWeeklyPlanner() {
@@ -86,7 +88,7 @@ class AddMenuViewController: UIViewController, UITextFieldDelegate, UIPickerView
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        pickerView.selectRow(3, inComponent: component, animated: true)
+        
         selectedDay = weekDays[row]
      
     }

@@ -12,15 +12,12 @@ class FoodJokeTVC: UITableViewController {
     var joke = [Joke]()
 
     let arrColors = ["d9d2e9", "dfe3f0", "d2d4dc", "fff0db", "eafff2"]
-    //let cellSpacingHeight: CGFloat = 50
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationController?.navigationItem.largeTitleDisplayMode = .always
-        
-        //tableView.estimatedRowHeight = 44
         
         for _ in 1...2 {
             getJokes()
@@ -60,7 +57,6 @@ class FoodJokeTVC: UITableViewController {
                         self.tableView.reloadData()
                     }
                 } catch {
-                    print("Error parsing JSON")
                     print(error)
                 }
             }
@@ -82,18 +78,12 @@ class FoodJokeTVC: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return joke.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return 1
     }
-
-//    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//    return cellSpacingHeight
-//    }
    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Configure the cell...

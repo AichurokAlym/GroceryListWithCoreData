@@ -23,7 +23,6 @@ class AddArtikelVC: UIViewController, UITextFieldDelegate, UIPickerViewDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         print("#"+NSHomeDirectory())
         artikelTF.delegate = self
         categoryPickerView.delegate = self
@@ -47,7 +46,6 @@ class AddArtikelVC: UIViewController, UITextFieldDelegate, UIPickerViewDelegate,
         super.viewDidAppear(true)
         
         fetchCategory()
-        
     }
     
     func fetchCategory() {

@@ -54,7 +54,6 @@ class DetailRecipeVC: UIViewController {
         categoryTF.text = recipe.category
         cookingTimeTF.text = recipe.cookingTime.description
         instructionsTV.text = recipe.instructions
-        //recipeImage.image = UIImage(data: recipe.image!)
         
         fetchedResultsController.delegate = self
         tableView.dataSource = self
@@ -104,8 +103,6 @@ class DetailRecipeVC: UIViewController {
             ingredient.quantity = Float(quantity) ?? 0
             ingredient.unit = unit
             
-            //recipe.addToIngredients(ingredient)
-            
             ingredientNameTF.text = ""
             quantityTF.text = ""
             unitTF.text = ""
@@ -131,7 +128,7 @@ class DetailRecipeVC: UIViewController {
             do {
                 try context.save()
             } catch {
-                print("Error while saving")
+                print(error)
             }
         }
         
@@ -156,10 +153,8 @@ extension DetailRecipeVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ingredientCell", for: indexPath)
-        
-        // Content erstellen
         let ingredient = self.fetchedResultsController.object(at: indexPath)
-        
+        // Content erstellen
         var content = cell.defaultContentConfiguration()
         content.text = ingredient.name
         content.secondaryText = "\(ingredient.quantity) \(ingredient.unit!)"
@@ -177,7 +172,7 @@ extension DetailRecipeVC: UITableViewDataSource {
             do {
                 try context.save()
             } catch {
-                print("Error")
+                print(error)
             }
         }
     }

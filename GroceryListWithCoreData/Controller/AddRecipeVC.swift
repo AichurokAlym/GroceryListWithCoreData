@@ -11,8 +11,6 @@ import PhotosUI
 
 class AddRecipeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIPickerViewDelegate, UITableViewDelegate {
     
-    //var recipe = [Recipe]()
-    
     @IBOutlet weak var recipeTitleTF: UITextField!
     @IBOutlet weak var categoryTF: UITextField!
     @IBOutlet weak var cookingTimeTF: UITextField!
@@ -63,8 +61,6 @@ class AddRecipeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UI
             } catch {
                 print("Error while saving AddRecipeVC")
             }
-            
-            //NotificationCenter.default.post(name: NSNotification.Name.init("de.RezepteOrganizer.saveRecipe"), object: recipe)
         }
         self.navigationController?.popViewController(animated: true)
     }
@@ -72,7 +68,6 @@ class AddRecipeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UI
     // Image hinzufügen
     
     @IBAction func addImageBtnTapped(_ sender: UIButton) {
-        //recipeImageView.image = UIImage(named: "spaghetti-napoli")
         var config = PHPickerConfiguration(photoLibrary: .shared())
         config.selectionLimit = 1
         config.filter = PHPickerFilter.any(of: [.images, .panoramas])

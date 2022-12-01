@@ -43,11 +43,7 @@ class MenuViewController: UIViewController {
     
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        
-//        let randomIndex = Int(arc4random_uniform(UInt32(arrColors.count)))
-//        view.backgroundColor = hexStringToUIColor(hex: arrColors[randomIndex])
-        
+    override func viewDidAppear(_ animated: Bool) {        
         fetchWeeklyMenu()
         collectionView.reloadData()
     }
@@ -83,6 +79,11 @@ class MenuViewController: UIViewController {
         menuToDelete.removeAll()
         appDelegate.saveContext()
         trashButton.isEnabled = false
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as! AddMenuViewController
+        vc.selectedDay = selectedDay
     }
     
 }
@@ -125,7 +126,7 @@ extension MenuViewController: UICollectionViewDataSource, UICollectionViewDelega
            return cell
         } else {
           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuCell", for: indexPath) as! MenuCell
-            //cell.backgroundColor = UIColor.clear
+           
             let menu: WeeklyMenu = dailyMenu[indexPath.item]
         
             cell.productName.text = menu.mealTime
