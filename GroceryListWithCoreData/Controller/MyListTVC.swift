@@ -158,20 +158,22 @@ class MyListTVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        
+        if indexPath.section == 1 {
+            return nil
+        }
             let swipe = UIContextualAction(style: .normal, title: "Gekauft") { (action, tableView, success) in
-                if indexPath.section == 0 {
                     let artikel = self.myList[indexPath.row]
                     self.myList.remove(at: indexPath.row)
                     self.boughtArtikel.append(artikel)
-                } else {
-
-                    print("Swipe deaktivieren!")
-                }
+            
                 self.myListTableView.reloadData()
                 appDelegate.saveContext()
             }
+       
         swipe.image = UIImage(systemName: "cart.circle.fill")
+        swipe.image = UIGraphicsImageRenderer(size: CGSize(width: 50, height: 50)).image(actions: { _ in
+            UIImage(systemName: "cart.circle.fill")?.draw(in: CGRect(x: 0, y: 0, width: 50, height: 50))
+        })
         swipe.backgroundColor = UIColor.systemMint
         return UISwipeActionsConfiguration(actions: [swipe])
     }

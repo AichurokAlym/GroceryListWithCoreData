@@ -62,6 +62,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    ///Artikeln werden in einer Bestimmte Categorie hinzugefügt
+    ///
+    /// - Parameters:
+    ///      - coreDataCategory: die Categorie in dem gespeichert werden soll
+    ///      -
     func createArtikel(coreDataCategory: Category, produkt: [String], artikelCategories: String) {
         
         if coreDataCategory.categoryName == artikelCategories {

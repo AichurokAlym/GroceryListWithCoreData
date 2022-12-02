@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EBD-XB-DlT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LOx-82-bXt">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
@@ -334,6 +334,7 @@
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="EBD-XB-DlT" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="srn-ng-wdw"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5tj-qa-Wb2">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -386,17 +387,11 @@
                                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Menge..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uq2-Px-xWx">
                                             <rect key="frame" x="269" y="23" width="104" height="34"/>
                                             <color key="backgroundColor" red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="0.30269451530612246" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="104" id="cgc-ij-ZWS"/>
-                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AjR-G6-Cph">
-                                            <rect key="frame" x="269" y="30" width="104" height="21"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="104" id="xda-TJ-MhR"/>
-                                            </constraints>
+                                            <rect key="frame" x="325" y="30" width="48" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -404,8 +399,10 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="bottomMargin" secondItem="AjR-G6-Cph" secondAttribute="bottom" constant="18" id="3JO-AT-nw4"/>
+                                        <constraint firstItem="uq2-Px-xWx" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="sbD-cl-yYS" secondAttribute="trailing" constant="8" symbolic="YES" id="I03-lz-e5d"/>
                                         <constraint firstItem="uq2-Px-xWx" firstAttribute="trailing" secondItem="08K-GY-Nd9" secondAttribute="trailingMargin" id="JsW-lc-QHQ"/>
                                         <constraint firstAttribute="bottom" secondItem="xaq-uK-WLR" secondAttribute="bottom" constant="2" id="Oua-q9-dfv"/>
+                                        <constraint firstItem="AjR-G6-Cph" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="sbD-cl-yYS" secondAttribute="trailing" constant="8" symbolic="YES" id="Pbk-1T-M78"/>
                                         <constraint firstItem="AjR-G6-Cph" firstAttribute="trailing" secondItem="08K-GY-Nd9" secondAttribute="trailingMargin" id="SbG-YX-SAI"/>
                                         <constraint firstItem="sbD-cl-yYS" firstAttribute="top" secondItem="08K-GY-Nd9" secondAttribute="topMargin" constant="15" id="Z3p-w8-7Va"/>
                                         <constraint firstItem="xaq-uK-WLR" firstAttribute="top" secondItem="08K-GY-Nd9" secondAttribute="top" constant="2" id="ek8-CY-SVP"/>
@@ -771,6 +768,104 @@
             </objects>
             <point key="canvasLocation" x="1901.5267175572519" y="1397.8873239436621"/>
         </scene>
+        <!--Welcome Screen-->
+        <scene sceneID="1dW-EU-Dan">
+            <objects>
+                <viewController id="LOx-82-bXt" customClass="WelcomeScreen" customModule="GroceryListWithCoreData" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uS6-YV-4aC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GroceryList" translatesAutoresizingMaskIntoConstraints="NO" id="AZj-DH-IuN">
+                                <rect key="frame" x="0.0" y="115" width="393" height="737"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="737" id="Mge-If-oyV"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bildschirm­foto 2022-12-01 um 11.59.56" translatesAutoresizingMaskIntoConstraints="NO" id="fC2-hk-kJh">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="115"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="115" id="EGO-Eo-7dw"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Grocery list" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rop-Q5-KWL">
+                                <rect key="frame" x="0.0" y="69" width="393" height="46"/>
+                                <color key="backgroundColor" systemColor="systemMintColor"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Einkaufsliste erstellen!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EtG-IW-NO1">
+                                <rect key="frame" x="16" y="163" width="361" height="40"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="33"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oju-X0-gCp">
+                                <rect key="frame" x="16" y="270" width="361" height="79"/>
+                                <string key="text">Eigene Rezepte 
+speichern!</string>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="33"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bwn-EA-hXG">
+                                <rect key="frame" x="0.0" y="760" width="393" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="FYX-ML-cDK"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemMintColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="WEITER" cornerStyle="medium">
+                                    <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="36"/>
+                                    <color key="baseForegroundColor" red="0.1098205969" green="0.1097916141" blue="0.11816463620000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="baseBackgroundColor" systemColor="systemMintColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="EBD-XB-DlT" kind="presentation" modalPresentationStyle="fullScreen" id="TPR-ea-jWG"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wochenmenü planen!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G0O-2a-On0">
+                                <rect key="frame" x="16" y="222" width="361" height="40"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="33"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="xuU-QE-H0h"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fC2-hk-kJh" firstAttribute="top" secondItem="uS6-YV-4aC" secondAttribute="topMargin" constant="-59" id="7Ta-GX-z19"/>
+                            <constraint firstItem="AZj-DH-IuN" firstAttribute="top" secondItem="fC2-hk-kJh" secondAttribute="bottom" id="7tu-UF-WKa"/>
+                            <constraint firstItem="rop-Q5-KWL" firstAttribute="leading" secondItem="xuU-QE-H0h" secondAttribute="leading" id="BN6-x7-jov"/>
+                            <constraint firstItem="rop-Q5-KWL" firstAttribute="trailing" secondItem="xuU-QE-H0h" secondAttribute="trailing" id="Ca0-Wh-fB7"/>
+                            <constraint firstItem="xuU-QE-H0h" firstAttribute="bottom" secondItem="bwn-EA-hXG" secondAttribute="bottom" constant="13" id="GHO-Tn-kYK"/>
+                            <constraint firstItem="bwn-EA-hXG" firstAttribute="leading" secondItem="rop-Q5-KWL" secondAttribute="leading" id="I7M-J0-q65"/>
+                            <constraint firstItem="rop-Q5-KWL" firstAttribute="top" secondItem="xuU-QE-H0h" secondAttribute="top" constant="10" id="IJ8-7h-PS8"/>
+                            <constraint firstItem="G0O-2a-On0" firstAttribute="trailing" secondItem="EtG-IW-NO1" secondAttribute="trailing" id="Q5B-ah-Nre"/>
+                            <constraint firstItem="Oju-X0-gCp" firstAttribute="top" secondItem="G0O-2a-On0" secondAttribute="bottom" constant="8" symbolic="YES" id="Sz2-ys-014"/>
+                            <constraint firstItem="G0O-2a-On0" firstAttribute="leading" secondItem="EtG-IW-NO1" secondAttribute="leading" id="VGU-Gb-cez"/>
+                            <constraint firstItem="AZj-DH-IuN" firstAttribute="top" secondItem="rop-Q5-KWL" secondAttribute="bottom" id="ZSs-xe-SnJ"/>
+                            <constraint firstItem="bwn-EA-hXG" firstAttribute="trailing" secondItem="rop-Q5-KWL" secondAttribute="trailing" id="dfl-DF-WIg"/>
+                            <constraint firstItem="xuU-QE-H0h" firstAttribute="trailing" secondItem="Oju-X0-gCp" secondAttribute="trailing" constant="16" id="ics-n7-rhq"/>
+                            <constraint firstItem="AZj-DH-IuN" firstAttribute="centerX" secondItem="uS6-YV-4aC" secondAttribute="centerX" id="jLh-yu-H42"/>
+                            <constraint firstItem="G0O-2a-On0" firstAttribute="leading" secondItem="Oju-X0-gCp" secondAttribute="leading" id="jrn-Qv-thd"/>
+                            <constraint firstItem="fC2-hk-kJh" firstAttribute="leading" secondItem="AZj-DH-IuN" secondAttribute="leading" id="od8-CL-jiH"/>
+                            <constraint firstItem="G0O-2a-On0" firstAttribute="top" secondItem="EtG-IW-NO1" secondAttribute="bottom" constant="19" id="pDH-on-elC"/>
+                            <constraint firstItem="fC2-hk-kJh" firstAttribute="trailing" secondItem="AZj-DH-IuN" secondAttribute="trailing" id="q9a-58-x7Z"/>
+                            <constraint firstItem="EtG-IW-NO1" firstAttribute="top" secondItem="fC2-hk-kJh" secondAttribute="bottom" constant="48" id="qbc-8f-8rd"/>
+                            <constraint firstItem="fC2-hk-kJh" firstAttribute="leading" secondItem="xuU-QE-H0h" secondAttribute="leading" id="qjq-Uq-GJb"/>
+                            <constraint firstItem="Oju-X0-gCp" firstAttribute="leading" secondItem="xuU-QE-H0h" secondAttribute="leading" constant="16" id="tRT-Co-6EQ"/>
+                            <constraint firstItem="G0O-2a-On0" firstAttribute="trailing" secondItem="Oju-X0-gCp" secondAttribute="trailing" id="xL9-0b-NQ3"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="button" destination="bwn-EA-hXG" id="dBm-Xd-ssu"/>
+                        <outlet property="listLbl" destination="EtG-IW-NO1" id="boq-GG-bId"/>
+                        <outlet property="menuLbl" destination="G0O-2a-On0" id="Xng-pT-HmX"/>
+                        <outlet property="recipeLbl" destination="Oju-X0-gCp" id="ybG-U7-c1A"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3bN-Jj-idK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1369" y="-932"/>
+        </scene>
         <!--Add RecipeVC-->
         <scene sceneID="5kg-3Y-CKe">
             <objects>
@@ -968,9 +1063,11 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="5bC-6v-xlw"/>
+        <segue reference="VlT-ce-kmZ"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="Bildschirm­foto 2022-12-01 um 11.59.56" width="305" height="128"/>
+        <image name="GroceryList" width="667" height="1000"/>
         <image name="book.circle.fill" catalog="system" width="128" height="123"/>
         <image name="camera" catalog="system" width="128" height="93"/>
         <image name="camera.fill" catalog="system" width="128" height="93"/>

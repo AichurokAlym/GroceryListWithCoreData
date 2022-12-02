@@ -19,6 +19,7 @@
 		CB24999B28FED07000A53EFB /* ArtikelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB24999A28FED07000A53EFB /* ArtikelTableViewCell.swift */; };
 		CB24999D28FED79400A53EFB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB24999C28FED79400A53EFB /* Constants.swift */; };
 		CB3D0F1528FF8BCC00AD6EFB /* HomeScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3D0F1428FF8BCC00AD6EFB /* HomeScreenVC.swift */; };
+		CB3FD6142938F03200989444 /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3FD6132938F03200989444 /* WelcomeScreen.swift */; };
 		CB59BB2E290EF8AE000780C6 /* MyRecipesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB59BB2D290EF8AE000780C6 /* MyRecipesTVC.swift */; };
 		CB59BB30290EF919000780C6 /* AddRecipeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB59BB2F290EF918000780C6 /* AddRecipeVC.swift */; };
 		CB59BB32290EF958000780C6 /* DetailRecipeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB59BB31290EF958000780C6 /* DetailRecipeVC.swift */; };
@@ -51,6 +52,7 @@
 		CB24999A28FED07000A53EFB /* ArtikelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtikelTableViewCell.swift; sourceTree = "<group>"; };
 		CB24999C28FED79400A53EFB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CB3D0F1428FF8BCC00AD6EFB /* HomeScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenVC.swift; sourceTree = "<group>"; };
+		CB3FD6132938F03200989444 /* WelcomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
 		CB59BB2D290EF8AE000780C6 /* MyRecipesTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecipesTVC.swift; sourceTree = "<group>"; };
 		CB59BB2F290EF918000780C6 /* AddRecipeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeVC.swift; sourceTree = "<group>"; };
 		CB59BB31290EF958000780C6 /* DetailRecipeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRecipeVC.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 		CBD122EE290F1756007B1ACD /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CB3FD6132938F03200989444 /* WelcomeScreen.swift */,
 				CB8C3346292CC35200CC63B6 /* AddMenuViewController.swift */,
 				CB6D68DF29278B0C00BBE5D3 /* MenuViewController.swift */,
 				CB24998528FEC6AD00A53EFB /* AddArtikelVC.swift */,
@@ -250,6 +253,7 @@
 				CB894D6D293536EF00D90738 /* JokeCell.swift in Sources */,
 				CB59BB32290EF958000780C6 /* DetailRecipeVC.swift in Sources */,
 				CB9E6D7D291CFEB500600032 /* FoodJokeTVC.swift in Sources */,
+				CB3FD6142938F03200989444 /* WelcomeScreen.swift in Sources */,
 				CB6D68E029278B0C00BBE5D3 /* MenuViewController.swift in Sources */,
 				CB24999D28FED79400A53EFB /* Constants.swift in Sources */,
 				CB24998C28FEC6AD00A53EFB /* GroceryListWithCoreData.xcdatamodeld in Sources */,

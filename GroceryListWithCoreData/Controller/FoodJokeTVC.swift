@@ -72,7 +72,7 @@ class FoodJokeTVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        var view = UIView()
+        let view = UIView()
         view.backgroundColor = UIColor.clear
         return view
     }
@@ -86,8 +86,8 @@ class FoodJokeTVC: UITableViewController {
     }
    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // Configure the cell...
         let cell = tableView.dequeueReusableCell(withIdentifier: "jokeCell", for: indexPath)
+        // Configure the cell...
         var content = cell.defaultContentConfiguration()
         content.text = joke[indexPath.section].text
         cell.contentConfiguration = content

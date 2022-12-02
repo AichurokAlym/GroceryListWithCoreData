@@ -16,6 +16,7 @@ class AddArtikelVC: UIViewController, UITextFieldDelegate, UIPickerViewDelegate,
     @IBOutlet weak var artikelImage: UIImageView!
     @IBOutlet weak var addImageButton: UIButton!
     
+    
     var selectedCategory: Category!
     var artikelCategory = [Category]()
     var artikel = [Artikel]()
@@ -23,7 +24,6 @@ class AddArtikelVC: UIViewController, UITextFieldDelegate, UIPickerViewDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("#"+NSHomeDirectory())
         artikelTF.delegate = self
         categoryPickerView.delegate = self
         categoryPickerView.dataSource = self
@@ -65,7 +65,6 @@ class AddArtikelVC: UIViewController, UITextFieldDelegate, UIPickerViewDelegate,
         if let artikelName = artikelTF.text, artikelTF.text != "" {
             let artikel = Artikel(context: context)
             artikel.artikelName = artikelName
-            //let rowSelected = categoryPickerView.selectedRow(inComponent: 0)
             
             artikel.category = selectedCategory
             artikel.artikelImage = artikelImage.image?.pngData()
