@@ -31,6 +31,10 @@ class AddMenuViewController: UIViewController, UITextFieldDelegate, UIPickerView
         weekDayPickerView.delegate = self
         weekDayPickerView.dataSource = self
         
+        self.descriptionTextView.inputAccessoryView = createToolbar()
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -52,6 +56,46 @@ class AddMenuViewController: UIViewController, UITextFieldDelegate, UIPickerView
         }
         weekDayPickerView.reloadAllComponents()
     }
+    
+    //MARK: TextFields keyboards schließen
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    //MARK: Text View Keyboard schließen
+    @objc func doneBtnTapped() {
+        descriptionTextView.resignFirstResponder()
+    }
+    
+    func createToolbar() -> UIToolbar {
+        
+        // Toolbar Instanz erstellen
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        //Done-Button einfügen
+        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(doneBtnTapped))
+        toolbar.setItems([doneBtn], animated: true)
+        
+        return toolbar
+    }
+    
+    //MARK: - Keyboard-Überlappung regeln
+//    @objc func keyboardWillShow(notification: NSNotification){
+//        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+//            if self.view.frame.origin.y == 0 && descriptionTextView.isFirstResponder {
+//                self.view.frame.origin.y -= keyboardSize.height
+//            }
+//        }
+//    }
+    
+    @objc func keyboardWillHide(notification: NSNotification){
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
+    
     
     @IBAction func saveBtnTapped(_ sender: UIBarButtonItem) {
         let menu = WeeklyMenu(context: context)

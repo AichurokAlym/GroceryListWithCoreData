@@ -1,16 +1,16 @@
 //
-//  AddResipeVC.swift
+//  AddRecipeViewController.swift
 //  GroceryListWithCoreData
 //
-//  Created by Aichurok Alymkulova on 30.10.22.
+//  Created by Aichurok Alymkulova on 02.12.22.
 //
 
 import UIKit
 import CoreData
 import PhotosUI
 
-class AddRecipeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIPickerViewDelegate, UITableViewDelegate {
-    
+class AddRecipeViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIPickerViewDelegate, UITableViewDelegate {
+
     @IBOutlet weak var recipeTitleTF: UITextField!
     @IBOutlet weak var categoryTF: UITextField!
     @IBOutlet weak var cookingTimeTF: UITextField!
@@ -21,20 +21,18 @@ class AddRecipeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UI
     @IBOutlet weak var unitTF: UITextField!
     @IBOutlet weak var ingredientTableView: UITableView!
     
+
+    
     // Datengrundlage zur TableView
     var ingredientTableViewData = [Ingredient]()
     
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Do any additional setup after loading the view.
         ingredientTableView.dataSource = self
-
     }
     
-    //MARK: - IBActions
     @IBAction func saveBtnTapped(_ sender: UIBarButtonItem) {
         
         if let recipeTitle = recipeTitleTF.text, recipeTitleTF.text != "" {
@@ -50,7 +48,7 @@ class AddRecipeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UI
             recipe.category = categoryTF.text
             recipe.instructions = instructionsTV.text
             recipe.cookingTime = cookingTimeTF.text
-            recipe.image = recipeImageView.image?.pngData()
+            print(recipe.cookingTime)
             
             for ingredient in ingredientTableViewData {
                 recipe.addToIngredients(ingredient)
@@ -62,11 +60,11 @@ class AddRecipeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UI
                 print("Error while saving AddRecipeVC")
             }
         }
+        appDelegate.saveContext()
         self.navigationController?.popViewController(animated: true)
     }
     
     // Image hinzufügen
-    
     @IBAction func addImageBtnTapped(_ sender: UIButton) {
         var config = PHPickerConfiguration(photoLibrary: .shared())
         config.selectionLimit = 1
@@ -75,7 +73,6 @@ class AddRecipeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UI
         photoPicker.delegate = self
         self.present(photoPicker, animated: true)
     }
-    
     
     // Ingredients hinzufügen
     @IBAction func addIngredientBtnTapped(_ sender: UIButton) {
@@ -98,19 +95,18 @@ class AddRecipeVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UI
         }
     }
     
-    
 }
-    //MARK: - Ext. TableView Data Source
-extension AddRecipeVC: UITableViewDataSource {
+
+//MARK: - Ext. TableView Data Source
+extension AddRecipeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ingredientTableViewData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         // Cell registrieren
-        let cell = tableView.dequeueReusableCell(withIdentifier: "addIngredientCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AddIngredientCell", for: indexPath)
         
         // Inhalte der Cells einrichten
         var content = cell.defaultContentConfiguration()
@@ -130,7 +126,7 @@ extension AddRecipeVC: UITableViewDataSource {
     
 }
 
-extension AddRecipeVC: PHPickerViewControllerDelegate {
+extension AddRecipeViewController: PHPickerViewControllerDelegate {
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         picker.dismiss(animated: true)
         

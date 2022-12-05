@@ -52,13 +52,11 @@ class DetailRecipeVC: UIViewController {
         self.title = recipe.recipeTitle
         recipeTitleTF.text = recipe.recipeTitle
         categoryTF.text = recipe.category
-        cookingTimeTF.text = recipe.cookingTime.description
+        cookingTimeTF.text = recipe.cookingTime
         instructionsTV.text = recipe.instructions
         
         fetchedResultsController.delegate = self
         tableView.dataSource = self
-        
-    
     }
     
     //MARK: - IBActions
@@ -88,7 +86,7 @@ class DetailRecipeVC: UIViewController {
             
             recipeTitleTF.text = recipe.recipeTitle
             categoryTF.text = recipe.category
-            cookingTimeTF.text = recipe.cookingTime.description
+            cookingTimeTF.text = recipe.cookingTime
         }
         
     }
@@ -116,7 +114,7 @@ class DetailRecipeVC: UIViewController {
             recipe.recipeTitle = recipeTitle
             recipe.category = categoryTF.text
             recipe.instructions = instructionsTV.text
-            recipe.cookingTime = Int16(cookingTimeTF.text!) ?? 0
+            recipe.cookingTime = cookingTimeTF.text
             
             sender.isEnabled = false
             recipeTitleTF.isEnabled = false

@@ -27,12 +27,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             UserDefaults.standard.set(true, forKey: "wurdeErsteMalGestarted")
             
+            //zu jeden Tag wird ein Index zugewiesen und in Coredata gespeichert
             for day in 0...6 {
                 let coreDataWeekDays = WeeklyPlanner(context: context)
                 coreDataWeekDays.indexOfDays = Int16(day)
                 coreDataWeekDays.weekday = weekDays[day]
             }
             
+            //artikelCategorys werden in CoreData gespeichert
             for name in artikelCategorys {
                 let coreDataCategory = Category(context: context)
                 coreDataCategory.categoryName = name
@@ -56,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 createArtikel(coreDataCategory: coreDataCategory, produkt: obst, artikelCategories: "Obst")
                 
             }
-            //speichert die Kategorien und die Artikeln ab
+            //speichert die Kategorien und die Artikeln in CoreData ab
             self.saveContext()
         }
         return true
@@ -66,7 +68,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ///
     /// - Parameters:
     ///      - coreDataCategory: die Categorie in dem gespeichert werden soll
-    ///      -
+    ///      - produkt: ein Array die aus Artikeln besteht
+    ///      - artikelCategories: um zu prüfen zu welche Kategorie gehört ein oder andere Artikel
     func createArtikel(coreDataCategory: Category, produkt: [String], artikelCategories: String) {
         
         if coreDataCategory.categoryName == artikelCategories {
