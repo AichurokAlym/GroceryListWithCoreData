@@ -691,10 +691,10 @@ speichern!</string>
             </objects>
             <point key="canvasLocation" x="-1369" y="-932"/>
         </scene>
-        <!--Recipe Collection View Controller-->
+        <!--RecipeCVC-->
         <scene sceneID="ySH-5c-GLF">
             <objects>
-                <collectionViewController storyboardIdentifier="RecipeCollectionViewController" id="nHl-4D-JRa" customClass="RecipeCollectionViewController" customModule="GroceryListWithCoreData" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="RecipeCollectionViewController" id="nHl-4D-JRa" customClass="RecipeCVC" customModule="GroceryListWithCoreData" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" springLoaded="YES" id="2lG-6o-GXG">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -723,7 +723,7 @@ speichern!</string>
                     </collectionView>
                     <navigationItem key="navigationItem" id="x3P-7s-BJh"/>
                     <connections>
-                        <outlet property="recipeCollectionView" destination="2lG-6o-GXG" id="Dw5-uh-d9N"/>
+                        <outlet property="recipeCollectionView" destination="2lG-6o-GXG" id="FQy-E6-pjm"/>
                         <segue destination="ior-w2-sly" kind="show" identifier="toDetailRecipeViewController" id="NAP-qN-W0F"/>
                         <segue destination="a9Q-yV-cPX" kind="show" identifier="toAddRecipe" id="X5q-Y2-f0R"/>
                     </connections>

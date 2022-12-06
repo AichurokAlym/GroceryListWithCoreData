@@ -18,10 +18,10 @@
 		CB24999128FEC6AE00A53EFB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB24998F28FEC6AE00A53EFB /* LaunchScreen.storyboard */; };
 		CB24999B28FED07000A53EFB /* ArtikelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB24999A28FED07000A53EFB /* ArtikelTableViewCell.swift */; };
 		CB24999D28FED79400A53EFB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB24999C28FED79400A53EFB /* Constants.swift */; };
+		CB2D77F9293F6DB000262955 /* RecipeCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2D77F8293F6DB000262955 /* RecipeCVC.swift */; };
 		CB3D0F1528FF8BCC00AD6EFB /* HomeScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3D0F1428FF8BCC00AD6EFB /* HomeScreenVC.swift */; };
 		CB3E2AC9293AA8CD004555E8 /* AddRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3E2AC8293AA8CD004555E8 /* AddRecipeViewController.swift */; };
 		CB3FD6142938F03200989444 /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3FD6132938F03200989444 /* WelcomeScreen.swift */; };
-		CB44FCA3293A161D003D8848 /* RecipeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB44FCA2293A161D003D8848 /* RecipeCollectionViewController.swift */; };
 		CB6D68E029278B0C00BBE5D3 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6D68DF29278B0C00BBE5D3 /* MenuViewController.swift */; };
 		CB7F7EE529030392005EE6E4 /* MyListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7F7EE429030392005EE6E4 /* MyListTableViewCell.swift */; };
 		CB894D4B2930F25500D90738 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB894D4A2930F25500D90738 /* Helpers.swift */; };
@@ -53,10 +53,10 @@
 		CB24999228FEC6AE00A53EFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB24999A28FED07000A53EFB /* ArtikelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtikelTableViewCell.swift; sourceTree = "<group>"; };
 		CB24999C28FED79400A53EFB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		CB2D77F8293F6DB000262955 /* RecipeCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RecipeCVC.swift; path = GroceryListWithCoreData/View/RecipeCVC.swift; sourceTree = SOURCE_ROOT; };
 		CB3D0F1428FF8BCC00AD6EFB /* HomeScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenVC.swift; sourceTree = "<group>"; };
 		CB3E2AC8293AA8CD004555E8 /* AddRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddRecipeViewController.swift; path = GroceryListWithCoreData/View/AddRecipeViewController.swift; sourceTree = SOURCE_ROOT; };
 		CB3FD6132938F03200989444 /* WelcomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
-		CB44FCA2293A161D003D8848 /* RecipeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RecipeCollectionViewController.swift; path = GroceryListWithCoreData/View/RecipeCollectionViewController.swift; sourceTree = SOURCE_ROOT; };
 		CB6D68DF29278B0C00BBE5D3 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = GroceryListWithCoreData/Controller/MenuViewController.swift; sourceTree = SOURCE_ROOT; };
 		CB7F7EE429030392005EE6E4 /* MyListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListTableViewCell.swift; sourceTree = "<group>"; };
 		CB894D4A2930F25500D90738 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
@@ -156,13 +156,13 @@
 		CBD122EE290F1756007B1ACD /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				CBDF099A293E27BE0079FC5F /* MyListTVC.swift */,
 				CB3E2AC8293AA8CD004555E8 /* AddRecipeViewController.swift */,
 				CB9362B0293A4148007F8E0E /* DetailRecipeViewController.swift */,
-				CB44FCA2293A161D003D8848 /* RecipeCollectionViewController.swift */,
+				CB2D77F8293F6DB000262955 /* RecipeCVC.swift */,
 				CB3FD6132938F03200989444 /* WelcomeScreen.swift */,
 				CB8C3346292CC35200CC63B6 /* AddMenuViewController.swift */,
 				CB6D68DF29278B0C00BBE5D3 /* MenuViewController.swift */,
+				CBDF099A293E27BE0079FC5F /* MyListTVC.swift */,
 				CB24998528FEC6AD00A53EFB /* AddArtikelVC.swift */,
 				CB3D0F1428FF8BCC00AD6EFB /* HomeScreenVC.swift */,
 				CB9E6D7C291CFEB500600032 /* FoodJokeTVC.swift */,
@@ -246,10 +246,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB9362AC293A2A3F007F8E0E /* RecipeCell.swift in Sources */,
+				CB2D77F9293F6DB000262955 /* RecipeCVC.swift in Sources */,
 				CBDF099B293E27BE0079FC5F /* MyListTVC.swift in Sources */,
 				CB24999B28FED07000A53EFB /* ArtikelTableViewCell.swift in Sources */,
 				CB894D4B2930F25500D90738 /* Helpers.swift in Sources */,
-				CB44FCA3293A161D003D8848 /* RecipeCollectionViewController.swift in Sources */,
 				CB0D45392913E6A3007B75E6 /* APIClient.swift in Sources */,
 				CB8C3347292CC35200CC63B6 /* AddMenuViewController.swift in Sources */,
 				CB24998628FEC6AD00A53EFB /* AddArtikelVC.swift in Sources */,

@@ -1,16 +1,15 @@
 //
-//  RecipeCollectionViewController.swift
+//  RecipeCVC.swift
 //  GroceryListWithCoreData
 //
-//  Created by Aichurok Alymkulova on 02.12.22.
+//  Created by Aichurok Alymkulova on 06.12.22.
 //
 
 import UIKit
-import CoreData
 
 private let reuseIdentifier = "RecipeCell"
 
-class RecipeCollectionViewController: UICollectionViewController {
+class RecipeCVC: UICollectionViewController {
 
     @IBOutlet var recipeCollectionView: UICollectionView!
     
@@ -19,20 +18,6 @@ class RecipeCollectionViewController: UICollectionViewController {
     
     let sectionInsets = UIEdgeInsets(top: 8.0, left: 10.0, bottom: 8.0, right: 10.0)
     let itemsPerRow: CGFloat = 2
-    
-    lazy var fetchedResultsController: NSFetchedResultsController<Recipe> = {
-        let request: NSFetchRequest<Recipe> = Recipe.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(key: "recipeTitle", ascending: true)]
-           
-        let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
-           
-        do {
-            try controller.performFetch()
-        } catch let error as NSError {
-            print(error.localizedDescription)
-        }
-        return controller
-    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,16 +28,13 @@ class RecipeCollectionViewController: UICollectionViewController {
         self.recipeCollectionView.register(UINib(nibName: "RecipeCell", bundle: nil), forCellWithReuseIdentifier: "RecipeCell")
         self.recipeCollectionView.dataSource = self
         self.recipeCollectionView.delegate = self
-        fetchedResultsController.delegate = self
         
+        fetchRecipe()
         addLongPressFunctionality()
         configureItems()
-        // erlaubt mehrfache Auswahl von Items
-        //recipeCollectionView.allowsMultipleSelection = true
-        
         recipeCollectionView.reloadData()
     }
-    
+
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         appDelegate.saveContext()
@@ -60,12 +42,16 @@ class RecipeCollectionViewController: UICollectionViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         print(isEditing)
+        fetchRecipe()
+        recipeCollectionView.reloadData()
+    }
+    
+    func fetchRecipe() {
         do {
-            try fetchedResultsController.performFetch()
+            recipies = try appDelegate.persistentContainer.viewContext.fetch(Recipe.fetchRequest())
         } catch {
             print(error)
         }
-        recipeCollectionView.reloadData()
     }
     
     private func configureItems() {
@@ -92,16 +78,12 @@ class RecipeCollectionViewController: UICollectionViewController {
         }
     }
     
-    
     @objc func addRecipeBtn() {
         performSegue(withIdentifier: "toAddRecipe", sender: self)
-        
-//        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//        let addRecipeVC = storyboard.instantiateViewController(withIdentifier: "AddRecipeViewController") as! AddRecipeViewController
-//        self.navigationController?.pushViewController(addRecipeVC, animated: true)
     }
     
     @objc func deletingBtn() {
+        
         for i in recipiesToDelete.sorted(by: {$0.item > $1.item}) {
             context.delete(recipies[i.item])
             recipies.remove(at: i.item)
@@ -109,19 +91,13 @@ class RecipeCollectionViewController: UICollectionViewController {
         recipeCollectionView.deleteItems(at: recipiesToDelete)
         recipiesToDelete.removeAll()
         appDelegate.saveContext()
+        if recipies.count < 1 {
+            configureItems()
+            isEditing = false
+        }
         
-//        if let selectedCells = recipeCollectionView.indexPathsForSelectedItems {
-//            let items = selectedCells.map { $0.item }.sorted().reversed()
-//            for item in items {
-//                recipiesToDelete.remove(at: item)
-//            }
-//            recipeCollectionView.deleteItems(at: selectedCells)
-//        }
-//        if recipiesToDelete.count < 1 {
-//            configureItems()
-//            isEditing = false
-//        }
-    }
+        recipeCollectionView.reloadData()
+   }
 
     // MARK: UICollectionViewDataSource
 
@@ -129,17 +105,18 @@ class RecipeCollectionViewController: UICollectionViewController {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-    
+
+
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return fetchedResultsController.sections![0].numberOfObjects
+        return recipies.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! RecipeCell
     
         // Configure the cell
-        let recipe = fetchedResultsController.object(at: indexPath)
+        let recipe: Recipe = recipies[indexPath.item]
         cell.recipeTitle.text = recipe.recipeTitle
         cell.cookingTime.text = recipe.cookingTime
         cell.category.text = recipe.category
@@ -162,41 +139,38 @@ class RecipeCollectionViewController: UICollectionViewController {
     
     //MARK: - prepareForSegue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let selectedItem = sender as? Recipe else {
+            return
+        }
         if segue.identifier == "toDetailRecipeViewController" {
-            let indexPath = collectionView.indexPath(for: sender as! UICollectionViewCell)
-            let dest = segue.destination as! DetailRecipeViewController
-            dest.recipe = fetchedResultsController.object(at: indexPath!)
-            
+            guard let destinationVC = segue.destination as? DetailRecipeViewController else {
+                return
+            }
+            destinationVC.recipe = selectedItem
         }
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if !isEditing {
-            let cell = collectionView.cellForItem(at: indexPath)
-            self.performSegue(withIdentifier: "toDetailRecipeViewController", sender: cell)
+            let selectedRecipe = recipies[indexPath.item]
+            self.performSegue(withIdentifier: "toDetailRecipeViewController", sender: selectedRecipe)
         } else {
             self.recipiesToDelete.append(indexPath)
         }
     }
     
-//    override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-//
-//        self.recipiesToDelete.remove(at: recipiesToDelete.firstIndex(of: indexPath)!)
-//        if recipiesToDelete.isEmpty {
-//            trashButton.isEnabled = false
-//        }
-//    }
-    
+
     // moving cell
-    override func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
-        return true
+    override func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let recipe = recipies.remove(at: sourceIndexPath.item)
+        recipies.insert(recipe, at: destinationIndexPath.item)
     }
     
     func addLongPressFunctionality() {
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPressgesture(gesture:)))
         self.recipeCollectionView.addGestureRecognizer(longPress)
     }
-    
+
     @objc func longPressgesture(gesture: UILongPressGestureRecognizer) {
         switch gesture.state {
         case .began:
@@ -214,7 +188,7 @@ class RecipeCollectionViewController: UICollectionViewController {
 }
 
 // MARK: - Collection view delegate flow layout
-extension RecipeCollectionViewController: UICollectionViewDelegateFlowLayout {
+extension RecipeCVC: UICollectionViewDelegateFlowLayout {
   
   func collectionView(
     _ collectionView: UICollectionView,
@@ -247,11 +221,13 @@ extension RecipeCollectionViewController: UICollectionViewDelegateFlowLayout {
     
 }
 
-//MARK: Ext. FetchedResultsControllerDelegate
-extension RecipeCollectionViewController: NSFetchedResultsControllerDelegate {
-    // Wird aufgerufen, wenn Inhalt (Context) sich verändert:
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        recipeCollectionView.reloadData()
-    }
-}
+////MARK: Ext. FetchedResultsControllerDelegate
+//extension RecipeCVC: NSFetchedResultsControllerDelegate {
+//    // Wird aufgerufen, wenn Inhalt (Context) sich verändert:
+//    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+//        recipeCollectionView.reloadData()
+//    }
+//}
+
+
 

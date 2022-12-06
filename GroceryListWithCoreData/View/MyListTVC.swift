@@ -62,7 +62,7 @@ class MyListTVC: UITableViewController {
         if section == 0 {
             return "Einkaufsliste"
         } else {
-            return "Gefundene - Gekaufte Liste"
+            return "Erledigt"
         }
     }
     

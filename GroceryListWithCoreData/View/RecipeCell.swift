@@ -19,6 +19,7 @@ class RecipeCell: UICollectionViewCell {
     var isEditing: Bool = false {
         didSet {
             checkmark.isHidden = !isEditing
+            
         }
     }
     
@@ -36,5 +37,4 @@ class RecipeCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
 }
