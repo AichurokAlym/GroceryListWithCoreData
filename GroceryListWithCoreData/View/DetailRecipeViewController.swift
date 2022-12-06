@@ -44,11 +44,8 @@ class DetailRecipeViewController: UIViewController {
         
         if let image = recipe.image {
             recipeImage.image = UIImage(data: image)
-
-            print("1")
         } else {
             recipeImage.image = UIImage(systemName: "photo.artframe")
-            print("2")
         }
         
         categoryTF.text = recipe.category
@@ -72,7 +69,6 @@ extension DetailRecipeViewController: NSFetchedResultsControllerDelegate {
 extension DetailRecipeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("###\(fetchedResultsController.sections![0].numberOfObjects)")
         return fetchedResultsController.sections![0].numberOfObjects
     }
     
@@ -81,7 +77,6 @@ extension DetailRecipeViewController: UITableViewDataSource {
         let ingredient = self.fetchedResultsController.object(at: indexPath)
         // Content erstellen
         var content = cell.defaultContentConfiguration()
-        print(ingredient.name)
         content.text = ingredient.name
         content.secondaryText = "\(ingredient.quantity) \(ingredient.unit!)"
         cell.contentConfiguration = content

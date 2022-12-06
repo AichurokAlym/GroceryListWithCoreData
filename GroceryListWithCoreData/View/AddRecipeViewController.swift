@@ -31,6 +31,48 @@ class AddRecipeViewController: UIViewController, UITextFieldDelegate, UITextView
 
         // Do any additional setup after loading the view.
         ingredientTableView.dataSource = self
+        
+       NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+       NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    //MARK: TextFields keyboards schließen
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    //MARK: Text View Keyboard schließen
+    @objc func doneBtnTapped() {
+        instructionsTV.resignFirstResponder()
+    }
+    
+    func createToolbar() -> UIToolbar {
+        
+        // Toolbar Instanz erstellen
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        //Done-Button einfügen
+        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(doneBtnTapped))
+        toolbar.setItems([doneBtn], animated: true)
+        
+        return toolbar
+    }
+    
+//    MARK: - Keyboard-Überlappung regeln
+    @objc func keyboardWillShow(notification: NSNotification){
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 && ingredientNameTF.isFirstResponder  {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification){
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
     }
     
     @IBAction func saveBtnTapped(_ sender: UIBarButtonItem) {
@@ -48,7 +90,6 @@ class AddRecipeViewController: UIViewController, UITextFieldDelegate, UITextView
             recipe.category = categoryTF.text
             recipe.instructions = instructionsTV.text
             recipe.cookingTime = cookingTimeTF.text
-            print(recipe.cookingTime)
             
             for ingredient in ingredientTableViewData {
                 recipe.addToIngredients(ingredient)

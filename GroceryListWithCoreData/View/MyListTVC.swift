@@ -145,15 +145,20 @@ class MyListTVC: UITableViewController {
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let artikelToDelete = self.myList[indexPath.row]
-            myList.remove(at: indexPath.row)
-            artikelToDelete.isChecked = false
-            artikelToDelete.quantity = ""
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            if indexPath.section == 0 {
+                let artikelToDelete = self.myList[indexPath.row]
+                myList.remove(at: indexPath.row)
+                artikelToDelete.isChecked = false
+                artikelToDelete.quantity = ""
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            } else {
+                let artikelToDelete = self.boughtArtikel[indexPath.row]
+                boughtArtikel.remove(at: indexPath.row)
+                artikelToDelete.isChecked = false
+                artikelToDelete.quantity = ""
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
             appDelegate.saveContext()
-            
-        } else if editingStyle == .insert {
-            
         }
     }
     
